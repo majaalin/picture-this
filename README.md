@@ -2,7 +2,7 @@
 
 ## Assignments
 
-The assignment is to create a Instagram clone.
+The assignment is to create a Instagram clone we call Picture This.
 
 ## Link 
 
