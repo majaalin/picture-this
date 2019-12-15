@@ -19,7 +19,7 @@
         <button type="submit" class="btn btn-primary">Login</button>
 
     </form>
-    <button class="btn btn-primary"><a href="/register.php">New user</a></button>
+    <a href="/register.php"><button class="btn btn-primary">New user</button></a>
 </article>
 
 <?php require __DIR__.'/views/footer.php'; ?>

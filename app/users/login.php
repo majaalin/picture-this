@@ -7,7 +7,7 @@ require __DIR__.'/../autoload.php';
 // In this file we login users.
 
 if(isset($_POST['email'], $_POST['password'])){
-    $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
+    $email = strtolower(trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL)));
     $password = htmlentities($_POST['password']);
     
     $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
@@ -23,11 +23,8 @@ if(isset($_POST['email'], $_POST['password'])){
     } 
     
     if (password_verify($password, $user['password'])){
-        $_SESSION['user'] = [
-            'id' => $user['id'],
-            'name' => $user['name'],
-            'email' => $user['email'],
-        ];
+        unset($user['password']);
+        $_SESSION['user'] = $user;
     }
 }
 

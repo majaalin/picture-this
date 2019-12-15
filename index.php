@@ -5,7 +5,8 @@
     <p>This is the home page.</p>
 
     <?php if (isset($_SESSION['user'])) :?>
-    <p><?php echo "Welcome, " . $_SESSION['user']['name'] . "!"; ?> </p>
+    <p><?php echo "Welcome, " . $_SESSION['user']['full_name'] . "!"; ?> </p>
+    <button><a href="">Redigera profil</a></button>
     <?php endif; ?>
 </article>
 
