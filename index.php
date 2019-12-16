@@ -6,7 +6,7 @@
 
     <?php if (isset($_SESSION['user'])) :?>
     <p><?php echo "Welcome, " . $_SESSION['user']['full_name'] . "!"; ?> </p>
-    <button><a href="">Redigera profil</a></button>
+    <button><a href="/profile.php">Edit profil</a></button>
     <?php endif; ?>
 </article>
 
