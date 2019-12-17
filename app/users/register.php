@@ -56,4 +56,6 @@ if ($usernameExist) {
 
     $_SESSION['authenticated'] = true;
 
+    redirect('/');
+
 };
