@@ -36,6 +36,5 @@
         <button type="submit" class="btn btn-primary">Change password</button>
     </form>
 </article>
-</aricle>
 
 <?php require __DIR__.'/views/footer.php'; ?>
