@@ -8,16 +8,6 @@
     <a href="/..">Back</a>
     <h1>Edit posts</h1>
 
-    <?php foreach ($errors as $error) : ?>
-        <p><?php echo $error ?></p>
-    <?php endforeach ?>
-
-    <ul>
-    <?php foreach ($successes as $success) : ?>
-        <li><?php echo $success ?></li>
-    <?php endforeach ?>
-    </ul>
-
     <?php  
 
     if(isset($_GET['photo_id'])){
@@ -39,30 +29,46 @@
 
     if ($_SESSION['user']['user_id'] != $userId) {
         $errors[] = "You can't edit that picture";
+
+        if (count($errors) > 0){
+            $_SESSION['errors'] = $errors;
+            redirect('/my-posts.php');
+            exit;
     }
 
-    if (count($errors) > 0){
-    $_SESSION['errors'] = $errors;
-    redirect('/my-posts.php');
-    exit;
 }
 
     ?>
 
-    <form action="/app/users/edit-post.php?photo_id=<?php echo $photoId ?>" method="post">
+<?php foreach ($errors as $error) : ?>
+        <li><?php echo $error ?></li>
+    <?php endforeach ?>
 
+    <ul>
+    <?php foreach ($successes as $success) : ?>
+        <li><?php echo $success ?></li>
+    <?php endforeach ?>
+    </ul>
+
+<div class="form-group">
+
+    <form action="/app/users/edit-post.php?photo_id=<?php echo $photoId ?>" method="post" enctype="multipart/form-data">
 
     <img src="/uploads/images/<?php echo $image ?>" alt="">
     <div class="form-group">
             <label for="image">Change picture</label>
             <input type="file" id="image" name="image" accept=".png, .jpg, .jpeg">
     </div>
+    <button type="submit" class="btn btn-primary">Update photo</button>
+    </form>
+    
+    <form action="/app/users/edit-post.php?photo_id=<?php echo $photoId ?>" method="post" enctype="multipart/form-data">
     <div class="form-group">
             <label for="name">Caption</label>
             <textarea class="form-control" type="text" name="caption" rows="5" cols="50"><?php echo $caption ?></textarea>
         </div><!-- /form-group -->
 
-        <button type="submit" class="btn btn-primary">Edit posts</button>
+        <button type="submit" class="btn btn-primary">Edit caption</button>
     </form>
     <form action="/app/posts/delete.php?photo_id=<?php echo $photoId ?>" method="post">
     <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to delete this post?')">Delete posts</button>
