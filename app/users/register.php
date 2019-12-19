@@ -56,6 +56,12 @@ if ($usernameExist) {
 
     $_SESSION['authenticated'] = true;
 
-    redirect('/');
+    $successes[] = "You have now created an account, log in to your account!";
+
+    if (count($successes) > 0){
+        $_SESSION['successes'] = $successes;
+        redirect('/login.php');
+        exit;
+    }
 
 };

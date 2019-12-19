@@ -31,6 +31,14 @@ $query = 'INSERT INTO photos (image, caption, user_id, date_created) VALUES (:im
     $statement->bindParam(':date_created', $dateCreated, PDO::PARAM_STR);
     
     $statement->execute();
+
+    $successes[] = "Image uploaded!";
+
+    if (count($successes) > 0){
+        $_SESSION['successes'] = $successes;
+        redirect('/my-posts.php');
+        exit;
+    }
 }
 
 //  $avatarPath = date('ymd')."-".$_FILES['image']['name'];

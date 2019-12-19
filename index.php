@@ -9,7 +9,11 @@
     <img src="/uploads/<?php echo $_SESSION['user']['avatar']; ?>" alt="">
     <button><a href="/profile.php">Edit profil</a></button>
     <button><a href="/posts.php">New post</a></button>
+    <button><a href="/my-posts.php">My post</a></button>
     <?php endif; ?>
+    <form action="users.php" method="GET">
+    <input id="search" type="text" placeholder="Search for username">
+    <input id="submit" type="submit" value="Search">
 </article>
 
 <?php require __DIR__.'/views/footer.php'; ?>

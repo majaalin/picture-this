@@ -47,7 +47,7 @@ if (isset($_POST['old_password'], $_POST['new_password'], $_POST['confirm_new_pa
         ':new_password' => $newPassword,
         ]);
         
-        $successes[] = "Your email were successfully updated";
+        $successes[] = "Your password were successfully updated";
 
     if (count($successes) > 0){
         $_SESSION['successes'] = $successes;

@@ -3,6 +3,16 @@
 <article>
     <h1>Login</h1>
 
+    <?php foreach ($errors as $error) : ?>
+        <p><?php echo $error ?></p>
+    <?php endforeach ?>
+
+    <ul>
+    <?php foreach ($successes as $success) : ?>
+        <li><?php echo $success ?></li>
+    <?php endforeach ?>
+    </ul>
+
     <form action="app/users/login.php" method="post">
         <div class="form-group">
             <label for="email">Email</label>

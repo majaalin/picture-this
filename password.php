@@ -1,6 +1,7 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
 <article>
+    <a href="/..">Back</a>
     <h1>Profile</h1>
 
     <?php foreach ($errors as $error) : ?>

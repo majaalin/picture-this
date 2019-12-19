@@ -3,6 +3,7 @@
 require __DIR__.'/views/header.php'; ?>
 
 <article>
+    <a href="/..">Back</a>
     <h1>New posts</h1>
 
     <?php foreach ($errors as $error) : ?>
@@ -19,7 +20,7 @@ require __DIR__.'/views/header.php'; ?>
 
         <div class="form-group">
             <label for="image">Add a image</label>
-            <input type="file" id="image" name="image" accept=".png">
+            <input type="file" id="image" name="image" accept=".png, .jpg, .jpeg">
         </div><!-- /form-group -->
 
         <div class="form-group">

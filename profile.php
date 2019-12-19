@@ -102,6 +102,7 @@ if (isset($_POST['update'])) {
 ?>
 
 <article>
+    <a href="/..">Back</a>
     <h1>Profile</h1>
     
     <ul>
@@ -119,7 +120,7 @@ if (isset($_POST['update'])) {
                     <img src="/uploads/<?php echo $_SESSION['user']['avatar']; ?>" alt="">
                 <label for="avatar">Change profile picture</label>
                 <?php endif ?>
-                <input type="file" name="avatar" id="avatar" accept=".png">
+                <input type="file" name="avatar" id="avatar" accept=".png, .jpg, .jpeg">
             </div>
 
             <button type="submit">Upload</button>
