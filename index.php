@@ -31,7 +31,7 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
     <img src="/uploads/images/<?php echo $photo['image']; ?>" alt="">
     <p><?php echo $photo['caption'];?></p>
     <p><?php echo $photo['date_created'];?></p>
-    <form action="/like.php" method="GET">
+    <form action="/app/posts/like.php" method="GET">
     <?php $photoId = $photo['photo_id'];?>
     <button type="submit" name="photo_id" value="<?php echo $photoId ?>">Like post</button>
     </form>

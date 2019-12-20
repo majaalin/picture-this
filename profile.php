@@ -75,6 +75,10 @@ $biography = $user['biography'];
 
 <a href="/password.php"><button class="btn btn-primary">Change password</button></a>
 
+<form action="app/users/delete.php" method="post">
+<button type="submit" name="delete" class="btn btn-danger"  onclick="return confirm('Are you really sure you want to delete your profile?'), confirm('Are you really sure?')" >Delete profile</button>
+</form>
+
 <form action="app/user/update.php"></form>
 
 <?php require __DIR__.'/views/footer.php'; ?>

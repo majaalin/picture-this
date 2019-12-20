@@ -40,26 +40,3 @@ $query = 'INSERT INTO photos (image, caption, user_id, date_created) VALUES (:im
         exit;
     }
 }
-
-//  $avatarPath = date('ymd')."-".$_FILES['image']['name'];
-
-
-// $picture = $_FILES['image'];
-// $description = $_POST['description'];
-// $userId = $_SESSION['user']['user_id'];
-
-// die(var_dump($description));
-
-// $query = 'INSERT INTO photos (user_id, caption, image, date_created) VALUES (:user_id, :caption, :image, now())';
-
-// $statement = $pdo->prepare($query);
-
-// if (!$statement) {
-//     die(var_dump($pdo->errorInfo()));
-// }
-
-// $statement->bindParam(':image', $image, PDO::PARAM_STR);
-// $statement->bindParam(':description', $description, PDO::PARAM_STR);
-// $statement->bindParam(':user', $userId, PDO::PARAM_STR);
-
-// $statement->execute();

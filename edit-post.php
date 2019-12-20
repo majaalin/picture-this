@@ -71,7 +71,7 @@
         <button type="submit" class="btn btn-primary">Edit caption</button>
     </form>
     <form action="/app/posts/delete.php?photo_id=<?php echo $photoId ?>" method="post">
-    <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to delete this post?')">Delete posts</button>
+    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?')">Delete posts</button>
     </form>
 
 </article>
