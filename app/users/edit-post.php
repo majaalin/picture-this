@@ -64,7 +64,7 @@ if(isset($_GET['photo_id'])){
         $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
         
         $statement->execute();
-    
+
         $successes[] = "Caption is uppdated!";
     }
 

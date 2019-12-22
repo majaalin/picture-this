@@ -4,6 +4,9 @@
 
 $userId = $_SESSION['user']['user_id'];
 $username = $_SESSION['user']['username'];
+$fullName = $_SESSION['user']['full_name'];
+$biography = $_SESSION['user']['biography'];
+$avatar = $_SESSION['user']['avatar'];
 
 $statement = $pdo->prepare('SELECT * FROM photos WHERE user_id = :user_id ORDER BY  date_created DESC');
 
@@ -21,7 +24,14 @@ if (!$photos) {
 
 <article>
     <a href="/..">Back</a>
-    <h1>My posts</h1>
+    <div class="user">
+    <div class="user-header">
+    <img class="avatar" src="/uploads/<?php echo $avatar; ?>"alt="">
+    <h1><?php echo $username ?></h1>
+    </div>
+    <p class="full-name"><?php echo $fullName ?></p>
+    <p><?php echo $biography  ?></p>
+    </div>
 
     <?php foreach ($errors as $error) : ?>
         <li><?php echo $error ?></li>
@@ -33,17 +43,26 @@ if (!$photos) {
     <?php endforeach ?>
     </ul>
 
-    
 
     <?php foreach ($photos as $photo) : ?>
-    <p><?php echo $username . ":" ?></p>
-    <img src="/uploads/images/<?php echo $photo['image']; ?>" alt="">
-    <p><?php echo $photo['caption'];?></p>
-    <p><?php echo $photo['date_created'];?></p>
+        <div class="post">
+        <div class="post-header">
+    <img class="avatar" src="/uploads/<?php echo $avatar; ?>" alt="">
+    <p class="username"><?php echo $username ?></p>
+        </div>
+    <div class="image-container">
+    <img class="image" src="/uploads/images/<?php echo $photo['image']; ?>" alt="">
     <form action="/edit-post.php" method="GET">
     <?php $photoId = $photo['photo_id'];?>
-    <button type="submit" name="photo_id" value="<?php echo $photoId ?>">Edit post</button>
+    <button type="submit" name="photo_id" value="<?php echo $photoId ?>"><img class="edit" src="/edit.png" alt=""></button>
     </form>
+    </div>
+    <div class="caption-container">
+    <span class="username"><?php echo $username ?></span> 
+    <span class="caption"><?php echo $photo['caption'];?></span>
+    </div>
+    <p class="date"><?php echo $photo['date_created'];?></p>
+    </div>
     <?php endforeach ?>
 
 </article>

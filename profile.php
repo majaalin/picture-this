@@ -35,20 +35,17 @@ $biography = $user['biography'];
     </ul>
 
 <form action="/app/users/profile.php" method="post" enctype="multipart/form-data">
-            <div>
+            <div class="avatar">
                 <?php if (!$avatar) : ?>
                 <img src="/uploads/no-image.png" alt="">
                 <label for="avatar">Add a profile picture</label>
                 <?php else : ?>
-                    <img src="/uploads/<?php echo $_SESSION['user']['avatar']; ?>" alt="">
+                    <img src="/uploads/<?php echo $avatar; ?>" alt="">
                 <label for="avatar">Change profile picture</label>
                 <?php endif ?>
                 <input type="file" name="avatar" id="avatar" accept=".png, .jpg, .jpeg"">
             </div>
 
-            <button type="submit">Upload</button>
-
-    <form action="app/users/register.php" method="post">
         <div class="form-group">
             <label for="email">Email</label>
             <input class="form-control" type="email" name="email" value="<?php echo $email; ?>">
