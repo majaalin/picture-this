@@ -1,22 +1,25 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><?php echo $config['title']; ?></a>
+<nav>
 
   <ul class="navbar-nav">
-      <li class="nav-item">
-          <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/login.php' ? 'active' : ''; ?>" href="/index.php">Home</a>
+
+  <div class="logo-container">
+
+    <li class="nav-item">
+          <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/login.php' ? 'active' : ''; ?>" href="/index.php"><img src="logo.png" alt="logo" class="logo"></a>
       </li><!-- /nav-item -->
 
-      <li class="nav-item">
-          <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/login.php' ? 'active' : ''; ?>" href="/about.php">About</a>
-      </li><!-- /nav-item -->
+    </div>
 
+    <div class="nav-container">
+
+  <li class="nav-item">
+          <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/login.php' ? 'active' : ''; ?>" href="/posts.php"><img src="camera.png" alt="camera" class="camera"></a>
+      </li><!-- /nav-item -->
       <li class="nav-item">
-            <?php if (isset($_SESSION['user'])): ?>
-                <a class="nav-link" href="/app/users/logout.php" onclick="return confirm('Are you sure you want to logout?')" >Logout</a>
-            <?php else: ?>
-                <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/login.php' ? 'active' : ''; ?>" href="login.php">Login</a>
-            <?php endif; ?>
+          <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/login.php' ? 'active' : ''; ?>" href="/my-posts.php"><img src="user.png" alt="user" class="camera"></a>
+      </li><!-- /nav-item -->
       <!-- /nav-item -->
+      </div>
   </ul><!-- /navbar-nav -->
 </nav><!-- /navbar -->
             

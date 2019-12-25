@@ -1,0 +1,33 @@
+.navbar-nav {
+    padding: 60px 40px 40px 40px;
+    width: 100vw;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.logo-container {
+    width: 50%;
+}
+
+.nav-container {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+}
+.logo {
+    width: 50%;
+    min-width: 350px;
+    padding-right: 10px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.camera {
+    width: 70px;
+    margin: 0 0 0 80px;
+    cursor: pointer;
+}

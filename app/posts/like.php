@@ -51,7 +51,8 @@ if ($likes) {
     
     $statement->execute();
 
-    echo "deleted like";
+    redirect('/');
+    exit;
 
     
 } else {
@@ -68,7 +69,7 @@ if ($likes) {
     
     $statement->execute();
 
-    echo "add like";
+    
 }
 
 

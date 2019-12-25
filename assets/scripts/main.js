@@ -1,3 +1,5 @@
-'use strict';
+"use strict";
 
-console.log('Hello World');
+function changeImage(image) {
+    document.getElementById("heart").src = image;
+}

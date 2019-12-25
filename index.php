@@ -11,6 +11,17 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 
 <article>
+
+<?php foreach ($errors as $error) : ?>
+        <li><?php echo $error ?></li>
+    <?php endforeach ?>
+
+    <ul>
+    <?php foreach ($successes as $success) : ?>
+        <li><?php echo $success ?></li>
+    <?php endforeach ?>
+    </ul>
+
     <h1><?php echo $config['title']; ?></h1>
     <p>This is the home page.</p>
 
@@ -31,11 +42,12 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
     <div class="post">
     <div class="image-container">
     <img class="image" src="/uploads/images/<?php echo $photo['image']; ?>" alt="">
+    </div>
     <form action="/app/posts/like.php" method="GET">
     <?php $photoId = $photo['photo_id'];?>
-    <button type="submit" name="photo_id" value="<?php echo $photoId ?>"><img class="like" src="/heart.png" alt=""></button>
+    <button onclik="like()" id="heart" type="submit" name="photo_id" value="<?php echo $photoId ?>"><img class="heart" src="like.png" alt=""></button>
     </form>
-    </div>
+    <p class="like">x likes</p>
     <div class="caption-container">
     <span class="username">hej</span> 
     <span class="caption"><?php echo $photo['caption'];?></span>
