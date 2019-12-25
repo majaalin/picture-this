@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
 }
 
 body {
@@ -104,7 +105,8 @@ button {
 .user-header {
     display: flex;
     align-items: center;
-    width: 100%;
+    justify-content: space-between;
+    width: 50vw;
 }
 
 .user {
@@ -114,10 +116,12 @@ button {
 .user .full-name {
     font-weight: bold;
     margin: 10px 0 0 10px;
+    font-size: 30px;
 }
 
 .user .biography {
     margin: 10px 0 0 10px;
+    font-size: 25px;
 }
 
 .settings {
@@ -148,4 +152,10 @@ button {
 
 .navbar-nav a {
     text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+    .camera {
+        visibility: hidden;
+    }
 }
