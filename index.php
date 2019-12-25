@@ -10,7 +10,7 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
-<article>
+<article onscroll="myFunction()">
 
 <?php foreach ($errors as $error) : ?>
         <li><?php echo $error ?></li>

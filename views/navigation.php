@@ -1,6 +1,6 @@
 <nav>
 
-  <ul class="navbar-nav">
+  <ul class="navbar-nav" id="navbar-nav">
 
   <div class="logo-container">
 
@@ -13,10 +13,10 @@
     <div class="nav-container">
 
   <li class="nav-item">
-          <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/login.php' ? 'active' : ''; ?>" href="/posts.php"><img src="camera.png" alt="camera" class="nav-icon camera"></a>
+          <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/login.php' ? 'active' : ''; ?>" href="/posts.php"><img src="camera.png" alt="camera" id="camera" class="nav-icon camera" onmouseover="hoverCamera();" onmouseout="unhoverCamera()";></a>
       </li><!-- /nav-item -->
       <li class="nav-item">
-          <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/login.php' ? 'active' : ''; ?>" href="/my-posts.php"><img src="user.png" alt="user" class="nav-icon user"></a>
+          <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/login.php' ? 'active' : ''; ?>" href="/my-posts.php"><img src="user.png" alt="user" class="nav-icon user" id="user" onmouseover="hoverUser();" onmouseout="unhoverUser()";></a>
       </li><!-- /nav-item -->
       <!-- /nav-item -->
       </div>
