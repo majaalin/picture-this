@@ -9,8 +9,7 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-
-<article onscroll="myFunction()">
+<article>
 
 <?php foreach ($errors as $error) : ?>
         <li><?php echo $error ?></li>
@@ -22,36 +21,32 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
     <?php endforeach ?>
     </ul>
 
-    <?php require __DIR__.'/login.php'; ?>
-
     <?php if (isset($_SESSION['user'])) :?>
-    <p><?php echo "Welcome, " . $_SESSION['user']['full_name'] . "!"; ?> </p>
-    <img class="avatar" src="/uploads/<?php echo $_SESSION['user']['avatar']; ?>" alt="">
-    <button><a href="/profile.php">Edit profil</a></button>
-    <button><a href="/posts.php">New post</a></button>
-    <button><a href="/my-posts.php">My post</a></button>
-    <?php endif; ?>
-</article>
+        <div class="login">
+        <img src="logo.png" alt="logo" class="logo">
+        <img class="avatar" src="/uploads/<?php echo $_SESSION['user']['avatar']; ?>" alt="">
+        <p class="username"><?php echo $_SESSION['user']['username']; ?></p>
+        <button><a href="/all-posts.php">Login</a></button>
+        <p class="other-accont"><a href="/app/users/logout.php">Login with a diffrent account</a></p>
+        <p class="account">Are you new on Picture this? <a href="/register.php" class="bold">Make an account</a></p>
+        </div>
+        <?php endif; ?>
+    
+        <?php if (!isset($_SESSION['user'])) :?>
+            <form action="app/users/login.php" method="post" class="login">
+            <img src="logo.png" alt="logo" class="logo">
+    <div class="form-group">
+        <input class="form-control" type="email" name="email" placeholder=" Email" required>
+    </div><!-- /form-group -->
 
-<article>
-<?php if (isset($_SESSION['user'])) :?>
-<?php foreach ($photos as $photo) : ?>
-    <div class="post">
-    <div class="image-container">
-    <img class="image" src="/uploads/images/<?php echo $photo['image']; ?>" alt="">
-    </div>
-    <form action="/app/posts/like.php" method="GET">
-    <?php $photoId = $photo['photo_id'];?>
-    <button onclik="like()" id="heart" type="submit" name="photo_id" value="<?php echo $photoId ?>"><img class="heart" src="like.png" alt=""></button>
-    </form>
-    <p class="like">x likes</p>
-    <div class="caption-container">
-    <span class="username">hej</span> 
-    <span class="caption"><?php echo $photo['caption'];?></span>
-    </div>
-    <p class="date"><?php echo $photo['date_created'];?></p>
-    <?php endforeach ?>
-    <?php endif; ?>
+    <div class="form-group">
+        <input class="form-control" type="password" name="password"  placeholder=" Password" required>
+    </div><!-- /form-group -->
+
+    <button type="submit">Login</button>
+    <p class="account">Are you new on Picture this? <a href="/register.php" class="bold">Make an account</a></p>
+        <?php endif; ?>
+        </div>
     </article>
 
 <?php require __DIR__.'/views/footer.php'; ?>

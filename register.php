@@ -1,45 +1,35 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
+
 <article>
-    <h1>Register</h1>
 
-    <?php foreach ($errors as $error) : ?>
-        <p><?php echo $error ?></p>
-    <?php endforeach ?>
-
+    <div class="login">
+    <a href="/"><img src="/back.png" alt="" class="back"></a>
+        <h1>Create an account</h1>
     <form action="app/users/register.php" method="post">
         <div class="form-group">
-            <label for="email">Email</label>
-            <input class="form-control" type="email" name="email">
-            <small class="form-text text-muted">Please provide the your email address.</small>
+            <input class="form-control" type="email" name="email" placeholder=" Email">
         </div><!-- /form-group -->
 
         <div class="form-group">
-            <label for="name">Username</label>
-            <input class="form-control" type="text" name="username">
-            <small class="form-text text-muted">Please provide the your username.</small>
+            <input class="form-control" type="text" name="username" placeholder=" Username">
         </div><!-- /form-group -->
 
         <div class="form-group">
-            <label for="name">Full name</label>
-            <input class="form-control" type="text" name="full_name">
-            <small class="form-text text-muted">Please provide the your full name.</small>
+            <input class="form-control" type="text" name="full_name" placeholder=" Full name">
         </div><!-- /form-group -->
 
         <div class="form-group">
-            <label for="password">Password</label>
-            <input class="form-control" type="password" name="password" required>
-            <small class="form-text text-muted">Please provide the your password.</small>
+            <input class="form-control" type="password" name="password" placeholder=" Password" required>
         </div><!-- /form-group -->
 
         <div class="form-group">
-            <label for="password">Confirm password</label>
-            <input class="form-control" type="password" name="confirm_password" required>
-            <small class="form-text text-muted">Please confirm your password.</small>
+            <input class="form-control" type="password" name="confirm_password" placeholder=" Confirm password" required>
         </div><!-- /form-group -->
 
-        <button type="submit" class="btn btn-primary">Create a user</button>
+        <button type="submit">Create a user</button>
     </form>
+    </div>
 </article>
 
 <?php require __DIR__.'/views/footer.php'; ?>

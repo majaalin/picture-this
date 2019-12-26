@@ -28,4 +28,4 @@ if(isset($_POST['email'], $_POST['password'])){
     }
 }
 
-redirect('/');
+redirect('/all-posts.php');

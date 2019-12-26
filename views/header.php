@@ -15,6 +15,3 @@ require __DIR__.'/../app/success.php';
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-    <?php require __DIR__.'/navigation.php'; ?>
-
-    <div class="container py-5">

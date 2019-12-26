@@ -60,7 +60,7 @@ if ($usernameExist) {
 
     if (count($successes) > 0){
         $_SESSION['successes'] = $successes;
-        redirect('/login.php');
+        redirect('/');
         exit;
     }
 
