@@ -1,7 +1,4 @@
-<?php require __DIR__.'/views/header.php'; ?>
-
 <article>
-    <h1>Login</h1>
 
     <?php foreach ($errors as $error) : ?>
         <p><?php echo $error ?></p>
@@ -12,6 +9,19 @@
         <li><?php echo $success ?></li>
     <?php endforeach ?>
     </ul>
+
+    <?php if (isset($_SESSION['user'])) :?>
+        <div class="login">
+        <img src="logo.png" alt="logo" class="logo">
+        <img class="avatar" src="/uploads/<?php echo $_SESSION['user']['avatar']; ?>" alt="">
+        <p class="username"><?php echo $_SESSION['user']['username']; ?></p>
+        <button>Login</button>
+        <p class="other-accont"><a href="">Login with a diffrent account</a></p>
+        </div>
+        <?php endif; ?>
+    <article>
+
+    <?php if (!isset($_SESSION['user'])) :?>
 
     <form action="app/users/login.php" method="post">
         <div class="form-group">
@@ -30,6 +40,5 @@
 
     </form>
     <a href="/register.php"><button class="btn btn-primary">New user</button></a>
+    <?php endif; ?>
 </article>
-
-<?php require __DIR__.'/views/footer.php'; ?>

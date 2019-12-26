@@ -22,8 +22,7 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
     <?php endforeach ?>
     </ul>
 
-    <h1><?php echo $config['title']; ?></h1>
-    <p>This is the home page.</p>
+    <?php require __DIR__.'/login.php'; ?>
 
     <?php if (isset($_SESSION['user'])) :?>
     <p><?php echo "Welcome, " . $_SESSION['user']['full_name'] . "!"; ?> </p>
@@ -32,12 +31,10 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
     <button><a href="/posts.php">New post</a></button>
     <button><a href="/my-posts.php">My post</a></button>
     <?php endif; ?>
-    <form action="users.php" method="GET">
-    <input id="search" type="text" placeholder="Search for username">
-    <input id="submit" type="submit" value="Search">
 </article>
 
 <article>
+<?php if (isset($_SESSION['user'])) :?>
 <?php foreach ($photos as $photo) : ?>
     <div class="post">
     <div class="image-container">
@@ -54,6 +51,7 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <p class="date"><?php echo $photo['date_created'];?></p>
     <?php endforeach ?>
+    <?php endif; ?>
     </article>
 
 <?php require __DIR__.'/views/footer.php'; ?>
