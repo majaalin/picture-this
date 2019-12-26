@@ -11,15 +11,6 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 <article>
 
-<?php foreach ($errors as $error) : ?>
-        <li><?php echo $error ?></li>
-    <?php endforeach ?>
-
-    <ul>
-    <?php foreach ($successes as $success) : ?>
-        <li><?php echo $success ?></li>
-    <?php endforeach ?>
-    </ul>
 
     <?php if (isset($_SESSION['user'])) :?>
         <div class="login">
@@ -47,6 +38,16 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
     <p class="account">Are you new on Picture this? <a href="/register.php" class="bold">Make an account</a></p>
         <?php endif; ?>
         </div>
+
+        <?php foreach ($errors as $error) : ?>
+        <li><?php echo $error ?></li>
+    <?php endforeach ?>
+
+    <ul>
+    <?php foreach ($successes as $success) : ?>
+        <li><?php echo $success ?></li>
+    <?php endforeach ?>
+    </ul>
     </article>
 
 <?php require __DIR__.'/views/footer.php'; ?>

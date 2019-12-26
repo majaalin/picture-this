@@ -19,8 +19,14 @@ if(isset($_POST['email'], $_POST['password'])){
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
     if (!$user){
-        redirect('/login.php');
+        $errors[] = "Wrong email or password!";
     } 
+
+    if (count($errors) > 0){
+        $_SESSION['errors'] = $errors;
+        redirect('/../../index.php');
+        exit;
+    }
     
     if (password_verify($password, $user['password'])){
         unset($user['password']);

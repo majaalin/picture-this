@@ -29,6 +29,14 @@
 
         <button type="submit">Create a user</button>
     </form>
+    <?php foreach ($errors as $error) : ?>
+        <li><?php echo $error ?></li>
+    <?php endforeach ?>
+
+    <ul>
+    <?php foreach ($successes as $success) : ?>
+        <li><?php echo $success ?></li>
+    <?php endforeach ?>
     </div>
 </article>
 
