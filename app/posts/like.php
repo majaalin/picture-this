@@ -4,24 +4,9 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-
 if(isset($_GET['photo_id'])){
     $photoId = $_GET['photo_id'];
     $userId = $_SESSION['user']['user_id'];
-
-//     $query = 'INSERT INTO likes (user_id, photo_id) VALUES (:user_id, :photo_id)';
-
-//     $statement = $pdo->prepare($query);
-   
-//     if (!$statement) {
-//         die(var_dump($pdo->errorInfo()));
-//     }
-
-//     $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
-//     $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
-    
-//     $statement->execute();
-// }
 
 $statement = $pdo->prepare('SELECT * FROM likes WHERE user_id = :user_id AND photo_id = :photo_id');
 
@@ -51,9 +36,10 @@ if ($likes) {
     
     $statement->execute();
 
+    $likes = "/like.png";
+    $_SESSION['likes'] = $likes;
     redirect('/');
     exit;
-
     
 } else {
         $query = 'INSERT INTO likes (user_id, photo_id) VALUES (:user_id, :photo_id)';
@@ -69,10 +55,10 @@ if ($likes) {
     
     $statement->execute();
 
-    
+    $likes = "/heart2.png";
+    $_SESSION['likes'] = $likes;
+    redirect('/');
+    exit;
 }
 
-
 }
-
-?>

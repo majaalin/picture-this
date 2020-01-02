@@ -28,6 +28,6 @@ require __DIR__.'/views/header.php'; ?>
             <textarea class="form-control" type="text" name="caption" rows="5" cols="50"></textarea>
         </div><!-- /form-group -->
 
-        <button type="submit" name="update" class="btn btn-primary">Make a post</button>
+        <button class="make-a-post" type="submit" name="update">Make a post</button>
     </form>
 </article>

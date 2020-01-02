@@ -49,5 +49,3 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
     <?php endforeach ?>
     </ul>
     </article>
-
-<?php require __DIR__.'/views/footer.php'; ?>

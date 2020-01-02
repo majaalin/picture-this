@@ -57,7 +57,7 @@ if (!$photos) {
         <li><p class="biography"><?php echo $biography ?></p></li>
     </ul>
 
-    <button class="edit-profil"><a href="/profile.php">Edit profil</a></button>
+    <button class="edit-profil"><a href="/app/users/follow.php">Follow</a></button>
 
 
     <ul class="picture-view-nav">

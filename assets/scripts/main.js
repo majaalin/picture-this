@@ -6,7 +6,7 @@ window.onscroll = function() {
     if (prevScrollpos > currentScrollPos) {
         document.getElementById("navbar-nav").style.top = "0";
     } else {
-        document.getElementById("navbar-nav").style.top = "-200px";
+        document.getElementById("navbar-nav").style.top = "-150px";
     }
     prevScrollpos = currentScrollPos;
 };
@@ -23,4 +23,11 @@ function hoverUser() {
 }
 function unhoverUser() {
     document.getElementById("user").src = "/user.png";
+}
+
+function hoverSettings() {
+    document.getElementById("settings").src = "/settings2.png";
+}
+function unhoverSettings() {
+    document.getElementById("settings").src = "/settings.png";
 }

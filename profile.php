@@ -43,7 +43,7 @@ $biography = $user['biography'];
                     <img src="/uploads/<?php echo $avatar; ?>" alt="">
                 <label for="avatar">Change profile picture</label>
                 <?php endif ?>
-                <input type="file" name="avatar" id="avatar" accept=".png, .jpg, .jpeg"">
+                <input type="file" name="avatar" id="avatar" accept=".png, .jpg, .jpeg">
             </div>
 
         <div class="form-group">
