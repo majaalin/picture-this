@@ -5,9 +5,6 @@
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     margin: 20px 0;
-}
-
-.edit-profil a {
     text-decoration: none;
     color: black;
     font-weight: 600;
@@ -88,7 +85,7 @@
     }
 
     .picture-view-nav {
-        width: 50vw;
+        width: 100vw;
     }
 
     .profile-header {

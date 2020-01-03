@@ -4,9 +4,6 @@
 
 ?>
 
-<article>
-    <a href="/..">Back</a>
-    <h1>Edit posts</h1>
 
     <?php  
 
@@ -38,7 +35,12 @@
 
 }
 
-    ?>
+?>
+
+<article>
+    <a href="/post.php?photo_id=<?php echo $photoId ?>">Back</a>
+    <h1>Edit posts</h1>
+
 
 <?php foreach ($errors as $error) : ?>
         <li><?php echo $error ?></li>
@@ -59,7 +61,7 @@
             <label for="image">Change picture</label>
             <input type="file" id="image" name="image" accept=".png, .jpg, .jpeg">
     </div>
-    <button type="submit" class="btn btn-primary">Update photo</button>
+    <button class="edit-profil" type="submit">Update photo</button>
     </form>
     
     <form action="/app/users/edit-post.php?photo_id=<?php echo $photoId ?>" method="post" enctype="multipart/form-data">
@@ -68,10 +70,10 @@
             <textarea class="form-control" type="text" name="caption" rows="5" cols="50"><?php echo $caption ?></textarea>
         </div><!-- /form-group -->
 
-        <button type="submit" class="btn btn-primary">Edit caption</button>
+        <button class="edit-profil" type="submit">Edit caption</button>
     </form>
     <form action="/app/posts/delete.php?photo_id=<?php echo $photoId ?>" method="post">
-    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?')">Delete posts</button>
+    <button class="edit-profil" type="submit" class="" onclick="return confirm('Are you sure you want to delete this post?')">Delete posts</button>
     </form>
 
 </article>

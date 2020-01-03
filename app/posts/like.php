@@ -36,10 +36,7 @@ if ($likes) {
     
     $statement->execute();
 
-    $likes = "/like.png";
-    $_SESSION['likes'] = $likes;
-    redirect('/');
-    exit;
+    redirect("/post.php?photo_id=" . $photoId . "?");
     
 } else {
         $query = 'INSERT INTO likes (user_id, photo_id) VALUES (:user_id, :photo_id)';
@@ -52,13 +49,10 @@ if ($likes) {
 
     $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
     $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
-    
-    $statement->execute();
 
-    $likes = "/heart2.png";
-    $_SESSION['likes'] = $likes;
-    redirect('/');
-    exit;
+    $statement->execute();
+    
+    redirect("/post.php?photo_id=" . $photoId . "?");
 }
 
 }

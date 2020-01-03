@@ -49,6 +49,7 @@ if(isset($_GET['photo_id'])){
         $statement->execute();
     
         $successes[] = "Image is uppdated!";
+
     }
 
     if (isset($_POST['caption'])) {
@@ -73,5 +74,5 @@ if(isset($_GET['photo_id'])){
         redirect("/edit-post.php?photo_id=" . $photoId);
         exit;
     }
-
 }
+    

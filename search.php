@@ -17,8 +17,11 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 <div class="container">
 <?php if (isset($_SESSION['user'])) :?>
 <?php foreach ($photos as $photo) : ?>
+    <form action="/post.php" method="GET">
+    <button type="submit" name="photo_id" value="<?php echo $photo['photo_id'] ?>">
     <img class="small-image" src="/uploads/images/<?php echo $photo['image']; ?>" alt="">
-    
+    </button>
+    </form>
     <?php endforeach ?>
     <?php endif; ?>
     </div>

@@ -4,6 +4,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    overflow-y: scroll;
+    color: black;
+    font-size: 21px;
 }
 
 body {
@@ -56,7 +60,6 @@ article {
     margin: 0 5px 0 0;
 }
 
-
 .image-container {
     height: 1000px;
     width: 100vw;
@@ -70,7 +73,6 @@ article {
 }
 
 .caption {
-    font-size: 20px;
     padding: 0 5px 0 0;
 }
 
@@ -237,11 +239,10 @@ button {
 }
 
 .back {
-    width: 20px;
-    margin: 20px;
+    height: 42px;
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 25px;
+    left: 20px;
 }
 
 /* login */
@@ -291,7 +292,6 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
     border: 1px solid rgba(0, 0, 0, 0.1);
     -webkit-text-fill-color: rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: 0 0 0px 1000px white inset;
     transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -306,4 +306,5 @@ select:-webkit-autofill:focus {
 
     .login button {
         width: 50vw;
+    }
 }

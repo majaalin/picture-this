@@ -2,11 +2,28 @@
 
 <?php 
 
-$userId = $_SESSION['user']['user_id'];
-$username = $_SESSION['user']['username'];
-$fullName = $_SESSION['user']['full_name'];
-$biography = $_SESSION['user']['biography'];
-$avatar = $_SESSION['user']['avatar'];
+$loggedInUser = $_SESSION['user']['user_id'];
+$userId = $_GET['user_id'];
+
+$statement = $pdo->prepare('SELECT * FROM users WHERE user_id = :user_id');
+
+$statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
+
+$statement->execute();
+
+$user = $statement->fetch(PDO::FETCH_ASSOC);
+
+if (!$user) {
+    $errors[] = "Can't find this user!";
+}
+
+$username = $user['username'];
+$fullName = $user['full_name'];
+$biography = $user['biography'];
+$avatar = $user['avatar'];
+
+
+
 
 $statement = $pdo->prepare('SELECT * FROM photos WHERE user_id = :user_id ORDER BY  date_created DESC');
 
@@ -19,37 +36,70 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 $amountOfPosts = count($photos);
 
 if (!$photos) {
-    $errors[] = "You don't have any photos";
+    $errors[] = "No photos";
+}
+
+$statement = $pdo->prepare('SELECT * FROM follower WHERE user_id_1 = :user_id_1');
+
+$statement->bindParam(':user_id_1', $userId, PDO::PARAM_INT);
+
+$statement->execute();
+
+$follows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+$amountOfFollows = count($follows);
+
+
+$statement = $pdo->prepare('SELECT * FROM follower WHERE user_id_2 = :user_id_2');
+
+$statement->bindParam(':user_id_2', $userId, PDO::PARAM_INT);
+
+$statement->execute();
+
+$followers = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+$amountOfFollowers = count($followers);
+
+if (isset($_GET['user_id'])){
+
+    $theFollower = $_SESSION['user']['user_id'];
+    $theFollows = $user['user_id'];
+
+    $statement = $pdo->prepare('SELECT * FROM follower WHERE user_id_1 = :user_id_1 AND user_id_2 = :user_id_2');
+
+    if (!$statement) {
+    die(var_dump($pdo->errorInfo()));
+    }
+
+    $statement->bindParam(':user_id_1', $theFollower, PDO::PARAM_INT);
+    $statement->bindParam(':user_id_2', $theFollows, PDO::PARAM_INT);
+
+    $statement->execute();
+
+    $following = $statement->fetch(PDO::FETCH_ASSOC);
+
 }
 
 ?>
 
+
+
+
+
 <article>
-<!-- <?php if (isset($_SESSION['user'])): ?>
-                <a class="nav-link" href="/app/users/logout.php" onclick="return confirm('Are you sure you want to logout?')" >Logout</a>
-            <?php else: ?>
-                <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/login.php' ? 'active' : ''; ?>" href="login.php">Login</a>
-            <?php endif; ?> -->
-
-    <?php foreach ($errors as $error) : ?>
-        <li><?php echo $error ?></li>
-    <?php endforeach ?>
-
-    <?php foreach ($successes as $success) : ?>
-        <li><?php echo $success ?></li>
-    <?php endforeach ?>
-
 
     <ul class="profile-header">
         <li class="profile-user"><?php echo $username ?></li>
-        <li class="exit"><button><a href="/app/users/logout.php"><img class="icon" src="/exit.png" alt=""></a></button></li>
+        <?php if ($loggedInUser == $userId): ?>
+            <li class="exit"><button><a href="/app/users/logout.php" onclick="return confirm('Are you sure you want to logout?')"><img class="icon exit" src="/icons/exit.png" alt=""></a></button></li>
+        <?php endif; ?>
     </ul>
 
     <ul class="profile-information">
         <li><img class="avatar bigger" src="/uploads/<?php echo $avatar; ?>"alt=""></li>
         <li><p class="bold"><?php echo $amountOfPosts ?></p><span>Posts</span></li>
-        <li><p class="bold">237</p><span>Followers</span></li>
-        <li><p class="bold">500</p><span>Follows</span></li>
+        <li><p class="bold"><?php echo $amountOfFollowers ?></p><span>Followers</span></li>
+        <li><p class="bold"><?php echo $amountOfFollows ?></p><span>Follows</span></li>
     </ul>
 
     <ul class="profile-about">
@@ -57,22 +107,43 @@ if (!$photos) {
         <li><p class="biography"><?php echo $biography ?></p></li>
     </ul>
 
-    <button class="edit-profil"><a href="/profile.php">Edit profil</a></button>
-
+    <?php if ($loggedInUser == $userId) : ?>
+            <button class="edit-profil"><a href="/profile.php">Edit profil</a></button>
+    <?php elseif ($loggedInUser != $userId) : ?>
+        <form action="/app/users/follow.php" method="GET">
+        <?php if ($following): ?>
+            <button class="edit-profil" type="submit" name="user_id" value="<?php echo $userId ?>">Unfollow</button></form>
+            <?php elseif (!$following): ?>
+                <button class="edit-profil" type="submit" name="user_id" value="<?php echo $userId ?>">Follow</button></form>
+        <?php endif; ?>
+    <?php endif; ?>
 
     <ul class="picture-view-nav">
         <li><button><a href=""><img class="icon" src="/grid.png" alt=""></a></button></li>
         <li><button><a href=""><img class="icon" src="/row.png" alt=""></a></button></li>
     </ul>
-
+    
+    <main>
     <div class="container">
 <?php if (isset($_SESSION['user'])) :?>
 <?php foreach ($photos as $photo) : ?>
+    <form action="/post.php" method="GET">
+    <button type="submit" name="photo_id" value="<?php echo $photo['photo_id'] ?>">
     <img class="small-image" src="/uploads/images/<?php echo $photo['image']; ?>" alt="">
+    </button>
+    </form>
     
     <?php endforeach ?>
     <?php endif; ?>
+    <?php foreach ($errors as $error) : ?>
+        <li><?php echo $error ?></li>
+    <?php endforeach ?>
+
+    <?php foreach ($successes as $success) : ?>
+        <li><?php echo $success ?></li>
+    <?php endforeach ?>
     </div>
+    </main>
 </article>
 
 <?php require __DIR__.'/views/navigation-bottom.php'; ?>

@@ -17,7 +17,8 @@ $diffrentUsers = $statement->fetchAll(PDO::FETCH_ASSOC);
 </form>
 
 <?php foreach ($users as $user) : ?>
-    <a class="search-user" href="/my-posts.php">
+    <form class="search-user" action="/my-posts.php" method="GET">
+    <button type="submit" name="user_id" value="<?php echo $user['user_id'] ?>">
     <?php if ($user['avatar'] === NULL): ?>
         <img class="avatar" src="/no-image.png" alt="">
         <p><?php echo $user['username'] ?></p>
@@ -27,11 +28,13 @@ $diffrentUsers = $statement->fetchAll(PDO::FETCH_ASSOC);
             <p><?php echo $user['username'] ?></p>
             <p><?php echo $user['full_name'] ?></p>
     <?php endif; ?>
-    </a>
+    </button>
+    </form>
 <?php endforeach ?>
 
 <?php foreach ($diffrentUsers as $diffrentUser) : ?>
-    <a class="search-user" href="/my-posts.php">
+    <form class="search-user" action="/my-posts.php" method="GET">
+    <button type="submit" name="user_id" value="<?php echo $diffrentUser['user_id'] ?>">
     <?php if ($diffrentUser['avatar'] === NULL): ?>
         <img class="avatar" src="/no-image.png" alt="">
         <p><?php echo $diffrentUser['username'] ?></p>
@@ -41,8 +44,10 @@ $diffrentUsers = $statement->fetchAll(PDO::FETCH_ASSOC);
             <p><?php echo $diffrentUser['username'] ?></p>
             <p><?php echo $diffrentUser['full_name'] ?></p>
     <?php endif; ?>
-</a>
+        </button>
+        </form>
 <?php endforeach ?>
+
 
 </article>
 
