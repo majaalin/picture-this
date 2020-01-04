@@ -24,3 +24,7 @@ function hoverUser() {
 function unhoverUser() {
     document.getElementById("user").src = "/icons/user.png";
 }
+
+function goBack() {
+    window.history.back();
+}

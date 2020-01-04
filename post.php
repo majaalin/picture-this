@@ -45,7 +45,7 @@ $amoutOfLikes = count($likes);
 
 ?>
     <ul class="posts-header">
-        <li class="back-button"><a href="/search.php"><img src="/icons/back.png" alt=""></a></li>
+        <li class="back-button"><img src="/icons/back.png" alt="" class="back" onclick="goBack()"></a></li>
         <li><p class="username"><?php echo $user['username']?></p></li>
         <li><p>Posts</p></li>
     </ul>

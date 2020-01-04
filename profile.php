@@ -21,7 +21,9 @@ $biography = $user['biography'];
 ?>
 
 <article>
-    <a href="/..">Back</a>
+
+<img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+
     <h1>Profile</h1>
     
     <?php foreach ($errors as $error) : ?>

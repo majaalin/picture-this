@@ -10,8 +10,10 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 <article>
 
+<img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+
 <form class="search" action="/app/users/search.php" method="get">
-<input class="form-control" type="text" name="search" placeholder="Search"> 
+<input class="form-control" type="text" name="search" placeholder="Search for a user"> 
 </form>
 
 <div class="container">

@@ -1,11 +1,26 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
-
 <article>
 
+<img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+
     <div class="login">
-    <a href="/"><img src="/back.png" alt="" class="back"></a>
         <h1>Create an account</h1>
+
+
+        <ul>
+    <?php foreach ($messages as $message) : ?>
+        <li><?php echo $message ?></li>
+    <?php endforeach ?>
+    </ul>
+
+
+    <ul>
+    <?php foreach ($successes as $success) : ?>
+        <li><?php echo $success ?></li>
+    <?php endforeach ?>
+    </ul>
+
     <form action="app/users/register.php" method="post">
         <div class="form-group">
             <input class="form-control" type="email" name="email" placeholder=" Email">
@@ -29,14 +44,6 @@
 
         <button type="submit">Create a user</button>
     </form>
-    <?php foreach ($errors as $error) : ?>
-        <li><?php echo $error ?></li>
-    <?php endforeach ?>
-
-    <ul>
-    <?php foreach ($successes as $success) : ?>
-        <li><?php echo $success ?></li>
-    <?php endforeach ?>
     </div>
 </article>
 

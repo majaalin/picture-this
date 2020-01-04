@@ -18,12 +18,16 @@ if(isset($_POST['email'], $_POST['password'])){
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    if (!$user){
-        $errors[] = "Wrong email or password!";
+    if (!$user || !password_verify($password, $user['password'])){
+        $messages[] = "Wrong email or password";
     } 
 
-    if (count($errors) > 0){
-        $_SESSION['errors'] = $errors;
+    // if (!password_verify($password, $user['password'])){
+    //     $messages[] = "Wrong password";
+    // }
+
+    if (count($messages) > 0){
+        $_SESSION['messages'] = $messages;
         redirect('/../../index.php');
         exit;
     }
@@ -31,7 +35,7 @@ if(isset($_POST['email'], $_POST['password'])){
     if (password_verify($password, $user['password'])){
         unset($user['password']);
         $_SESSION['user'] = $user;
+
+        redirect('/all-posts.php');
     }
 }
-
-redirect('/all-posts.php');

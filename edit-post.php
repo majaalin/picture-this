@@ -37,8 +37,10 @@
 
 ?>
 
+
 <article>
-    <a href="/post.php?photo_id=<?php echo $photoId ?>">Back</a>
+
+<img src="/icons/back.png" alt="" class="back" onclick="goBack()">
     <h1>Edit posts</h1>
 
 

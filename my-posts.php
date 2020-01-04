@@ -88,6 +88,8 @@ if (isset($_GET['user_id'])){
 
 <article>
 
+<img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+
     <ul class="profile-header">
         <li class="profile-user"><?php echo $username ?></li>
         <?php if ($loggedInUser == $userId): ?>
@@ -122,6 +124,14 @@ if (isset($_GET['user_id'])){
         <li><button><a href=""><img class="icon" src="/grid.png" alt=""></a></button></li>
         <li><button><a href=""><img class="icon" src="/row.png" alt=""></a></button></li>
     </ul>
+
+    <?php foreach ($errors as $error) : ?>
+        <li><?php echo $error ?></li>
+    <?php endforeach ?>
+
+    <?php foreach ($successes as $success) : ?>
+        <li><?php echo $success ?></li>
+    <?php endforeach ?>
     
     <main>
     <div class="container">
@@ -135,13 +145,6 @@ if (isset($_GET['user_id'])){
     
     <?php endforeach ?>
     <?php endif; ?>
-    <?php foreach ($errors as $error) : ?>
-        <li><?php echo $error ?></li>
-    <?php endforeach ?>
-
-    <?php foreach ($successes as $success) : ?>
-        <li><?php echo $success ?></li>
-    <?php endforeach ?>
     </div>
     </main>
 </article>

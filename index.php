@@ -11,10 +11,22 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 <article>
 
-
     <?php if (isset($_SESSION['user'])) :?>
         <div class="login">
         <img src="logo.png" alt="logo" class="logo">
+        <ul>
+
+    <?php foreach ($messages as $message) : ?>
+        <li><?php echo $message ?></li>
+    <?php endforeach ?>
+    </ul>
+
+    <ul>
+    <?php foreach ($successes as $success) : ?>
+        <li><?php echo $success ?></li>
+    <?php endforeach ?>
+    </ul>
+
         <img class="avatar" src="/uploads/<?php echo $_SESSION['user']['avatar']; ?>" alt="">
         <p class="username"><?php echo $_SESSION['user']['username']; ?></p>
         <button><a href="/all-posts.php">Login</a></button>
@@ -25,7 +37,21 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
     
         <?php if (!isset($_SESSION['user'])) :?>
             <form action="app/users/login.php" method="post" class="login">
+
             <img src="logo.png" alt="logo" class="logo">
+
+            <ul>
+    <?php foreach ($messages as $message) : ?>
+        <li><?php echo $message ?></li>
+    <?php endforeach ?>
+    </ul>
+
+    <ul>
+    <?php foreach ($successes as $success) : ?>
+        <li><?php echo $success ?></li>
+    <?php endforeach ?>
+    </ul>
+    
     <div class="form-group">
         <input class="form-control" type="email" name="email" placeholder=" Email" required>
     </div><!-- /form-group -->
@@ -35,17 +61,16 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
     </div><!-- /form-group -->
 
     <button type="submit">Login</button>
+
     <p class="account">Are you new on Picture this? <a href="/register.php" class="bold">Make an account</a></p>
+        </form>
+
         <?php endif; ?>
         </div>
-
-        <?php foreach ($errors as $error) : ?>
-        <li><?php echo $error ?></li>
-    <?php endforeach ?>
-
-    <ul>
-    <?php foreach ($successes as $success) : ?>
-        <li><?php echo $success ?></li>
-    <?php endforeach ?>
     </ul>
     </article>
+
+    <script src="/assets/scripts/main.js"></script>
+</body>
+</html>
+

@@ -7,6 +7,23 @@ if(!isset($_SESSION['user'])) {
 }
 
 if (isset($_FILES['image'], $_POST['caption'])) {
+
+    $imagePath = date('ymd')."-".$_FILES['image']['name'];
+
+    if ($imagePath === date('ymd') . "-") {
+        $messages[] = "You need to choose a picture";
+    }
+
+    if (!$_POST['caption']) {
+        $messages[] = "You need to write a caption";
+    }
+
+    if (count($messages) > 0){
+        $_SESSION['messages'] = $messages;
+        redirect('/../../posts.php');
+        exit;
+    }
+
     $image = $_FILES['image'];
     $destination = __DIR__.'/../../uploads/images/'.date('ymd')."-".$_FILES['image']['name'];
     move_uploaded_file($image['tmp_name'], $destination); 
@@ -36,7 +53,7 @@ $query = 'INSERT INTO photos (image, caption, user_id, date_created) VALUES (:im
 
     if (count($successes) > 0){
         $_SESSION['successes'] = $successes;
-        redirect('/my-posts.php');
+        redirect("/my-posts.php?user_id=" . $userId . "?");
         exit;
     }
 }

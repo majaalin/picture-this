@@ -9,7 +9,6 @@
     display: flex;
     align-items: center;
     list-style: none;
-    font-size: 30px;
 }
 
 .post .avatar {
@@ -34,17 +33,14 @@
 }
 
 .post-username {
-    font-size: 1rem;
     font-weight: 700;
 }
 
 .caption-container .post-caption {
-    font-size: 1rem;
     font-weight: 400;
 }
 
 .posts-header p {
-    font-size: 30px;
     font-weight: 600;
 }
 

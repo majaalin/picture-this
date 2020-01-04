@@ -18,6 +18,7 @@ require __DIR__.'/../app/likes.php';
     <link rel="stylesheet" href="/assets/styles/search.css">
     <link rel="stylesheet" href="/assets/styles/my-post.css">
     <link rel="stylesheet" href="/assets/styles/post.css">
+    <link rel="stylesheet" href="/assets/styles/new-posts.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600,700,800&display=swap" rel="stylesheet"></head>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
 <body>
