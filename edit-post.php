@@ -66,7 +66,7 @@
     <button class="edit-profil" type="submit">Update photo</button>
     </form>
     
-    <form action="/app/users/edit-post.php?photo_id=<?php echo $photoId ?>" method="post" enctype="multipart/form-data">
+    <form class="edit-post" action="/app/users/edit-post.php?photo_id=<?php echo $photoId ?>" method="post" enctype="multipart/form-data">
     <div class="form-group">
             <label for="name">Caption</label>
             <textarea class="form-control" type="text" name="caption" rows="5" cols="50"><?php echo $caption ?></textarea>

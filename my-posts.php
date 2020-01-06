@@ -23,8 +23,6 @@ $biography = $user['biography'];
 $avatar = $user['avatar'];
 
 
-
-
 $statement = $pdo->prepare('SELECT * FROM photos WHERE user_id = :user_id ORDER BY  date_created DESC');
 
 $statement->bindParam(':user_id', $userId, PDO::PARAM_STR);
@@ -86,15 +84,12 @@ if (isset($_GET['user_id'])){
 
 
 
-<article>
+<article class="my-posts">
 
-<img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+<a href="/all-posts.php"><img src="/icons/back.png" alt="" class="back"></a>
 
     <ul class="profile-header">
         <li class="profile-user"><?php echo $username ?></li>
-        <?php if ($loggedInUser == $userId): ?>
-            <li class="exit"><button><a href="/app/users/logout.php" onclick="return confirm('Are you sure you want to logout?')"><img class="icon exit" src="/icons/exit.png" alt=""></a></button></li>
-        <?php endif; ?>
     </ul>
 
     <ul class="profile-information">
@@ -111,6 +106,7 @@ if (isset($_GET['user_id'])){
 
     <?php if ($loggedInUser == $userId) : ?>
             <button class="edit-profil"><a href="/profile.php">Edit profil</a></button>
+            <button class="edit-profil"><a href="/app/users/logout.php" onclick="return confirm('Are you sure you want to logout?')">Logout</a></button>
     <?php elseif ($loggedInUser != $userId) : ?>
         <form action="/app/users/follow.php" method="GET">
         <?php if ($following): ?>
@@ -120,10 +116,10 @@ if (isset($_GET['user_id'])){
         <?php endif; ?>
     <?php endif; ?>
 
-    <ul class="picture-view-nav">
+    <!-- <ul class="picture-view-nav">
         <li><button><a href=""><img class="icon" src="/grid.png" alt=""></a></button></li>
         <li><button><a href=""><img class="icon" src="/row.png" alt=""></a></button></li>
-    </ul>
+    </ul> -->
 
     <?php foreach ($errors as $error) : ?>
         <li><?php echo $error ?></li>

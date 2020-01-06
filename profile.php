@@ -26,8 +26,8 @@ $biography = $user['biography'];
 
     <h1>Profile</h1>
     
-    <?php foreach ($errors as $error) : ?>
-        <li><?php echo $error ?></li>
+    <?php foreach ($messages as $message) : ?>
+        <li><?php echo $message ?></li>
     <?php endforeach ?>
 
     <ul>
@@ -36,7 +36,7 @@ $biography = $user['biography'];
     <?php endforeach ?>
     </ul>
 
-<form action="/app/users/profile.php" method="post" enctype="multipart/form-data">
+<form class="edit-profil-container" action="/app/users/profile.php" method="post" enctype="multipart/form-data">
             <div class="avatar">
                 <?php if (!$avatar) : ?>
                 <img src="/uploads/no-image.png" alt="">
@@ -48,32 +48,27 @@ $biography = $user['biography'];
                 <input type="file" name="avatar" id="avatar" accept=".png, .jpg, .jpeg">
             </div>
 
-        <div class="form-group">
+            <div class="edit-profil-input">
             <label for="email">Email</label>
             <input class="form-control" type="email" name="email" value="<?php echo $email; ?>">
-        </div><!-- /form-group -->
-
-        <div class="form-group">
+            </div>
+            <div class="edit-profil-input">
             <label for="name">Username</label>
             <input class="form-control" type="text" name="username" value="<?php echo $username; ?>">
-        </div><!-- /form-group -->
-
-        <div class="form-group">
+                </div>
+                <div class="edit-profil-input">
             <label for="name">Full name</label>
             <input class="form-control" type="text" name="full_name" value="<?php echo $fullName; ?>">
-        </div><!-- /form-group -->
-
-        <div class="form-group">
+                </div>
+                <div class="edit-profil-input">
             <label for="name">Biography</label>
             <textarea class="form-control" type="text" name="biography" rows="5" cols="50"><?php echo $biography; ?></textarea>
-        </div><!-- /form-group -->
+                </div>
+        <button class="edit-profil" type="submit" name="update">Update profile</button>
+        <button class="edit-profil"><a href="/password.php">Change password</a></button>
 
-        <button type="submit" name="update" class="btn btn-primary">Update profile</button>
     </form>
 </article>
-
-<a href="/password.php"><button class="btn btn-primary">Change password</button></a>
-
 <form action="app/users/delete.php" method="post">
 <button type="submit" name="delete" class="btn btn-danger"  onclick="return confirm('Are you really sure you want to delete your profile?'), confirm('Are you really sure?')" >Delete profile</button>
 </form>

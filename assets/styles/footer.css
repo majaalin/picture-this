@@ -21,11 +21,3 @@
 .icon {
     width: 50px;
 }
-
-.navbar-nav .icon {
-    width: 55px;
-}
-
-.icon.exit {
-    width: 30px;
-}

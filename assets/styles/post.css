@@ -38,8 +38,8 @@
 
 .caption-container .post-caption {
     font-weight: 400;
+    margin-left: 5px;
 }
-
 .posts-header p {
     font-weight: 600;
 }
@@ -72,7 +72,9 @@
 .avatar-user {
     display: flex;
     align-items: center;
+    margin-left: 20px;
 }
 
-@media screen and (min-width: 1000px) {
+.avatar-user .avatar {
+    margin-right: 20px;
 }

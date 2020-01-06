@@ -10,7 +10,7 @@ $userId = $_SESSION['user']['user_id'];
             <button><a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/login.php' ? 'active' : ''; ?>" href="/posts.php"><img src="/icons/camera.png" alt="camera" id="camera" class="icon" onmouseover="hoverCamera();" onmouseout="unhoverCamera()";></a></button>
         </li>
         <li>
-        <button><a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/login.php' ? 'active' : ''; ?>" href="/index.php"><img src="/logo.png" alt="logo" class="logo"></a></button>
+        <button><a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/login.php' ? 'active' : ''; ?>" href="/all-posts.php"><img src="/logo.png" alt="logo" class="logo"></a></button>
         </li>
         <li>
         <form action="/../my-posts.php" method="GET">

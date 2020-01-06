@@ -7,7 +7,7 @@
     /* font-family: 'Roboto', sans-serif; */
     overflow-y: scroll;
     color: black;
-    font-size: 21px;
+    font-size: 25px;
 }
 
 body {
@@ -16,6 +16,19 @@ body {
 
 h1 {
     margin: 30px 10px;
+    font-size: 30px;
+}
+
+.like-container {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    height: 60px;
+}
+
+.like-container p {
+    margin-left: 20px;
+    font-size: 20px;
 }
 
 article {
@@ -24,6 +37,10 @@ article {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 100px;
+}
+
+.all-posts {
     margin: 200px 0 150px 0;
     bottom: 200px;
 }
@@ -74,16 +91,18 @@ article .all {
 
 .caption-container {
     margin: 20px 40px;
+    width: 90%;
     height: auto;
 }
 
 .caption {
-    padding: 0 5px 0 0;
+    padding: 0 20px 0 0;
 }
 
 .date {
-    margin: 0 0 40px 20px;
+    margin: 0 0 50px 20px;
     color: rgba(0, 0, 0, 0.5);
+    font-size: 20px;
 }
 
 button {
@@ -187,7 +206,8 @@ button {
     background-color: #2800f5;
     border-radius: 5px;
     margin: 10px 0 20px 0;
-    padding: 15px;
+    padding: 30px;
+    font-size: 25px;
 }
 
 button {
@@ -240,7 +260,7 @@ button {
 .back {
     height: 42px;
     position: fixed;
-    top: 25px;
+    top: 30px;
     left: 20px;
 }
 
@@ -287,9 +307,46 @@ select:-webkit-autofill:focus {
     transition: background-color 5000s ease-in-out 0s;
 }
 
+.form-group .edit-profil {
+    background-color: #2800f5;
+    border-radius: 5px;
+    margin: 10px 0 20px 0;
+    padding: 30px;
+    font-size: 25px;
+    color: white;
+}
+
+.edit-profil-container .edit-profil {
+    background-color: #2800f5;
+    border-radius: 5px;
+    margin: 30px 0 20px 0;
+    padding: 30px;
+    font-size: 25px;
+    color: white;
+}
+
+.edit-profil-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-profil-container label {
+    margin: 10px;
+}
+
+.edit-profil-input {
+    width: 90vw;
+    margin-top: 30px;
+}
+
+.edit-profil-input .form-control {
+    width: 100%;
+}
+
 @media screen and (min-width: 1000px) {
     .login {
-        width: 50%;
+        width: 50vw;
     }
 
     .form-control {

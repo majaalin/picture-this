@@ -115,7 +115,7 @@ if (isset($_POST['update'])) {
             ':biography' => $biography,
             ]);
             
-            if ($_SESSION['user']['biography'] !== $biography){
+            if ($_SESSION['user']['biography'] != $biography){
 
                 $successes[] = "Your biography were successfully updated";
             }
@@ -124,14 +124,14 @@ if (isset($_POST['update'])) {
 
     if (count($successes) > 0){
         $_SESSION['successes'] = $successes;
-        redirect('/../../my-posts.php');
+        redirect('/../../profile.php');
         exit;
     } else {
-        $errors[] = "You did not update anything!";
+        $messages[] = "You did not update anything!";
     }
-    if (count($errors) > 0){
-        $_SESSION['errors'] = $errors;
-        redirect('/../../my-posts.php');
+    if (count($messages) > 0){
+        $_SESSION['messages'] = $messages;
+        redirect('/../../profile.php');
         exit;
     }
 }

@@ -36,7 +36,8 @@ if ($likes) {
     
     $statement->execute();
 
-    redirect("/post.php?photo_id=" . $photoId . "?");
+    redirect($_SERVER['HTTP_REFERER']);
+	exit;
     
 } else {
         $query = 'INSERT INTO likes (user_id, photo_id) VALUES (:user_id, :photo_id)';
@@ -52,7 +53,7 @@ if ($likes) {
 
     $statement->execute();
     
-    redirect("/post.php?photo_id=" . $photoId . "?");
+    redirect($_SERVER['HTTP_REFERER']);
+	exit;
 }
-
 }

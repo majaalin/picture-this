@@ -36,12 +36,6 @@
     font-weight: 600;
 }
 
-.exit {
-    grid-column: 3;
-    justify-self: end;
-    align-self: center;
-}
-
 .avatar.bigger {
     width: 160px;
     height: 160px;

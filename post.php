@@ -39,13 +39,21 @@ $statement->execute();
 
 $likes = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+if (!$likes) {
+    $userIdLikes = 0;
+}
+
 $amoutOfLikes = count($likes);
 
+$amoutOfLikesWithoutUser = $amoutOfLikes - 1;
 
+foreach ($likes as $like) {
+    $userIdLikes =  $like['user_id'];
+}
 
 ?>
     <ul class="posts-header">
-        <li class="back-button"><img src="/icons/back.png" alt="" class="back" onclick="goBack()"></a></li>
+        <li><img src="/icons/back.png" alt="" class="back" onclick="goBack()"></li>
         <li><p class="username"><?php echo $user['username']?></p></li>
         <li><p>Posts</p></li>
     </ul>
@@ -71,9 +79,21 @@ $amoutOfLikes = count($likes);
     </div>
     <form action="/app/posts/like.php" method="GET">
     <?php $photoId = $photo['photo_id'];?>
-    <button id="heart" type="submit" name="photo_id" value="<?php echo $photoId ?>"><img class="heart" onclick="lik"src="/icons/like.png" alt=""></button>
-    </form>
-    <p>Likes of <?php echo $amoutOfLikes?> people</p>
+    <?php if ($userIdLikes != $loggedInUser): ?>
+        <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/not-liked.png" alt=""></button>
+        <?php if ($amoutOfLikes >= 1): ?>
+            <p>Liked of <?php echo $amoutOfLikes?> people</p>
+        <?php endif; ?>
+        </form>
+        <?php elseif ($userIdLikes === $loggedInUser) : ?>
+                <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/liked.png" alt=""></button>
+                <?php if ($amoutOfLikes > 1): ?>
+                <p>Liked of you and <?php echo $amoutOfLikesWithoutUser ?> people</p>    
+                <?php else : ?>
+                <p>Liked of you</p>
+                <?php endif; ?>    
+            </form>
+    <?php endif; ?>
     <div class="caption-container">
     <span class="post-username"><?php echo $user['username']?></span> 
     <span class="post-caption"><?php echo $caption;?></span>

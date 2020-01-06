@@ -1,5 +1,4 @@
 <?php require __DIR__.'/views/header.php'; ?>
-<?php require __DIR__.'/views/navigation.php'; ?>
 
 <article>
 <img src="/icons/back.png" alt="" class="back" onclick="goBack()">
@@ -40,4 +39,5 @@
     </form>
 </article>
 
+<?php require __DIR__.'/views/navigation-bottom.php'; ?>
 <?php require __DIR__.'/views/footer.php'; ?>
