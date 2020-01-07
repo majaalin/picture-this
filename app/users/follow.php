@@ -36,7 +36,7 @@ if (isset($_GET['user_id'])){
         
         $statement->execute();
 
-        redirect("/my-posts.php?user_id=" . $followingId . "?");
+        redirect("/profile.php?user_id=" . $followingId . "?");
 
     } if ($following){
 
@@ -53,7 +53,7 @@ if (isset($_GET['user_id'])){
         
         $statement->execute();
     
-        redirect("/my-posts.php?user_id=" . $followingId . "?");
+        redirect("/profile.php?user_id=" . $followingId . "?");
     }
 
 }

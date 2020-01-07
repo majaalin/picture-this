@@ -1,8 +1,7 @@
 <?php
 // Always start by loading the default application setup.
 require __DIR__.'/../app/autoload.php';
-require __DIR__.'/../app/errors.php';
-require __DIR__.'/../app/success.php';
+require __DIR__.'/../app/messages.php';
 require __DIR__.'/../app/users.php';
 require __DIR__.'/../app/likes.php';
 
@@ -22,4 +21,5 @@ require __DIR__.'/../app/likes.php';
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600,700,800&display=swap" rel="stylesheet"></head>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
 <body>
+<?php require __DIR__.'/messages.php'; ?>
 

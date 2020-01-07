@@ -1,39 +1,113 @@
+<?php require __DIR__.'/views/header.php'; ?>
+<?php require __DIR__.'/views/navigation-top.php'; ?>
+
 <?php 
 
-require __DIR__.'/views/header.php'; ?>
+$loggedInUser = $_SESSION['user']['user_id'];
 
-<article>
-<img src="/icons/back.png" alt="" class="back" onclick="goBack()">
-    <h1>New posts</h1>
+$statement = $pdo->prepare("SELECT user_id_2 FROM follower WHERE user_id_1 = '$loggedInUser'");
 
+$statement->execute();
+
+$follows = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($follows as $follow) :
+    $foll = $follow['user_id_2'];
+    
+$statement = $pdo->prepare("SELECT * FROM photos where user_id = :user_id ORDER BY  date_created DESC");
+
+$statement->bindParam(':user_id', $foll, PDO::PARAM_INT);
+
+$statement->execute();
+
+$photos = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+$statement = $pdo->prepare('SELECT * FROM users WHERE user_id = :user_id');
+
+$statement->bindParam(':user_id', $foll, PDO::PARAM_INT);
+
+$statement->execute();
+
+$users = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($users as $user) {
+
+$userId = $user['user_id'];
+$username = $user['username'];
+$fullName = $user['full_name'];
+$biography = $user['biography'];
+$avatar = $user['avatar'];
+}
+
+?>
+    <article class="all-posts">
+
+<?php foreach ($photos as $photo): 
+    
+    $photoId = $photo['photo_id'];
+
+    $statement = $pdo->prepare('SELECT * FROM likes WHERE photo_id = :photo_id');
+    
+    $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
+    
+    $statement->execute();
+    
+    $likes = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    if (!$likes) {
+        $userIdLikes = 0;
+    }
+    
+    $amoutOfLikes = count($likes);
+
+    $amoutOfLikesWithoutUser = $amoutOfLikes - 1;
+
+    foreach ($likes as $like) {
+        $userIdLikes =  $like['user_id'];
+    }
+
+    ?>
+    <div class="all-posts-container">
+    <form action="/profile.php" method="GET">
+    <button type="submit" name="user_id" value="<?php echo $user['user_id'] ?>">
     <ul>
-    <?php foreach ($messages as $message) : ?>
-        <li><?php echo $message ?></li>
-    <?php endforeach ?>
+        <li class="avatar-user">
+            <img class="avatar" src="/uploads/<?php echo $user['avatar'] ?>" alt="">
+            <p class="username"><?php echo $user['username'] ?></p></li>
     </ul>
-
-
-    <ul>
-    <?php foreach ($successes as $success) : ?>
-        <li><?php echo $success ?></li>
-    <?php endforeach ?>
-    </ul>
-
-    <form class="new-form" action="/app/users/posts.php" method="post" enctype="multipart/form-data">
-
-    <img src="/no-picture.jpg" id="previewImage" class="previewImage"/>
-
-        <div class="form-group">
-            <label class="make-a-image" for="image">Add a image</label>
-            <input class="html_btn" type="file" id="image" name="image" accept=".png, .jpg, .jpeg"  onchange="document.getElementById('previewImage').src = window.URL.createObjectURL(this.files[0])">
-        </div><!-- /form-group -->
-
-        <div class="form-group">
-            <textarea class="form-control" type="text" name="caption" rows="5" cols="50" placeholder="Add a caption"></textarea>
-        </div><!-- /form-group -->
-
-        <button class="make-a-post" type="submit" name="update">Make a post</button>
+        </button>
     </form>
+    <div class="image-container">
+    <img class="image" src="/uploads/images/<?php echo $photo['image']; ?>" alt="" loading="lazy">
+    </div>
+    <form class="like-container" action="/app/posts/like.php" method="GET">
+    <?php $photoId = $photo['photo_id'];?>
+    <?php if ($userIdLikes != $loggedInUser): ?>
+        <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/not-liked.png" alt=""></button>
+        <?php if ($amoutOfLikes >= 1): ?>
+            <p>Liked of <?php echo $amoutOfLikes?> people</p>
+        <?php endif; ?>
+        </form>
+        <?php elseif ($userIdLikes === $loggedInUser) : ?>
+                <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/liked.png" alt=""></button>
+                <?php if ($amoutOfLikes > 1): ?>
+                <p>Liked of you and <?php echo $amoutOfLikesWithoutUser ?> people</p>    
+                <?php else : ?>
+                <p>Liked of you</p>
+                <?php endif; ?>    
+            </form>
+    <?php endif; ?>
+    <div class="caption-container">
+    <span class="post-username"><?php echo $user['username']?></span> 
+    <span class="post-caption"><?php echo $photo['caption'];?></span>
+    </div>
+    <p class="date"><?php echo $photo['date_created'];?></p>
+</div>
+</div>
+<?php endforeach; ?>
+<?php endforeach; ?>
 </article>
 
+
+        <?php require __DIR__.'/views/navigation-bottom.php'; ?>
 <?php require __DIR__.'/views/footer.php'; ?>

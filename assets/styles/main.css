@@ -5,7 +5,6 @@
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
     /* font-family: 'Roboto', sans-serif; */
-    overflow-y: scroll;
     color: black;
     font-size: 25px;
 }
@@ -342,6 +341,10 @@ select:-webkit-autofill:focus {
 
 .edit-profil-input .form-control {
     width: 100%;
+}
+
+.all-posts-container {
+    width: 100vw;
 }
 
 @media screen and (min-width: 1000px) {

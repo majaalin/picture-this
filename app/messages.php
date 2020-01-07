@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-$messages = [];
+$errors = [];
 
-if (isset($_SESSION['messages'])){
-    $messages = $_SESSION['messages'];
-    unset($_SESSION['messages']);
+if (isset($_SESSION['errors'])){
+    $messages = $_SESSION['errors'];
+    unset($_SESSION['errors']);
 }
 
 

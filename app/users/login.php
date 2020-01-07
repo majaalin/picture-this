@@ -36,6 +36,6 @@ if(isset($_POST['email'], $_POST['password'])){
         unset($user['password']);
         $_SESSION['user'] = $user;
 
-        redirect('/all-posts.php');
+        redirect('/posts.php');
     }
 }

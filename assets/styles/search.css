@@ -4,18 +4,17 @@
     height: 100vh;
 }
 
-.container {
+main .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100vw;
 }
 
-.small-image {
+.container .small-image {
     object-fit: cover;
     width: 320px;
     height: 320px;
-    margin: 3px;
+    margin: 0 3px;
     filter: contrast(90%);
 }
 
@@ -57,7 +56,4 @@
 }
 
 @media screen and (min-width: 1000px) {
-    .container {
-        max-width: 62vw;
-    }
 }

@@ -45,7 +45,7 @@ if(isset($_POST)){
 
     if (count($successes) > 0){
         $_SESSION['successes'] = $successes;
-        redirect("/my-posts.php?user_id=" . $userId . "?");
+        redirect("/profile.php?user_id=" . $userId . "?");
         exit;
    }
 }

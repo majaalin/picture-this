@@ -29,7 +29,7 @@
 
         if (count($errors) > 0){
             $_SESSION['errors'] = $errors;
-            redirect('/my-posts.php');
+            redirect('/profile.php');
             exit;
     }
 
@@ -43,20 +43,9 @@
 <img src="/icons/back.png" alt="" class="back" onclick="goBack()">
     <h1>Edit posts</h1>
 
-
-<?php foreach ($errors as $error) : ?>
-        <li><?php echo $error ?></li>
-    <?php endforeach ?>
-
-    <ul>
-    <?php foreach ($successes as $success) : ?>
-        <li><?php echo $success ?></li>
-    <?php endforeach ?>
-    </ul>
-
 <div class="form-group">
 
-    <form action="/app/users/edit-post.php?photo_id=<?php echo $photoId ?>" method="post" enctype="multipart/form-data">
+    <form action="/app/posts/edit-post.php?photo_id=<?php echo $photoId ?>" method="post" enctype="multipart/form-data">
 
     <img src="/uploads/images/<?php echo $image ?>" alt="">
     <div class="form-group">
@@ -66,7 +55,7 @@
     <button class="edit-profil" type="submit">Update photo</button>
     </form>
     
-    <form class="edit-post" action="/app/users/edit-post.php?photo_id=<?php echo $photoId ?>" method="post" enctype="multipart/form-data">
+    <form class="edit-post" action="/app/posts/edit-post.php?photo_id=<?php echo $photoId ?>" method="post" enctype="multipart/form-data">
     <div class="form-group">
             <label for="name">Caption</label>
             <textarea class="form-control" type="text" name="caption" rows="5" cols="50"><?php echo $caption ?></textarea>

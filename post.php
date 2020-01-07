@@ -59,7 +59,7 @@ foreach ($likes as $like) {
     </ul>
 <article>
 <div class="post">
-    <form action="/my-posts.php" method="GET">
+    <form action="/profile.php" method="GET">
     <button type="submit" name="user_id" value="<?php echo $user['user_id'] ?>">
     <ul>
         <li class="avatar-user">

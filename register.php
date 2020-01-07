@@ -7,20 +7,6 @@
     <div class="login">
         <h1>Create an account</h1>
 
-
-        <ul>
-    <?php foreach ($messages as $message) : ?>
-        <li><?php echo $message ?></li>
-    <?php endforeach ?>
-    </ul>
-
-
-    <ul>
-    <?php foreach ($successes as $success) : ?>
-        <li><?php echo $success ?></li>
-    <?php endforeach ?>
-    </ul>
-
     <form action="app/users/register.php" method="post">
         <div class="form-group">
             <input class="form-control" type="email" name="email" placeholder=" Email">

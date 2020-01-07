@@ -20,7 +20,7 @@ if (isset($_FILES['image'], $_POST['caption'])) {
 
     if (count($messages) > 0){
         $_SESSION['messages'] = $messages;
-        redirect('/../../posts.php');
+        redirect('/../../new-post.php');
         exit;
     }
 
@@ -53,7 +53,7 @@ $query = 'INSERT INTO photos (image, caption, user_id, date_created) VALUES (:im
 
     if (count($successes) > 0){
         $_SESSION['successes'] = $successes;
-        redirect("/my-posts.php?user_id=" . $userId . "?");
+        redirect("/profile.php?user_id=" . $userId . "?");
         exit;
     }
 }

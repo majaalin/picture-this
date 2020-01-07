@@ -1,76 +1,33 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
-<?php 
-$statement = $pdo->prepare('SELECT * FROM photos ORDER BY date_created DESC');
-
-$statement->execute();
-
-$photos = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-?>
-
 <article>
 
+    <!-- If user is inlogged -->
     <?php if (isset($_SESSION['user'])) :?>
         <div class="login">
-        <img src="logo.png" alt="logo" class="logo">
-        <ul>
-
-    <?php foreach ($messages as $message) : ?>
-        <li><?php echo $message ?></li>
-    <?php endforeach ?>
-    </ul>
-
-    <ul>
-    <?php foreach ($successes as $success) : ?>
-        <li><?php echo $success ?></li>
-    <?php endforeach ?>
-    </ul>
-
+        <img src="/images/logo.png" alt="logo" class="logo">
         <img class="avatar" src="/uploads/<?php echo $_SESSION['user']['avatar']; ?>" alt="">
         <p class="username"><?php echo $_SESSION['user']['username']; ?></p>
-        <button><a href="/all-posts.php">Login</a></button>
+        <button><a href="/posts.php">Login</a></button>
         <p class="other-accont"><a href="/app/users/logout.php">Login with a diffrent account</a></p>
         <p class="account">Are you new on Picture this? <a href="/register.php" class="bold">Make an account</a></p>
         </div>
-        <?php endif; ?>
-    
-        <?php if (!isset($_SESSION['user'])) :?>
-            <form action="app/users/login.php" method="post" class="login">
+    <?php endif; ?>
 
-            <img src="logo.png" alt="logo" class="logo">
 
-            <ul>
-    <?php foreach ($messages as $message) : ?>
-        <li><?php echo $message ?></li>
-    <?php endforeach ?>
-    </ul>
-
-    <ul>
-    <?php foreach ($successes as $success) : ?>
-        <li><?php echo $success ?></li>
-    <?php endforeach ?>
-    </ul>
-    
-    <div class="form-group">
-        <input class="form-control" type="email" name="email" placeholder=" Email" required>
-    </div><!-- /form-group -->
-
-    <div class="form-group">
-        <input class="form-control" type="password" name="password"  placeholder=" Password" required>
-    </div><!-- /form-group -->
-
-    <button type="submit">Login</button>
-
-    <p class="account">Are you new on Picture this? <a href="/register.php" class="bold">Make an account</a></p>
+    <!-- If user is not inlogged -->
+    <?php if (!isset($_SESSION['user'])) :?>
+        <form action="app/users/login.php" method="post" class="login">
+            <img src="/images/logo.png" alt="logo" class="logo">
+            <div class="form-group">
+                <input class="form-control" type="email" name="email" placeholder=" Email" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password"  placeholder=" Password" required>
+            </div>
+            <button type="submit">Login</button>
+            <p class="account">Are you new on Picture this? <a href="/register.php" class="bold">Make an account</a></p>
         </form>
-
-        <?php endif; ?>
-        </div>
-    </ul>
-    </article>
-
-    <script src="/assets/scripts/main.js"></script>
-</body>
-</html>
+    <?php endif; ?>
+</article>
 

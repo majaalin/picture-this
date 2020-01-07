@@ -16,6 +16,7 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 <input class="form-control" type="text" name="search" placeholder="Search for a user"> 
 </form>
 
+<main>
 <div class="container">
 <?php if (isset($_SESSION['user'])) :?>
 <?php foreach ($photos as $photo) : ?>
@@ -27,6 +28,7 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
     <?php endforeach ?>
     <?php endif; ?>
     </div>
+</main>
 
 </article>
 
