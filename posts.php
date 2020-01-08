@@ -1,6 +1,8 @@
 <?php require __DIR__.'/views/header.php'; ?>
 <?php require __DIR__.'/views/navigation-top.php'; ?>
 
+<article class="all-posts">
+
 <?php 
 
 $loggedInUser = $_SESSION['user']['user_id'];
@@ -40,7 +42,6 @@ $avatar = $user['avatar'];
 }
 
 ?>
-    <article class="all-posts">
 
 <?php foreach ($photos as $photo): 
     
@@ -66,6 +67,8 @@ $avatar = $user['avatar'];
         $userIdLikes =  $like['user_id'];
     }
 
+    $photoId = $photo['photo_id'];
+
     ?>
     <div class="all-posts-container">
     <form action="/profile.php" method="GET">
@@ -78,10 +81,9 @@ $avatar = $user['avatar'];
         </button>
     </form>
     <div class="image-container">
-    <img class="image" src="/uploads/images/<?php echo $photo['image']; ?>" alt="" loading="lazy">
+    <img class="image" id="<?php echo $photoId?>" src="/uploads/images/<?php echo $photo['image']; ?>" alt="<?php echo $photoId?>" loading="lazy">
     </div>
     <form class="like-container" action="/app/posts/like.php" method="GET">
-    <?php $photoId = $photo['photo_id'];?>
     <?php if ($userIdLikes != $loggedInUser): ?>
         <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/not-liked.png" alt=""></button>
         <?php if ($amoutOfLikes >= 1): ?>
@@ -97,10 +99,10 @@ $avatar = $user['avatar'];
                 <?php endif; ?>    
             </form>
     <?php endif; ?>
-    <div class="caption-container">
-    <span class="post-username"><?php echo $user['username']?></span> 
-    <span class="post-caption"><?php echo $photo['caption'];?></span>
-    </div>
+    <p class="caption-container">
+    <span><?php echo $user['username']?></span> 
+    <?php echo $photo['caption'];?>
+    </p>
     <p class="date"><?php echo $photo['date_created'];?></p>
 </div>
 </div>

@@ -124,14 +124,15 @@ if (isset($_POST['update'])) {
 
     if (count($successes) > 0){
         $_SESSION['successes'] = $successes;
-        redirect('/../../profile.php');
+        redirect("/../../profile.php?user_id=" . $userId);
         exit;
-    } else {
+    } 
+    else {
         $messages[] = "You did not update anything!";
     }
     if (count($messages) > 0){
         $_SESSION['messages'] = $messages;
-        redirect('/../../profile.php');
+        redirect("/../../profile.php?user_id=" . $userId);
         exit;
     }
 }

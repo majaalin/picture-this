@@ -32,26 +32,4 @@ function getAllPhotos(array $photos)
     $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getAllPhotosFromFollows(array $photos)
-{
-    $loggedInUser = $_SESSION['user']['user_id'];
-
-$statement = $pdo->prepare("SELECT user_id_2 FROM follower WHERE user_id_1 = '$loggedInUser'");
-
-$statement->execute();
-
-$follows = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($follows as $follow) {
-    $foll = $follow['user_id_2'];
-    
-$statement = $pdo->prepare("SELECT * FROM photos where user_id = :user_id ORDER BY  date_created DESC");
-
-$statement->bindParam(':user_id', $foll, PDO::PARAM_INT);
-
-$statement->execute();
-
-$photos = $statement->fetchAll(PDO::FETCH_ASSOC);
-}}
-
 
