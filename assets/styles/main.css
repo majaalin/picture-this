@@ -6,7 +6,7 @@
     font-family: "Open Sans", sans-serif;
     /* font-family: 'Roboto', sans-serif; */
     color: black;
-    font-size: 16px;
+    font-size: calc(16px + (18 - 16) * ((100vw - 300px) / (1200 - 300)));
 }
 
 body {
@@ -14,33 +14,16 @@ body {
 }
 
 h1 {
-    margin: 30px 10px;
-    font-size: 30px;
-}
-
-.like-container {
-    display: flex;
-    align-items: center;
     margin: 20px 0;
-    height: 60px;
-}
-
-.like-container p {
-    margin-left: 20px;
+    font-size: 18px;
 }
 
 article {
-    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
-}
-
-.all-posts {
-    margin: 200px 0 150px 0;
-    bottom: 200px;
+    margin-top: 10px;
 }
 
 article .all {
@@ -57,50 +40,6 @@ article .all {
     margin: 10px;
     display: flex;
     align-items: center;
-}
-
-.image {
-    position: absolute;
-    width: 100%;
-    height: 1000px;
-    object-fit: cover;
-}
-
-.username {
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    cursor: pointer;
-    margin: 0 5px 0 0;
-}
-
-.image-container {
-    height: 1000px;
-    width: 100vw;
-    position: relative;
-    display: flex;
-}
-
-.caption-container {
-    margin: 20px 40px;
-    width: 90%;
-    height: auto;
-    font-size: 16px;
-}
-
-.caption {
-    padding: 0 20px 0 0;
-}
-
-.date {
-    margin: 0 0 50px 20px;
-    color: rgba(0, 0, 0, 0.5);
 }
 
 button {
@@ -141,11 +80,6 @@ button {
     width: 30px;
 }
 
-.heart {
-    width: 50px;
-    margin: 30px 0 10px 20px;
-}
-
 .like {
     margin: 0 20px;
 }
@@ -176,73 +110,12 @@ button {
     }
 }
 
-.login {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    z-index: 3;
-    top: 0;
-    background-color: #fdfdfd;
-}
-
-.login .logo {
-    margin: 0 0 50px 0;
-    border: none;
-}
-
-.login .avatar {
-    width: 200px;
-    height: 200px;
-}
-
-.login button {
-    width: 90vw;
-    background-color: #2800f5;
-    border-radius: 5px;
-    margin: 10px 0 20px 0;
-    padding: 30px;
-}
-
 button {
     cursor: pointer;
 }
 
-.login button a {
-    color: white;
-    text-decoration: none;
-}
-
-.login button:hover {
-    background-color: #3a00e9;
-}
-
-.login .username {
-    margin: 20px;
-}
-
-.login .other-accont a {
-    color: #2800f5;
-    text-decoration: none;
-}
-
-.login .other-accont:hover {
-    transform: scale(1.01);
-    color: #3a00e9;
-}
-
-.login .account {
-    position: fixed;
-    bottom: 0;
-    width: 100vw;
-    text-align: center;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    background-color: white;
-    color: rgba(0, 0, 0, 0.5);
+a {
+    cursor: pointer;
 }
 
 .bold {
@@ -250,59 +123,14 @@ button {
     text-decoration: none;
 }
 
-.bold:hover {
-    color: black;
-}
-
 .back {
-    height: 42px;
-    position: fixed;
+    height: 20px;
     top: 30px;
     left: 20px;
+    position: absolute;
 }
 
 /* login */
-
-.form-control {
-    width: 90vw;
-    margin: 5px 0 5px 0;
-    padding: 30px;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-::placeholder {
-    color: rgba(0, 0, 0, 0.5);
-}
-
-input {
-    color: rgba(0, 0, 0, 0.5);
-}
-
-button {
-    color: white;
-}
-
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    -webkit-text-fill-color: rgba(0, 0, 0, 0.5);
-    transition: background-color 5000s ease-in-out 0s;
-}
 
 .form-group .edit-profil {
     background-color: #2800f5;
@@ -324,15 +152,6 @@ select:-webkit-autofill:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.edit-profil-container label {
-    margin: 10px;
-}
-
-.edit-profil-input {
-    width: 90vw;
-    margin-top: 30px;
 }
 
 .edit-profil-input .form-control {

@@ -1,0 +1,116 @@
+article .my-posts {
+    margin-bottom: 100px;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    list-style: none;
+}
+
+.profile-user {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.profile-information {
+    padding: 0 20px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+}
+
+.avatar.bigger {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 20px 20px 20px 0;
+}
+
+.profile-information .bold {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.profile-information span {
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.profile-about {
+    width: 100vw;
+    list-style: none;
+    padding: 0 20px;
+}
+
+.profile-about .full-name {
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    font-size: 14px;
+}
+
+.profile-about .biography {
+    font-weight: 300;
+    margin: 0 0 5px 0;
+    font-size: 13px;
+}
+
+.edit-profil {
+    width: 90vw;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 5px 0;
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.logout {
+    width: 90vw;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.01);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    margin: 5px 0;
+}
+
+.logout a {
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+}
+
+.picture-view-nav {
+    width: 90vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    margin: 20px 0;
+}
+
+main .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 70px;
+}
+
+.container .small-image {
+    object-fit: cover;
+    width: 128px;
+    height: 128px;
+    margin: 0 2px;
+    filter: contrast(90%);
+}

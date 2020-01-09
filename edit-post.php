@@ -38,28 +38,28 @@
 ?>
 
 
-<article>
+<article class="edit-post">
 
 <img src="/icons/back.png" alt="" class="back" onclick="goBack()">
     <h1>Edit posts</h1>
 
-<div class="form-group">
+    <form class="edit-profil-input" action="/app/posts/edit-post.php?photo_id=<?php echo $photoId ?>" method="post" enctype="multipart/form-data">
 
-    <form action="/app/posts/edit-post.php?photo_id=<?php echo $photoId ?>" method="post" enctype="multipart/form-data">
-
-    <img src="/uploads/images/<?php echo $image ?>" alt="">
-    <div class="form-group">
-            <label for="image">Change picture</label>
-            <input type="file" id="image" name="image" accept=".png, .jpg, .jpeg">
-    </div>
+    <img id="previewPost" class="image" src="/uploads/images/<?php echo $image ?>" alt="">
+    <div class="avatar">
+            <label for="image">
+            
+Select an image</label></div>
+            <input type="file" id="image" name="image" accept=".png, .jpg, .jpeg" onchange="document.getElementById('previewPost').src = window.URL.createObjectURL(this.files[0])">
     <button class="edit-profil" type="submit">Update photo</button>
+
     </form>
     
-    <form class="edit-post" action="/app/posts/edit-post.php?photo_id=<?php echo $photoId ?>" method="post" enctype="multipart/form-data">
+    <form class="edit-profil-input" action="/app/posts/edit-post.php?photo_id=<?php echo $photoId ?>" method="post" enctype="multipart/form-data">
     <div class="form-group">
             <label for="name">Caption</label>
             <textarea class="form-control" type="text" name="caption" rows="5" cols="50"><?php echo $caption ?></textarea>
-        </div><!-- /form-group -->
+        </div>
 
         <button class="edit-profil" type="submit">Edit caption</button>
     </form>

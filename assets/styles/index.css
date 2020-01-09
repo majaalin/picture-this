@@ -1,0 +1,121 @@
+.login {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    background-color: #fdfdfd;
+}
+
+.login .logo {
+    margin: 0 0 20px 0;
+}
+
+.login .avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.login .username {
+    margin: 20px;
+    font-size: 14px;
+}
+
+.login button {
+    width: 90vw;
+    background-color: #2800f5;
+    border-radius: 5px;
+    margin: 10px 0 20px 0;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.login button:hover {
+    background-color: #3a00e9;
+}
+
+.login button a {
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login .diffrent-account a {
+    color: #2800f5;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login .diffrent-account:hover {
+    transform: scale(1.01);
+    color: #3a00e9;
+}
+
+.login .new-account {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: white;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+}
+
+.login .bold {
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.login .bold:hover {
+    color: black;
+}
+
+.form-control {
+    width: 90vw;
+    margin: 0 0 10px 0;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+input {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+button {
+    color: white;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    -webkit-text-fill-color: rgba(0, 0, 0, 0.5);
+    transition: background-color 5000s ease-in-out 0s;
+}

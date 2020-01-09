@@ -1,0 +1,78 @@
+.edit-profil-container .avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-profil-container .avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.edit-profil-container .avatar input {
+    display: none;
+}
+
+.edit-profil-container .avatar label {
+    width: 40vw;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.01);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    margin: 10px 0;
+    font-weight: 400;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+.edit-profil-input {
+    width: 90vw;
+    margin-top: 5px;
+}
+
+.edit-profil-input .form-control {
+    width: 90vw;
+    margin: 0 0 10px 0;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+.edit-profil-container label {
+    margin: 0 3px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 400;
+}
+
+.update-profile {
+    width: 90vw;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 5px 0;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.change-password {
+    width: 90vw;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.01);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    margin: 5px 0;
+}
+
+.change-password a {
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+}

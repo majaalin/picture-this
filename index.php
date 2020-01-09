@@ -9,8 +9,8 @@
         <img class="avatar" src="/uploads/<?php echo $_SESSION['user']['avatar']; ?>" alt="">
         <p class="username"><?php echo $_SESSION['user']['username']; ?></p>
         <button><a href="/posts.php">Login</a></button>
-        <p class="other-accont"><a href="/app/users/logout.php">Login with a diffrent account</a></p>
-        <p class="account">Are you new on Picture this? <a href="/register.php" class="bold">Make an account</a></p>
+        <p class="diffrent-account"><a href="/app/users/logout.php">Login with a diffrent account</a></p>
+        <p class="new-account">Are you new on Picture this? <a href="/register.php" class="bold">Make an account</a></p>
         </div>
     <?php endif; ?>
 
@@ -26,7 +26,7 @@
                 <input class="form-control" type="password" name="password"  placeholder=" Password" required>
             </div>
             <button type="submit">Login</button>
-            <p class="account">Are you new on Picture this? <a href="/register.php" class="bold">Make an account</a></p>
+            <p class="new-account">Are you new on Picture this? <a href="/register.php" class="bold">Make an account</a></p>
         </form>
     <?php endif; ?>
 </article>

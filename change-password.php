@@ -3,7 +3,7 @@
 <article>
 <img src="/icons/back.png" alt="" class="back" onclick="goBack()">
 
-    <h1>Profile</h1>
+    <h1>Change password</h1>
 
     <?php foreach ($errors as $error) : ?>
         <p><?php echo $error ?></p>
@@ -15,27 +15,24 @@
     <?php endforeach ?>
     </ul>
 
-    <form action="app/users/password.php" method="post">
+    <form class="edit-profil-container" action="app/users/password.php" method="post">
 
-    <div class="form-group">
+    <div class="edit-profil-input">
             <label for="password">Old password</label>
             <input class="form-control" type="password" name="old_password" required>
-            <small class="form-text text-muted">Please provide your old password.</small>
         </div><!-- /form-group -->
 
-        <div class="form-group">
+        <div class="edit-profil-input">
             <label for="password">New password</label>
             <input class="form-control" type="password" name="new_password" required>
-            <small class="form-text text-muted">Please provide your new password.</small>
         </div><!-- /form-group -->
 
-        <div class="form-group">
+        <div class="edit-profil-input">
             <label for="password">Confirm new password</label>
             <input class="form-control" type="password" name="confirm_new_password" required>
-            <small class="form-text text-muted">Please confirm your new password.</small>
         </div><!-- /form-group -->
 
-        <button type="submit" class="btn btn-primary">Change password</button>
+        <button type="submit" class="update-profile">Change password</button>
     </form>
 </article>
 

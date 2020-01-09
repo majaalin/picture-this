@@ -20,22 +20,22 @@ $biography = $user['biography'];
 
 ?>
 
-<article>
 
 <img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+<article>
 
-    <h1>Profile</h1>
+    <h1>Edit profile</h1>
 
 <form class="edit-profil-container" action="/app/users/profile.php" method="post" enctype="multipart/form-data">
             <div class="avatar">
                 <?php if (!$avatar) : ?>
-                <img src="/uploads/no-image.png" alt="">
+                <img id="previewAvatar" src="/uploads/no-image.png" alt="">
                 <label for="avatar">Add a profile picture</label>
                 <?php else : ?>
-                    <img src="/uploads/<?php echo $avatar; ?>" alt="">
+                    <img id="previewAvatar" src="/uploads/<?php echo $avatar; ?>" alt="">
                 <label for="avatar">Change profile picture</label>
                 <?php endif ?>
-                <input type="file" name="avatar" id="avatar" accept=".png, .jpg, .jpeg">
+                <input type="file" name="avatar" id="avatar" accept=".png, .jpg, .jpeg" onchange="document.getElementById('previewAvatar').src = window.URL.createObjectURL(this.files[0])">
             </div>
 
             <div class="edit-profil-input">
@@ -54,8 +54,8 @@ $biography = $user['biography'];
             <label for="name">Biography</label>
             <textarea class="form-control" type="text" name="biography" rows="5" cols="50"><?php echo $biography; ?></textarea>
                 </div>
-        <button class="edit-profil" type="submit" name="update">Update profile</button>
-        <button class="edit-profil"><a href="/change-password.php">Change password</a></button>
+        <button class="update-profile" type="submit" name="update">Update profile</button>
+        <button class="change-password"><a href="/change-password.php">Change password</a></button>
 
     </form>
 </article>

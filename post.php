@@ -52,33 +52,33 @@ foreach ($likes as $like) {
 }
 
 ?>
-    <ul class="posts-header">
-        <li><img src="/icons/back.png" alt="" class="back" onclick="goBack()"></li>
-        <li><p class="username"><?php echo $user['username']?></p></li>
-        <li><p>Posts</p></li>
-    </ul>
-<article>
-<div class="post">
+<article class="all-posts one">
+<img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+    <h1 class="profile-user"><?php echo $user['username'] ?></h1>
+<div class="all-posts-container">
+    <div class="avatar-user-container">
     <form action="/profile.php" method="GET">
     <button type="submit" name="user_id" value="<?php echo $user['user_id'] ?>">
     <ul>
         <li class="avatar-user">
             <img class="avatar" src="/uploads/<?php echo $user['avatar'] ?>" alt="">
             <p class="username"><?php echo $user['username'] ?></p></li>
-    </ul>
         </button>
     </form>
         <?php if ($loggedInUser === $user['user_id']): ?>
         <form action="/edit-post.php" method="GET">
-        <button class="edit" type="submit" name="photo_id" value="<?php echo $photoId ?>"><img class="icon" src="/icons/more.png" alt="">
+        <li class="more">
+        <button type="submit" name="photo_id" value="<?php echo $photoId ?>"><img class="icon" src="/icons/more.png" alt="">
         </button>
+        </li>
         </form>
+        </ul>
     <?php endif; ?>
-    <div class="image-container">
-    <img class="image" src="/uploads/images/<?php echo $image; ?>" alt="">
     </div>
-    <form action="/app/posts/like.php" method="GET">
-    <?php $photoId = $photo['photo_id'];?>
+    <div class="image-container">
+    <img class="image" id="<?php echo $photoId?>" src="/uploads/images/<?php echo $photo['image']; ?>" alt="<?php echo $photoId?>" loading="lazy">
+    </div>
+    <form class="like-container" action="/app/posts/like.php" method="GET">
     <?php if ($userIdLikes != $loggedInUser): ?>
         <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/not-liked.png" alt=""></button>
         <?php if ($amoutOfLikes >= 1): ?>
@@ -94,11 +94,11 @@ foreach ($likes as $like) {
                 <?php endif; ?>    
             </form>
     <?php endif; ?>
-    <div class="caption-container">
-    <span class="post-username"><?php echo $user['username']?></span> 
-    <span class="post-caption"><?php echo $caption;?></span>
-    </div>
-    <p class="date"><?php echo $date;?></p>
+    <p class="caption-container">
+    <span><?php echo $user['username']?></span> 
+    <?php echo $photo['caption'];?>
+    </p>
+    <p class="date"><?php echo $photo['date_created'];?></p>
 </article>
 
 <?php require __DIR__.'/views/navigation-bottom.php'; ?>

@@ -1,24 +1,39 @@
-.navbar-nav {
-    padding: 30px 40px 0 40px;
+nav .navbar-nav {
+    padding: 10px 20px 0 20px;
     width: 100vw;
-    height: 150px;
+    height: 80px;
     display: flex;
-    top: 0;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    /* box-shadow: 0px 3px 10px 0px rgba(50, 50, 50, 0.04); */
     background-color: white;
     position: fixed;
     z-index: 3;
     transition: top 0.5s ease;
+    top: 0;
 }
 .logo {
     width: 50%;
-    min-width: 350px;
-    padding-right: 10px;
 }
 
-.nav-icon .camera {
-    transition: all 2s ease;
+.icon {
+    width: 25px;
+}
+
+.footer {
+    width: 100vw;
+    height: 50px;
+    bottom: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+    position: fixed;
+}
+
+.footer-list {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0 20px;
 }

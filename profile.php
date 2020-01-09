@@ -102,7 +102,7 @@ if (isset($_GET['user_id'])){
 
     <?php if ($loggedInUser == $userId) : ?>
             <button class="edit-profil"><a href="/edit-profile.php">Edit profil</a></button>
-            <button class="edit-profil"><a href="/app/users/logout.php" onclick="return confirm('Are you sure you want to logout?')">Logout</a></button>
+            <button class="logout"><a href="/app/users/logout.php" onclick="return confirm('Are you sure you want to logout?')">Logout</a></button>
     <?php elseif ($loggedInUser != $userId) : ?>
         <form action="/app/users/follow.php" method="GET">
         <?php if ($following): ?>

@@ -8,7 +8,7 @@ require __DIR__.'/views/header.php'; ?>
 
     <form class="new-form" action="/app/posts/new-post.php" method="post" enctype="multipart/form-data">
 
-    <img src="/images/no-picture.jpg" id="previewImage" class="previewImage"/>
+    <img src="/images/no-picture.jpg" id="previewImage" class="image"/>
 
         <div class="form-group">
             <label class="make-a-image" for="image">Add a image</label>
