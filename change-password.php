@@ -5,16 +5,6 @@
 
     <h1>Change password</h1>
 
-    <?php foreach ($errors as $error) : ?>
-        <p><?php echo $error ?></p>
-    <?php endforeach ?>
-
-    <ul>
-    <?php foreach ($successes as $success) : ?>
-        <li><?php echo $success ?></li>
-    <?php endforeach ?>
-    </ul>
-
     <form class="edit-profil-container" action="app/users/password.php" method="post">
 
     <div class="edit-profil-input">

@@ -29,7 +29,7 @@ if (isset($_POST['old_password'], $_POST['new_password'], $_POST['confirm_new_pa
 
     if (count($errors) > 0){
         $_SESSION['errors'] = $errors;
-        redirect('/password.php');
+        redirect('/../../change-password.php');
         exit;
     }
 
@@ -51,7 +51,7 @@ if (isset($_POST['old_password'], $_POST['new_password'], $_POST['confirm_new_pa
 
     if (count($successes) > 0){
         $_SESSION['successes'] = $successes;
-        redirect('/password.php');
+        redirect('/../../change-password.php');
         exit;
     }
 }

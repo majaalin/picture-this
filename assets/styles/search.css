@@ -29,14 +29,6 @@
     display: block;
 }
 
-.search-user {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 50vw;
-    margin: 10px;
-}
-
 .search-user p {
     color: black;
 }

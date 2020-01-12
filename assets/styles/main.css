@@ -126,7 +126,7 @@ a {
 .back {
     height: 20px;
     top: 30px;
-    left: 20px;
+    left: 10px;
     position: absolute;
 }
 
@@ -160,6 +160,12 @@ a {
 
 .all-posts-container {
     width: 100vw;
+    background-color: white;
+    margin: 5px 0;
+    padding: 10px 0;
+    border-radius: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 @media screen and (min-width: 1000px) {

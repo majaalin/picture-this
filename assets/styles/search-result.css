@@ -1,0 +1,46 @@
+.search-result {
+    margin-bottom: 60px;
+}
+.search-user {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 90vw;
+}
+
+form.search-user button {
+    width: 90vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+form.search-user button .name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px;
+}
+
+form.search-user button .name p {
+    font-size: 14px;
+}
+
+form.search-user button .name .username {
+    font-weight: 600;
+}
+
+form.search-user button .name:first-child {
+    font-weight: 700;
+}
+
+.search-user .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}

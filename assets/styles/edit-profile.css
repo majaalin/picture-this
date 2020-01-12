@@ -42,6 +42,13 @@
     font-size: 14px;
 }
 
+.edit-profil a {
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+}
+
 .edit-profil-container label {
     margin: 0 3px;
     font-size: 13px;
@@ -75,4 +82,8 @@
     font-size: 14px;
     color: rgba(0, 0, 0, 0.8);
     text-decoration: none;
+}
+
+textarea {
+    color: rgba(0, 0, 0, 0.5);
 }

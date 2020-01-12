@@ -10,7 +10,7 @@ $diffrentUsers = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<article>
+<article class="search-result">
 
 <img src="/icons/back.png" alt="" class="back" onclick="goBack()">
 
@@ -23,12 +23,16 @@ $diffrentUsers = $statement->fetchAll(PDO::FETCH_ASSOC);
     <button type="submit" name="user_id" value="<?php echo $user['user_id'] ?>">
     <?php if ($user['avatar'] === NULL): ?>
         <img class="avatar" src="/images/" alt="">
-        <p><?php echo $user['username'] ?></p>
+        <div class="name">
+        <p class="username"><?php echo $user['username'] ?></p>
         <p><?php echo $user['full_name'] ?></p>
+    </div>
         <?php else : ?>
             <img class="avatar" src="/uploads/<?php echo $user['avatar'] ?>" alt="">
-            <p><?php echo $user['username'] ?></p>
+            <div class="name">
+            <p class="username"><?php echo $user['username'] ?></p>
             <p><?php echo $user['full_name'] ?></p>
+        </div>
     <?php endif; ?>
     </button>
     </form>
@@ -39,12 +43,16 @@ $diffrentUsers = $statement->fetchAll(PDO::FETCH_ASSOC);
     <button type="submit" name="user_id" value="<?php echo $diffrentUser['user_id'] ?>">
     <?php if ($diffrentUser['avatar'] === NULL): ?>
         <img class="avatar" src="/images/no-avatar.png" alt="">
-        <p><?php echo $diffrentUser['username'] ?></p>
+        <div class="name">
+        <p class="username"><?php echo $diffrentUser['username'] ?></p>
         <p><?php echo $diffrentUser['full_name'] ?></p>
+        </div>
         <?php else : ?>
             <img class="avatar" src="/uploads/<?php echo $diffrentUser['avatar'] ?>" alt="">
-            <p><?php echo $diffrentUser['username'] ?></p>
+            <div class="name">
+            <p class="username"><?php echo $diffrentUser['username'] ?></p>
             <p><?php echo $diffrentUser['full_name'] ?></p>
+            </div>
     <?php endif; ?>
         </button>
         </form>
