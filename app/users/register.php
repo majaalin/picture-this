@@ -9,36 +9,36 @@ if (isset($_POST['email'], $_POST['username'], $_POST['full_name'], $_POST['pass
     $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
     $fullName = filter_var($_POST['full_name'], FILTER_SANITIZE_STRING);
 
+    $checkForEmail = $pdo->prepare("SELECT * FROM users WHERE email=?");
+    $checkForEmail->execute([$email]); 
+    $emailExist = $checkForEmail->fetch();
+    $errors = [];
+    
+    if ($emailExist) {
+        $errors[] = "Email already exists!";
+        } 
+
+    $checkForUsername = $pdo->prepare("SELECT * FROM users WHERE username=?");
+    $checkForUsername->execute([$username]); 
+    $usernameExist = $checkForUsername->fetch();
+
+if ($usernameExist) {
+    $errors[] = "Username already exists!";
+    } 
+
     if ($_POST['password'] !== $_POST['confirm_password']) {
-        $messages[] = "Your password doesn't match";
+        $errors[] = "Your password doesn't match";
         } 
 
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     $confirmPassword = password_hash($_POST['confirm_password'], PASSWORD_BCRYPT);
 
-    $checkForEmail = $pdo->prepare("SELECT * FROM users WHERE email=?");
-    $checkForEmail->execute([$email]); 
-    $emailExist = $checkForEmail->fetch();
-    
-    if ($emailExist) {
-        $messages[] = "Email already exists!";
-        } 
-   
-
-$checkForUsername = $pdo->prepare("SELECT * FROM users WHERE username=?");
-$checkForUsername->execute([$username]); 
-$usernameExist = $checkForUsername->fetch();
-
-if ($usernameExist) {
-    $messages[] = "Username already exists!";
-    } 
-
-    if (count($messages) > 0){
-        $_SESSION['messages'] = $messages;
+    if (count($errors) > 0){
+        $_SESSION['errors'] = $errors;
         redirect('/../../register.php');
         exit;
-    }};
-
+    }
+}
 
     $query = 'INSERT INTO users (email, username, full_name, password) VALUES (:email, :username, :full_name, :password)';
 

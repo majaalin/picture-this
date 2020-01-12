@@ -42,6 +42,14 @@ if (isset($_POST['update'])) {
 
     if (isset($_POST['email'])) {
             $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+
+            $checkForEmail = $pdo->prepare("SELECT * FROM users WHERE email=?");
+            $checkForEmail->execute([$email]); 
+            $emailExist = $checkForEmail->fetch();
+        
+    if ($emailExist) {
+        $errors[] = "Email already exists!";
+        } else {
     
             $statement = $pdo->prepare('UPDATE users SET email = :email WHERE user_id = :user_id');
             
@@ -59,7 +67,7 @@ if (isset($_POST['update'])) {
                     $successes[] = "Your email were successfully updated";
                 
                 }
-    }
+    }}
         if (isset($_POST['username'])) {
                 $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
         
@@ -102,7 +110,7 @@ if (isset($_POST['update'])) {
     }
 
     if (isset($_POST['biography'])) {
-        $biography = filter_var($_POST['biography'], FILTER_SANITIZE_STRING);
+        $newBiography = filter_var($_POST['biography'], FILTER_SANITIZE_STRING);
 
         $statement = $pdo->prepare('UPDATE users SET biography = :biography WHERE user_id = :user_id');
         
@@ -112,13 +120,19 @@ if (isset($_POST['update'])) {
 
         $statement->execute([
             ':user_id' => $userId,
-            ':biography' => $biography,
+            ':biography' => $newBiography,
             ]);
-            
-            if ($_SESSION['user']['biography'] != $biography){
+
+            if ($newBiography != $biography){
 
                 $successes[] = "Your biography were successfully updated";
             }
+        }
+
+        if (count($errors) > 0){
+            $_SESSION['errors'] = $errors;
+            redirect("/../../profile.php?user_id=" . $userId);
+            exit;
         }
 
 
@@ -128,10 +142,10 @@ if (isset($_POST['update'])) {
         exit;
     } 
     else {
-        $messages[] = "You did not update anything!";
+        $errors[] = "You did not update anything!";
     }
-    if (count($messages) > 0){
-        $_SESSION['messages'] = $messages;
+    if (count($errors) > 0){
+        $_SESSION['errors'] = $errors;
         redirect("/../../profile.php?user_id=" . $userId);
         exit;
     }

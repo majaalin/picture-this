@@ -23,6 +23,7 @@ article .my-posts {
     align-items: center;
     list-style: none;
     text-align: center;
+    max-width: 414px;
 }
 
 .avatar.bigger {
@@ -47,6 +48,7 @@ article .my-posts {
     width: 100vw;
     list-style: none;
     padding: 0 20px;
+    max-width: 414px;
 }
 
 .profile-about .full-name {
@@ -72,6 +74,7 @@ article .my-posts {
     text-decoration: none;
     font-weight: 400;
     font-size: 14px;
+    max-width: 414px;
 }
 
 .logout {
@@ -81,6 +84,7 @@ article .my-posts {
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.05);
     margin: 5px 0;
+    max-width: 414px;
 }
 
 .logout a {
@@ -105,6 +109,7 @@ main .container {
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 70px;
+    max-width: 414px;
 }
 
 .container .small-image {

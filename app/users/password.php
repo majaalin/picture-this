@@ -11,7 +11,6 @@ if(!isset($_SESSION['user'])) {
 if (isset($_POST['old_password'], $_POST['new_password'], $_POST['confirm_new_password'])) {
     $oldPassword = $_POST['old_password'];
     $userId = $_SESSION['user']['user_id'];
-    $errors = [];
 
     $statement = $pdo->prepare('SELECT * FROM users WHERE user_id = :user_id');
 

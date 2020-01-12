@@ -10,7 +10,7 @@ require __DIR__.'/views/header.php'; ?>
 
     <img src="/images/no-picture.jpg" id="previewImage" class="image"/>
 
-        <div class="form-group">
+        <div class="new-post">
             <label class="make-a-image" for="image">Add a image</label>
             <input class="html_btn" type="file" id="image" name="image" accept=".png, .jpg, .jpeg"  onchange="document.getElementById('previewImage').src = window.URL.createObjectURL(this.files[0])">
         </div><!-- /form-group -->
@@ -19,7 +19,7 @@ require __DIR__.'/views/header.php'; ?>
             <textarea class="form-control" type="text" name="caption" rows="5" cols="50" placeholder="Add a caption"></textarea>
         </div><!-- /form-group -->
 
-        <button class="make-a-post" type="submit" name="update">Make a post</button>
+        <button class="update-profile" type="submit" name="update">Make a post</button>
     </form>
 </article>
 

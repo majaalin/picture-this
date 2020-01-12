@@ -18,7 +18,6 @@ if(isset($_GET['photo_id'])){
     $image = $photo['image'];
     $caption = $photo['caption'];
     $userId = $photo['user_id'];
-    $errors = [];
 }
 
 if ($_SESSION['user']['user_id'] != $userId) {

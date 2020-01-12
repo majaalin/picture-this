@@ -84,9 +84,8 @@ if (isset($_GET['user_id'])){
 
 <a href="/posts.php"><img src="/icons/back.png" alt="" class="back"></a>
 
-    <ul class="profile-header">
-        <li class="profile-user"><?php echo $username ?></li>
-    </ul>
+
+        <h1><?php echo $username ?></h1>
 
     <ul class="profile-information">
         <li><img class="avatar bigger" src="/uploads/<?php echo $avatar; ?>"alt=""></li>

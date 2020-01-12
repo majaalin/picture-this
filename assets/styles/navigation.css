@@ -12,6 +12,7 @@ nav .navbar-nav {
     transition: top 0.5s ease;
     top: 0;
 }
+
 .logo {
     width: 50%;
 }
@@ -36,4 +37,24 @@ nav .navbar-nav {
     align-items: center;
     list-style: none;
     margin: 0 20px;
+}
+
+@media screen and (min-width: 1000px) {
+    nav .navbar-nav {
+        padding: 10px 40px 0 40px;
+    }
+
+    .footer-list {
+        margin: 0 40px;
+    }
+
+    .icon {
+        width: 30px;
+    }
+
+    .back {
+        height: 25px;
+        top: 30px;
+        left: 40px;
+    }
 }

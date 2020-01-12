@@ -11,15 +11,15 @@ if (isset($_FILES['image'], $_POST['caption'])) {
     $imagePath = date('ymd')."-".$_FILES['image']['name'];
 
     if ($imagePath === date('ymd') . "-") {
-        $messages[] = "You need to choose a picture";
+        $errors[] = "You need to choose a picture";
     }
 
     if (!$_POST['caption']) {
-        $messages[] = "You need to write a caption";
+        $errors[] = "You need to write a caption";
     }
 
-    if (count($messages) > 0){
-        $_SESSION['messages'] = $messages;
+    if (count($errors) > 0){
+        $_SESSION['errors'] = $errors;
         redirect('/../../new-post.php');
         exit;
     }

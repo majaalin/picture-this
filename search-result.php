@@ -11,6 +11,7 @@ $diffrentUsers = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <article class="search-result">
+<h1>Search</h1>
 
 <img src="/icons/back.png" alt="" class="back" onclick="goBack()">
 

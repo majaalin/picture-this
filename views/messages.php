@@ -1,11 +1,12 @@
-<ul>
+
+    <ul class="error-container">
     <?php foreach ($errors as $error) : ?>
-        <li><?php echo $error ?></li>
+        <li class="messages error">&#9747; <?php echo $error ?></li>
     <?php endforeach ?>
     </ul>
-
-<ul>
+    
+    <ul>
     <?php foreach ($successes as $success) : ?>
-        <li><?php echo $success ?></li>
+        <li class="messages">&#10003; <?php echo $success ?></li>
     <?php endforeach ?>
-</ul>
+    </ul>

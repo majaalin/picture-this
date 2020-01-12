@@ -52,9 +52,9 @@ foreach ($likes as $like) {
 }
 
 ?>
-<article class="all-posts one">
+<article>
 <img src="/icons/back.png" alt="" class="back" onclick="goBack()">
-    <h1 class="profile-user"><?php echo $user['username'] ?></h1>
+    <h1><?php echo $user['username'] ?></h1>
 <div class="all-posts-container">
     <div class="avatar-user-container">
     <form action="/profile.php" method="GET">

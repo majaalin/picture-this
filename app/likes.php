@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-$errors = [];
+$likes = [];
 
 if (isset($_SESSION['likes'])){
 

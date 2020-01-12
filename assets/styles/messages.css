@@ -1,0 +1,31 @@
+.messages {
+    background-color: #3a00e9;
+    padding: 30px 0 20px 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    animation: messages-animation 3s 3s forwards ease;
+    font-size: 14px;
+    list-style: none;
+    color: white;
+    font-weight: 500;
+    z-index: 5;
+    top: -10px;
+    border-radius: 2px;
+}
+
+.messages.error {
+    background-color: tomato;
+    border: tomato 2px solid;
+}
+
+@-webkit-keyframes messages-animation {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        top: -200px;
+    }
+}
