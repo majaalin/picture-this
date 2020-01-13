@@ -25,7 +25,7 @@ article {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    width: 100vw;
 }
 
 article .all {
@@ -127,8 +127,8 @@ a {
 
 .back {
     height: 20px;
-    top: 30px;
-    left: 10px;
+    top: 20px;
+    left: 20px;
     position: absolute;
 }
 
@@ -166,10 +166,14 @@ a {
     width: 100vw;
     max-width: 414px;
     background-color: white;
-    margin: 10px;
+    margin: 10px 0;
     padding: 10px 0;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    /* border: 1px solid rgba(0, 0, 0, 0.05); */
+}
+
+.image-container {
+    width: 100vw;
+    max-width: 414px;
 }
 
 @media screen and (min-width: 1000px) {

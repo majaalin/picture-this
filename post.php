@@ -4,39 +4,32 @@
 $loggedInUser = $_SESSION['user']['user_id'];
 $photoId = $_GET['photo_id'];
 
+// Get photo from photo id
 $statement = $pdo->prepare('SELECT * FROM photos WHERE photo_id = :photo_id');
-
 $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
-
 $statement->execute();
-
 $photo = $statement->fetch(PDO::FETCH_ASSOC);
 
 if (!$photo) {
     $errors[] = "Can't find this photo!";
 }
 
+// Photo information
 $userId = $photo['user_id'];
 $caption = $photo['caption'];
 $image = $photo['image'];
 $date = $photo['date_created'];
 
-
+// Get user information from owner of photo
 $statement = $pdo->prepare('SELECT * FROM users WHERE user_id = :user_id');
-
 $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
-
 $statement->execute();
-
 $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-
+// Get likes number of likes 
 $statement = $pdo->prepare('SELECT * FROM likes WHERE photo_id = :photo_id');
-
 $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
-
 $statement->execute();
-
 $likes = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 if (!$likes) {
@@ -44,7 +37,6 @@ if (!$likes) {
 }
 
 $amoutOfLikes = count($likes);
-
 $amoutOfLikesWithoutUser = $amoutOfLikes - 1;
 
 foreach ($likes as $like) {

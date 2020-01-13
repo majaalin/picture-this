@@ -29,8 +29,7 @@
 
         <button type="submit">Create an account</button>
     </form>
-    <p class="new-account">Do you already have an account? <a href="/index.php" class="bold">
-Please login!</a></p>
+    <p class="new-account">Do you already have an account? <a href="/index.php" class="bold">Please login!</a></p>
     </div>
 </article>
 

@@ -1,19 +1,20 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
 <?php 
+
+// Get all photos from all users
 $statement = $pdo->prepare('SELECT * FROM photos ORDER BY date_created DESC');
-
 $statement->execute();
-
 $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <article>
-
 <img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+
 <h1>Search</h1>
 
-<form class="search" action="/app/users/search.php" method="get">
+<form class="search" action="/app/users/search-results.php" method="get">
 <input class="form-control" type="text" name="search" placeholder="Search for a user"> 
 </form>
 

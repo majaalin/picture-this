@@ -1,8 +1,4 @@
-<?php 
-
-$userId = $_SESSION['user']['user_id'];
-
-?>
+<?php $userId = $_SESSION['user']['user_id']; ?>
 
 <nav>
 <ul class="navbar-nav" id="navbar-nav">

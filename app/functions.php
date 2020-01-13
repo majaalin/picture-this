@@ -17,19 +17,5 @@ if (!function_exists('redirect')) {
     }
 }
 
-/**
-* Get all photos order by date 
-*
-* @param string $photos
-* @return array
-*/ 
-function getAllPhotos(array $photos)
-{
-    $statement = $pdo->prepare('SELECT * FROM photos ORDER BY date_created DESC');
-    
-    $statement->execute();
-    
-    $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
-}
 
 

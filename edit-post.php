@@ -1,38 +1,26 @@
-<?php require __DIR__.'/views/header.php'; ?>
+<?php require __DIR__.'/views/header.php'; 
 
-<?php 
+if(isset($_GET['photo_id'])){
+    $photoId = $_GET['photo_id'];
 
-?>
+    // Get photo from photo id
+    $statement = $pdo->prepare('SELECT * FROM photos WHERE photo_id = :photo_id');
+    $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
+    $statement->execute();
+    $photo = $statement->fetch(PDO::FETCH_ASSOC);
 
-
-    <?php  
-
-    if(isset($_GET['photo_id'])){
-        $photoId = $_GET['photo_id'];
-
-        $statement = $pdo->prepare('SELECT * FROM photos WHERE photo_id = :photo_id');
-
-        $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
-
-        $statement->execute();
-
-        $photo = $statement->fetch(PDO::FETCH_ASSOC);
-
+        // Photo information
         $image = $photo['image'];
         $caption = $photo['caption'];
         $userId = $photo['user_id'];
-    }
+}
 
-
-    if ($_SESSION['user']['user_id'] != $userId) {
-        $errors[] = "You can't edit that picture";
-
-        if (count($errors) > 0){
-            $_SESSION['errors'] = $errors;
-            redirect('/profile.php');
-            exit;
-    }
-
+// If photo id does not exist
+if ($_SESSION['user']['user_id'] != $userId) {
+    $errors[] = "You can't edit that picture";
+    $_SESSION['errors'] = $errors;
+    redirect('/profile.php');
+    exit;
 }
 
 ?>
@@ -47,9 +35,7 @@
 
     <img id="previewPost" class="image" src="/uploads/images/<?php echo $image ?>" alt="">
     <div class="avatar">
-            <label for="image">
-            
-Select an image</label></div>
+            <label for="image">Select an image</label></div>
             <input type="file" id="image" name="image" accept=".png, .jpg, .jpeg" onchange="document.getElementById('previewPost').src = window.URL.createObjectURL(this.files[0])">
     <button class="edit-profil" type="submit">Update photo</button>
 

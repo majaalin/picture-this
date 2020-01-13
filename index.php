@@ -2,7 +2,7 @@
 
 <article>
 
-    <!-- If user is inlogged -->
+    <!-- If user is logged in -->
     <?php if (isset($_SESSION['user'])) :?>
         <div class="login">
         <img src="/images/logo.png" alt="logo" class="logo">
@@ -15,7 +15,7 @@
     <?php endif; ?>
 
 
-    <!-- If user is not inlogged -->
+    <!-- If the user is not logged in -->
     <?php if (!isset($_SESSION['user'])) :?>
         <form action="app/users/login.php" method="post" class="login">
             <img src="/images/logo.png" alt="logo" class="logo">

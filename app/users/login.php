@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-// In this file we login users.
+// Login user
 
 if(isset($_POST['email'], $_POST['password'])){
     $email = strtolower(trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL)));
@@ -18,15 +18,17 @@ if(isset($_POST['email'], $_POST['password'])){
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
+    // If user do not exist and/or password do not match, exit
+
     if (!$user || !password_verify($password, $user['password'])){
         $errors[] = "Wrong email or password";
-    } 
-
-    if (count($errors) > 0){
+    
         $_SESSION['errors'] = $errors;
         redirect('/../../index.php');
         exit;
     }
+
+    // If user exist and password match, sign in 
     
     if (password_verify($password, $user['password'])){
         unset($user['password']);

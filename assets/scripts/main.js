@@ -1,5 +1,6 @@
 "use strict";
 
+// Make header hide and show when scrolling
 let prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
     let currentScrollPos = window.pageYOffset;
@@ -11,20 +12,7 @@ window.onscroll = function() {
     prevScrollpos = currentScrollPos;
 };
 
-function hoverCamera() {
-    document.getElementById("camera").src = "/icons/camera2.png";
-}
-function unhoverCamera() {
-    document.getElementById("camera").src = "/icons/camera.png";
-}
-
-function hoverUser() {
-    document.getElementById("user").src = "/icons/user2.png";
-}
-function unhoverUser() {
-    document.getElementById("user").src = "/icons/user.png";
-}
-
+// Go to previous page
 function goBack() {
     window.history.back();
 }

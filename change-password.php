@@ -10,17 +10,17 @@
     <div class="edit-profil-input">
             <label for="password">Old password</label>
             <input class="form-control" type="password" name="old_password" required>
-        </div><!-- /form-group -->
+        </div>
 
         <div class="edit-profil-input">
             <label for="password">New password</label>
             <input class="form-control" type="password" name="new_password" required>
-        </div><!-- /form-group -->
+        </div>
 
         <div class="edit-profil-input">
             <label for="password">Confirm new password</label>
             <input class="form-control" type="password" name="confirm_new_password" required>
-        </div><!-- /form-group -->
+        </div>
 
         <button type="submit" class="update-profile">Change password</button>
     </form>

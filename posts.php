@@ -5,69 +5,55 @@
 
 <?php 
 
+// Get people the user follows
 $loggedInUser = $_SESSION['user']['user_id'];
-
 $statement = $pdo->prepare("SELECT user_id_2 FROM follower WHERE user_id_1 = '$loggedInUser'");
-
 $statement->execute();
-
 $follows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($follows as $follow) :
-    $foll = $follow['user_id_2'];
+    $usersfollow = $follow['user_id_2'];
+
+    // Get all photo information from people the user follows   
+    $statement = $pdo->prepare("SELECT * FROM photos where user_id = :follow_user_id ORDER BY  date_created DESC");
+    $statement->bindParam(':follow_user_id', $usersfollow, PDO::PARAM_INT);
+    $statement->execute();
+    $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    // Get user information from people the user follows   
+    $statement = $pdo->prepare('SELECT * FROM users WHERE user_id = :user_id');
+    $statement->bindParam(':user_id', $usersfollow, PDO::PARAM_INT);
+    $statement->execute();
+    $users = $statement->fetchAll(PDO::FETCH_ASSOC);
     
-$statement = $pdo->prepare("SELECT * FROM photos where user_id = :user_id ORDER BY  date_created DESC");
+    foreach ($users as $user) {
+        $userId = $user['user_id'];
+        $username = $user['username'];
+        $fullName = $user['full_name'];
+        $biography = $user['biography'];
+        $avatar = $user['avatar'];
+    }
 
-$statement->bindParam(':user_id', $foll, PDO::PARAM_INT);
-
-$statement->execute();
-
-$photos = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-$statement = $pdo->prepare('SELECT * FROM users WHERE user_id = :user_id');
-
-$statement->bindParam(':user_id', $foll, PDO::PARAM_INT);
-
-$statement->execute();
-
-$users = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($users as $user) {
-
-$userId = $user['user_id'];
-$username = $user['username'];
-$fullName = $user['full_name'];
-$biography = $user['biography'];
-$avatar = $user['avatar'];
-}
-
-?>
-
-<?php foreach ($photos as $photo): 
-    
+// Get all photos from people the user follows 
+foreach ($photos as $photo) : 
     $photoId = $photo['photo_id'];
 
+    // Get number of likes from each photos 
     $statement = $pdo->prepare('SELECT * FROM likes WHERE photo_id = :photo_id');
-    
     $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
-    
     $statement->execute();
-    
     $likes = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    $amoutOfLikes = count($likes);
+    $amoutOfLikesWithoutUser = $amoutOfLikes - 1;
 
     if (!$likes) {
         $userIdLikes = 0;
     }
-    
-    $amoutOfLikes = count($likes);
-
-    $amoutOfLikesWithoutUser = $amoutOfLikes - 1;
 
     foreach ($likes as $like) {
         $userIdLikes =  $like['user_id'];
     }
-
-    $photoId = $photo['photo_id'];
 
     ?>
     <div class="all-posts-container">

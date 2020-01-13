@@ -1,17 +1,14 @@
-<?php require __DIR__.'/views/header.php'; ?>
-
-<?php 
+<?php require __DIR__.'/views/header.php'; 
 
 $userId = $_SESSION['user']['user_id'];
 
+// Get informatiom from user
 $statement = $pdo->prepare('SELECT * FROM users WHERE user_id = :user_id');
-
 $statement->bindParam(':user_id', $userId, PDO::PARAM_STR);
-
 $statement->execute();
-
 $user = $statement->fetch(PDO::FETCH_ASSOC);
 
+// User information
 $avatar = $user['avatar'];
 $email = $user['email'];
 $username = $user['username'];
@@ -20,13 +17,13 @@ $biography = $user['biography'];
 
 ?>
 
+<article>
 
 <img src="/icons/back.png" alt="" class="back" onclick="goBack()">
-<article>
 
     <h1>Edit profile</h1>
 
-<form class="edit-profil-container" action="/app/users/profile.php" method="post" enctype="multipart/form-data">
+        <form class="edit-profil-container" action="/app/users/edit-profile.php" method="post" enctype="multipart/form-data">
             <div class="avatar">
                 <?php if (!$avatar) : ?>
                 <img id="previewAvatar" src="/uploads/no-image.png" alt="">

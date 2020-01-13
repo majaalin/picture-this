@@ -34,7 +34,7 @@
     object-fit: cover;
     width: 100vw;
     height: 414px;
-    max-width: 414px;
+    width: 414px;
 }
 
 .like-container {
