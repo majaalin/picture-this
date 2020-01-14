@@ -53,7 +53,11 @@ foreach ($likes as $like) {
     <button type="submit" name="user_id" value="<?php echo $user['user_id'] ?>">
     <ul>
         <li class="avatar-user">
-            <img class="avatar" src="/uploads/<?php echo $user['avatar'] ?>" alt="">
+            <?php if (!$user['avatar']): ?>
+                <img class="avatar" src="/images/no-avatar.png" alt="">
+                <?php else: ?>
+                    <img class="avatar" src="/uploads/<?php echo $user['avatar'] ?>" alt="">
+            <?php endif; ?>
             <p class="username"><?php echo $user['username'] ?></p></li>
         </button>
     </form>

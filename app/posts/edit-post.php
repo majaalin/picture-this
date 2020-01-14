@@ -10,6 +10,7 @@ if(!isset($_SESSION['user'])) {
 
 $userId = $_SESSION['user']['user_id'];
 
+// Get post information
 $statement = $pdo->prepare('SELECT user_id FROM photos WHERE user_id = :photo_id');
 
 $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
@@ -17,6 +18,7 @@ $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
 $statement->execute();
 
 $photos = $statement->fetch(PDO::FETCH_ASSOC);
+
 
 if(isset($_GET['photo_id'])){
     $photoId = $_GET['photo_id'];

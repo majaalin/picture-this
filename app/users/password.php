@@ -16,7 +16,6 @@ if(!isset($_SESSION['user'])) {
     exit;
 }
 
-
 if (isset($_POST['old_password'], $_POST['new_password'], $_POST['confirm_new_password'])) {
     $oldPassword = $_POST['old_password'];
 

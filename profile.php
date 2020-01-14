@@ -75,7 +75,11 @@ if (isset($_GET['user_id'])){
         <h1><?php echo $username ?></h1>
 
     <ul class="profile-information">
-        <li><img class="avatar bigger" src="/uploads/<?php echo $avatar; ?>"alt=""></li>
+        <?php if (!$avatar): ?>
+            <li><img class="avatar bigger" src="/images/no-avatar.png"alt=""></li>
+            <?php else: ?>
+                <li><img class="avatar bigger" src="/uploads/<?php echo $avatar; ?>"alt=""></li>
+        <?php endif; ?>
         <li><p class="bold"><?php echo $amountOfPosts ?></p><span>Posts</span></li>
         <li><p class="bold"><?php echo $amountOfFollowers ?></p><span>Followers</span></li>
         <li><p class="bold"><?php echo $amountOfFollows ?></p><span>Follows</span></li>

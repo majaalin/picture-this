@@ -12,13 +12,12 @@ $userId = $_SESSION['user']['user_id'];
 $successes = [];
 $errors = [];
 
-
 // Find user that is logged in
-
 $findUser = $pdo->prepare("SELECT * FROM users WHERE user_id=?");
 $findUser->execute([$userId]); 
 $user = $findUser->fetch();
 
+// Information about the user
 $oldUsername = $user['username'];
 $oldEmail = $user['email'];
 $oldFullName = $user['full_name'];
@@ -28,6 +27,7 @@ $oldAvatar = $user['avatar'];
 
 if (isset($_POST['update'])) {
 
+    // Update avatar 
     if (isset($_FILES['avatar'])) {
         $avatar = $_FILES['avatar'];
         $destination = __DIR__.'/../../uploads/'.date('ymd')."-".$_FILES['avatar']['name'];
@@ -46,7 +46,7 @@ if (isset($_POST['update'])) {
 
     }}
 
-
+    // Update email
     if (isset($_POST['email'])) {
             $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 
@@ -55,7 +55,6 @@ if (isset($_POST['update'])) {
             $emailExist = $checkForEmail->fetch();
 
             if ($oldEmail != $email) {
-                
 
             if ($emailExist) {
                 $errors[] = "Email already exists!";
@@ -75,7 +74,7 @@ if (isset($_POST['update'])) {
             $successes[] = "Your email were successfully updated";
                 
   }}}
-
+        // Update username
         if (isset($_POST['username'])) {
                 $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
 
@@ -105,7 +104,7 @@ if (isset($_POST['update'])) {
                 }}
         
  }
-
+        // Update full name
         if (isset($_POST['full_name'])) {
             $fullName = filter_var($_POST['full_name'], FILTER_SANITIZE_STRING);
 
@@ -126,6 +125,7 @@ if (isset($_POST['update'])) {
         }
     }
 
+    // Update biography
     if (isset($_POST['biography'])) {
         $biography = filter_var($_POST['biography'], FILTER_SANITIZE_STRING);
 

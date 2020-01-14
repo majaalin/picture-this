@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
+// Get post information
 if(isset($_GET['photo_id'])){
     $photoId = $_GET['photo_id'];
 
@@ -30,6 +31,7 @@ if (count($errors) > 0){
     exit;
 }
 
+// Delete post
 if(isset($_POST)){
    if(isset($_GET['photo_id'])) {
     

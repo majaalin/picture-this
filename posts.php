@@ -11,6 +11,10 @@ $statement = $pdo->prepare("SELECT user_id_2 FROM follower WHERE user_id_1 = '$l
 $statement->execute();
 $follows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+if (!$follows ) {
+    echo "<br>You don't follow anyone yet";
+}
+
 foreach ($follows as $follow) :
     $usersfollow = $follow['user_id_2'];
 
@@ -61,7 +65,11 @@ foreach ($photos as $photo) :
     <button type="submit" name="user_id" value="<?php echo $user['user_id'] ?>">
     <ul>
         <li class="avatar-user">
-            <img class="avatar" src="/uploads/<?php echo $user['avatar'] ?>" alt="">
+            <?php if (!$user['avatar']): ?>
+                <img class="avatar" src="/images/no-avatar.png" alt="">
+                <?php else: ?>
+                    <img class="avatar" src="/uploads/<?php echo $user['avatar'] ?>" alt="">
+            <?php endif; ?>
             <p class="username"><?php echo $user['username'] ?></p></li>
     </ul>
         </button>

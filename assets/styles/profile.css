@@ -80,9 +80,9 @@ article .my-posts {
 .logout {
     width: 90vw;
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.01);
-    border-radius: 5px;
+    background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     margin: 5px 0;
     max-width: 414px;
 }

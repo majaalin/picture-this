@@ -26,7 +26,7 @@ $biography = $user['biography'];
         <form class="edit-profil-container" action="/app/users/edit-profile.php" method="post" enctype="multipart/form-data">
             <div class="avatar">
                 <?php if (!$avatar) : ?>
-                <img id="previewAvatar" src="/uploads/no-image.png" alt="">
+                <img id="previewAvatar" src="/images/no-avatar.png" alt="">
                 <label for="avatar">Add a profile picture</label>
                 <?php else : ?>
                     <img id="previewAvatar" src="/uploads/<?php echo $avatar; ?>" alt="">
