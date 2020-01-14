@@ -4,10 +4,6 @@
 
 The assignment is to create a Instagram clone we call Picture This.
 
-## Link 
-
-
-
 ## Installation
 1. Clone down the project to your computer
 
