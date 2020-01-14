@@ -66,6 +66,7 @@
 
 .avatar-user-container {
     width: 100vw;
+    max-width: 414px;
     display: flex;
     justify-content: space-between;
     align-items: center;

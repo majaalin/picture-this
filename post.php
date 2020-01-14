@@ -78,15 +78,15 @@ foreach ($likes as $like) {
     <?php if ($userIdLikes != $loggedInUser): ?>
         <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/not-liked.png" alt="heart"></button>
         <?php if ($amoutOfLikes >= 1): ?>
-            <p>Liked of <?php echo $amoutOfLikes?> people</p>
+            <p>Liked by <?php echo $amoutOfLikes?> people</p>
         <?php endif; ?>
         </form>
         <?php elseif ($userIdLikes === $loggedInUser) : ?>
                 <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/liked.png" alt="heart"></button>
                 <?php if ($amoutOfLikes > 1): ?>
-                <p>Liked of you and <?php echo $amoutOfLikesWithoutUser ?> people</p>    
+                <p>Liked by you and <?php echo $amoutOfLikesWithoutUser ?> people</p>    
                 <?php else : ?>
-                <p>Liked of you</p>
+                <p>Liked by you</p>
                 <?php endif; ?>    
             </form>
     <?php endif; ?>
