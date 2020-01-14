@@ -13,8 +13,8 @@ The assignment is to create a Instagram clone we call Picture This.
 2. Open the index.html file in your browser
 
 ## Testers
-- 
-- 
+- Julia Karlsson
+- Victor Ljungblad
 
 ## Code Reviews
 From X
