@@ -10,7 +10,7 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <article>
-<img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+<img src="/icons/back.png" alt="back" class="back" onclick="goBack()">
 
 <h1>Search</h1>
 
@@ -24,7 +24,7 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 <?php foreach ($photos as $photo) : ?>
     <form action="/post.php" method="GET">
     <button type="submit" name="photo_id" value="<?php echo $photo['photo_id'] ?>">
-    <img class="small-image" src="/uploads/images/<?php echo $photo['image']; ?>" alt="">
+    <img class="small-image" src="/uploads/images/<?php echo $photo['image']; ?>" alt="small-image">
     </button>
     </form>
     <?php endforeach ?>

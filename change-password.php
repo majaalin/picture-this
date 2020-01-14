@@ -1,7 +1,7 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
 <article>
-<img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+<img src="/icons/back.png" alt="back" class="back" onclick="goBack()">
 
     <h1>Change password</h1>
 

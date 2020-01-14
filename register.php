@@ -2,7 +2,7 @@
 
 <article>
     <div class="login">
-    <img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+    <img src="/icons/back.png" alt="back" class="back" onclick="goBack()">
 
     <h1>Create an account</h1>
 

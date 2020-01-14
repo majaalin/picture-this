@@ -66,9 +66,9 @@ foreach ($photos as $photo) :
     <ul>
         <li class="avatar-user">
             <?php if (!$user['avatar']): ?>
-                <img class="avatar" src="/images/no-avatar.png" alt="">
+                <img class="avatar" src="/images/no-avatar.png" alt="avatar">
                 <?php else: ?>
-                    <img class="avatar" src="/uploads/<?php echo $user['avatar'] ?>" alt="">
+                    <img class="avatar" src="/uploads/<?php echo $user['avatar'] ?>" alt="avatar">
             <?php endif; ?>
             <p class="username"><?php echo $user['username'] ?></p></li>
     </ul>
@@ -79,13 +79,13 @@ foreach ($photos as $photo) :
     </div>
     <form class="like-container" action="/app/posts/like.php" method="GET">
     <?php if ($userIdLikes != $loggedInUser): ?>
-        <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/not-liked.png" alt=""></button>
+        <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/not-liked.png" alt="heart"></button>
         <?php if ($amoutOfLikes >= 1): ?>
             <p>Liked of <?php echo $amoutOfLikes?> people</p>
         <?php endif; ?>
         </form>
         <?php elseif ($userIdLikes === $loggedInUser) : ?>
-                <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/liked.png" alt=""></button>
+                <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/liked.png" alt="heart"></button>
                 <?php if ($amoutOfLikes > 1): ?>
                 <p>Liked of you and <?php echo $amoutOfLikesWithoutUser ?> people</p>    
                 <?php else : ?>

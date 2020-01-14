@@ -10,7 +10,7 @@ $otherUsers = $statement->fetchAll(PDO::FETCH_ASSOC);
 <article class="search-result">
 <h1>Search</h1>
 
-<img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+<img src="/icons/back.png" alt="back" class="back" onclick="goBack()">
 
 <form class="search" action="/app/users/search-results.php" method="get">
 <input class="form-control" type="text" name="search" placeholder="Search"> 
@@ -21,9 +21,9 @@ $otherUsers = $statement->fetchAll(PDO::FETCH_ASSOC);
     <form class="search-user" action="/profile.php" method="GET">
     <button type="submit" name="user_id" value="<?php echo $user['user_id'] ?>">
     <?php if (!$user['avatar']): ?>
-        <img class="avatar" src="/images/no-avatar.png" alt="">
+        <img class="avatar" src="/images/no-avatar.png" alt="avatar">
         <?php else : ?>
-            <img class="avatar" src="/uploads/<?php echo $user['avatar'] ?>" alt="">
+            <img class="avatar" src="/uploads/<?php echo $user['avatar'] ?>" alt="avatar">
     <?php endif; ?>
         <div class="name">
         <p class="username"><?php echo $user['username'] ?></p>
@@ -38,9 +38,9 @@ $otherUsers = $statement->fetchAll(PDO::FETCH_ASSOC);
     <form class="search-user" action="/profile.php" method="GET">
     <button type="submit" name="user_id" value="<?php echo $otherUser['user_id'] ?>">
     <?php if (!$otherUser['avatar']): ?>
-        <img class="avatar" src="/images/no-avatar.png" alt="">
+        <img class="avatar" src="/images/no-avatar.png" alt="avatar">
         <?php else : ?>
-            <img class="avatar" src="/uploads/<?php echo $otherUser['avatar'] ?>" alt="">
+            <img class="avatar" src="/uploads/<?php echo $otherUser['avatar'] ?>" alt="avatar">
     <?php endif; ?>
         <div class="name">
         <p class="username"><?php echo $otherUser['username'] ?></p>

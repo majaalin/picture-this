@@ -1,7 +1,7 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
 <article>
-    <img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+    <img src="/icons/back.png" alt="back" class="back" onclick="goBack()">
     <h1>New posts</h1>
     <form class="new-form" action="/app/posts/new-post.php" method="post" enctype="multipart/form-data">
     <img src="/images/no-picture.png" id="previewImage" class="image"/>

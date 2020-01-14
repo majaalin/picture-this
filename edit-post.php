@@ -28,12 +28,12 @@ if ($_SESSION['user']['user_id'] != $userId) {
 
 <article class="edit-post">
 
-<img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+<img src="/icons/back.png" alt="back" class="back" onclick="goBack()">
     <h1>Edit posts</h1>
 
     <form class="edit-profil-input" action="/app/posts/edit-post.php?photo_id=<?php echo $photoId ?>" method="post" enctype="multipart/form-data">
 
-    <img id="previewPost" class="image" src="/uploads/images/<?php echo $image ?>" alt="">
+    <img id="previewPost" class="image" src="/uploads/images/<?php echo $image ?>" alt="preview">
     <div class="avatar">
             <label for="image">Select an image</label></div>
             <input type="file" id="image" name="image" accept=".png, .jpg, .jpeg" onchange="document.getElementById('previewPost').src = window.URL.createObjectURL(this.files[0])">

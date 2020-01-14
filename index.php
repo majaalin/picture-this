@@ -6,7 +6,7 @@
     <?php if (isset($_SESSION['user'])) :?>
         <div class="login">
         <img src="/images/logo.png" alt="logo" class="logo">
-        <img class="avatar" src="/uploads/<?php echo $_SESSION['user']['avatar']; ?>" alt="">
+        <img class="avatar" src="/uploads/<?php echo $user; ?>" alt="avatar">
         <p class="username"><?php echo $_SESSION['user']['username']; ?></p>
         <button><a href="/posts.php">Login</a></button>
         <p class="diffrent-account"><a href="/app/users/logout.php">Login with a diffrent account</a></p>

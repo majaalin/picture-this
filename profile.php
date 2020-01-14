@@ -70,15 +70,15 @@ if (isset($_GET['user_id'])){
 
 <article class="my-posts">
 
-<a href="/posts.php"><img src="/icons/back.png" alt="" class="back"></a>
+<a href="/posts.php"><img src="/icons/back.png" alt="back" class="back"></a>
 
         <h1><?php echo $username ?></h1>
 
     <ul class="profile-information">
         <?php if (!$avatar): ?>
-            <li><img class="avatar bigger" src="/images/no-avatar.png"alt=""></li>
+            <li><img class="avatar bigger" src="/images/no-avatar.png" alt="avatar"></li>
             <?php else: ?>
-                <li><img class="avatar bigger" src="/uploads/<?php echo $avatar; ?>"alt=""></li>
+                <li><img class="avatar bigger" src="/uploads/<?php echo $avatar; ?>"alt="avatar"></li>
         <?php endif; ?>
         <li><p class="bold"><?php echo $amountOfPosts ?></p><span>Posts</span></li>
         <li><p class="bold"><?php echo $amountOfFollowers ?></p><span>Followers</span></li>
@@ -113,7 +113,7 @@ if (isset($_GET['user_id'])){
 <?php foreach ($photos as $photo) : ?>
     <form action="/post.php" method="GET">
     <button type="submit" name="photo_id" value="<?php echo $photo['photo_id'] ?>">
-    <img class="small-image" src="/uploads/images/<?php echo $photo['image']; ?>" alt="">
+    <img class="small-image" src="/uploads/images/<?php echo $photo['image']; ?>" alt="small-image">
     </button>
     </form>
     

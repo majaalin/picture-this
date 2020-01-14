@@ -19,17 +19,17 @@ $biography = $user['biography'];
 
 <article>
 
-<img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+<img src="/icons/back.png" alt="back" class="back" onclick="goBack()">
 
     <h1>Edit profile</h1>
 
         <form class="edit-profil-container" action="/app/users/edit-profile.php" method="post" enctype="multipart/form-data">
             <div class="avatar">
                 <?php if (!$avatar) : ?>
-                <img id="previewAvatar" src="/images/no-avatar.png" alt="">
+                <img id="previewAvatar" src="/images/no-avatar.png" alt="avatar">
                 <label for="avatar">Add a profile picture</label>
                 <?php else : ?>
-                    <img id="previewAvatar" src="/uploads/<?php echo $avatar; ?>" alt="">
+                    <img id="previewAvatar" src="/uploads/<?php echo $avatar; ?>" alt="avatar">
                 <label for="avatar">Change profile picture</label>
                 <?php endif ?>
                 <input type="file" name="avatar" id="avatar" accept=".png, .jpg, .jpeg" onchange="document.getElementById('previewAvatar').src = window.URL.createObjectURL(this.files[0])">

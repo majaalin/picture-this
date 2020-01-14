@@ -45,7 +45,7 @@ foreach ($likes as $like) {
 
 ?>
 <article>
-<img src="/icons/back.png" alt="" class="back" onclick="goBack()">
+<img src="/icons/back.png" alt="back" class="back" onclick="goBack()">
     <h1><?php echo $user['username'] ?></h1>
 <div class="all-posts-container">
     <div class="avatar-user-container">
@@ -54,9 +54,9 @@ foreach ($likes as $like) {
     <ul>
         <li class="avatar-user">
             <?php if (!$user['avatar']): ?>
-                <img class="avatar" src="/images/no-avatar.png" alt="">
+                <img class="avatar" src="/images/no-avatar.png" alt="avatar">
                 <?php else: ?>
-                    <img class="avatar" src="/uploads/<?php echo $user['avatar'] ?>" alt="">
+                    <img class="avatar" src="/uploads/<?php echo $user['avatar'] ?>" alt="avatar">
             <?php endif; ?>
             <p class="username"><?php echo $user['username'] ?></p></li>
         </button>
@@ -64,7 +64,7 @@ foreach ($likes as $like) {
         <?php if ($loggedInUser === $user['user_id']): ?>
         <form action="/edit-post.php" method="GET">
         <li class="more">
-        <button type="submit" name="photo_id" value="<?php echo $photoId ?>"><img class="icon" src="/icons/more.png" alt="">
+        <button type="submit" name="photo_id" value="<?php echo $photoId ?>"><img class="icon" src="/icons/more.png" alt="more">
         </button>
         </li>
         </form>
@@ -76,13 +76,13 @@ foreach ($likes as $like) {
     </div>
     <form class="like-container" action="/app/posts/like.php" method="GET">
     <?php if ($userIdLikes != $loggedInUser): ?>
-        <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/not-liked.png" alt=""></button>
+        <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/not-liked.png" alt="heart"></button>
         <?php if ($amoutOfLikes >= 1): ?>
             <p>Liked of <?php echo $amoutOfLikes?> people</p>
         <?php endif; ?>
         </form>
         <?php elseif ($userIdLikes === $loggedInUser) : ?>
-                <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/liked.png" alt=""></button>
+                <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/liked.png" alt="heart"></button>
                 <?php if ($amoutOfLikes > 1): ?>
                 <p>Liked of you and <?php echo $amoutOfLikesWithoutUser ?> people</p>    
                 <?php else : ?>

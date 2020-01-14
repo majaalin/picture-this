@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
+if(!isset($_SESSION['user'])) {
+    redirect('/');
+}
+
 // Get post information
 if(isset($_GET['photo_id'])){
     $photoId = $_GET['photo_id'];
