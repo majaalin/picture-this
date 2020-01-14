@@ -113,7 +113,7 @@ if (isset($_GET['user_id'])){
 <?php foreach ($photos as $photo) : ?>
     <form action="/post.php" method="GET">
     <button type="submit" name="photo_id" value="<?php echo $photo['photo_id'] ?>">
-    <img class="small-image" src="/uploads/images/<?php echo $photo['image']; ?>" alt="small-image">
+    <img class="small-image" src="/uploads/<?php echo $photo['image']; ?>" alt="small-image">
     </button>
     </form>
     

@@ -72,7 +72,7 @@ foreach ($likes as $like) {
     <?php endif; ?>
     </div>
     <div class="image-container">
-    <img class="image" id="<?php echo $photoId?>" src="/uploads/images/<?php echo $photo['image']; ?>" alt="<?php echo $photoId?>" loading="lazy">
+    <img class="image" id="<?php echo $photoId?>" src="/uploads/<?php echo $photo['image']; ?>" alt="<?php echo $photoId?>" loading="lazy">
     </div>
     <form class="like-container" action="/app/posts/like.php" method="GET">
     <?php if ($userIdLikes != $loggedInUser): ?>

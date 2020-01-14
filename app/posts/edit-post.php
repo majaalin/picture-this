@@ -25,7 +25,7 @@ if(isset($_GET['photo_id'])){
 
     if (isset($_FILES['image'])) {
         $image = $_FILES['image'];
-        $destination = __DIR__.'/../../uploads/images/'.date('ymd')."-".$_FILES['image']['name'];
+        $destination = __DIR__.'/../../uploads/'.date('ymd')."-".$_FILES['image']['name'];
         move_uploaded_file($image['tmp_name'], $destination); 
         $imagePath = date('ymd')."-".$_FILES['image']['name'];
 
