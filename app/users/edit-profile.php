@@ -42,7 +42,7 @@ if (isset($_POST['update'])) {
             $statement->bindParam(":user_id", $userId);
             $statement->execute();
         
-            $successes[] = "Your profile picture was successfully updated";
+            $successes[] = "Your profile was successfully updated";
 
     }}
 
@@ -142,7 +142,7 @@ if (isset($_POST['update'])) {
             ':biography' => $biography,
             ]);
 
-            $successes[] = "Your biography was successfully updated";
+            $successes[] = "Your profile was successfully updated";
             
         }}
 
