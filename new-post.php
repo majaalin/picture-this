@@ -21,7 +21,7 @@ if(!isset($_SESSION['user'])) {
         <div class="form-group">
             <textarea class="form-control" type="text" name="caption" rows="5" cols="50" placeholder="Add a caption"></textarea>
         </div>
-        <button class="update-profile" type="submit" name="update">Make a post</button>
+        <button class="update-profile" type="submit" name="update">Post</button>
     </form>
 </article>
 

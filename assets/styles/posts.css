@@ -80,10 +80,9 @@
 }
 
 .feed-is-empty {
-    max-width: 70vw;
+    max-width: 90vw;
     font-weight: 500;
-    background-color: #2800f5;
-    color: white;
+    color: black;
     padding: 10px;
     text-align: center;
     border: 5px solid #fafafa;

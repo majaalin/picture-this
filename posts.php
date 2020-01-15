@@ -23,7 +23,7 @@ $follows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 <?php if (!$follows): ?>
 <div class="feed-is-empty-container">
-        <p class="feed-is-empty">Your feed is empty! To view posts, start following other users.</p>
+        <p class="feed-is-empty">Your feed is empty!<br>To view posts, start following other users.</p>
         </div>
     <?php endif; ?>
 
