@@ -1,6 +1,15 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
 <?php 
+
+// If user not logged in
+if(!isset($_SESSION['user'])) {
+    $errors[] = "You need to login";
+    $_SESSION['errors'] = $errors;
+    redirect("/");
+    exit;
+}
+
 // Get all users from database
 $statement = $pdo->prepare('SELECT * FROM users');
 $statement->execute();

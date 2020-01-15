@@ -1,4 +1,13 @@
-<?php require __DIR__.'/views/header.php'; ?>
+<?php require __DIR__.'/views/header.php'; 
+
+// If user not logged in
+if(!isset($_SESSION['user'])) {
+    $errors[] = "You need to login";
+    $_SESSION['errors'] = $errors;
+    redirect("/");
+    exit;
+}
+?>
 
 <article>
     <img src="/icons/back.png" alt="back" class="back" onclick="goBack()">

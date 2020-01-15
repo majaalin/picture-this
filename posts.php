@@ -5,15 +5,29 @@
 
 <?php 
 
+// If user not logged in
+if(!isset($_SESSION['user'])) {
+    $errors[] = "You need to login";
+    $_SESSION['errors'] = $errors;
+    redirect("/");
+    exit;
+}
+
 // Get people the user follows
 $loggedInUser = $_SESSION['user']['user_id'];
 $statement = $pdo->prepare("SELECT user_id_2 FROM follower WHERE user_id_1 = '$loggedInUser'");
 $statement->execute();
 $follows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-if (!$follows ) {
-    echo "<br>Your feed is empty! To view posts, start following other users.";
-}
+?>
+
+<?php if (!$follows): ?>
+<div class="feed-is-empty-container">
+        <p class="feed-is-empty">Your feed is empty! To view posts, start following other users.</p>
+        </div>
+    <?php endif; ?>
+
+<?php 
 
 foreach ($follows as $follow) :
     $usersfollow = $follow['user_id_2'];
@@ -54,6 +68,9 @@ foreach ($photos as $photo) :
     if (!$likes) {
         $userIdLikes = 0;
     }
+    ?>
+
+    <?php 
 
     foreach ($likes as $like) {
         $userIdLikes =  $like['user_id'];

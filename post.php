@@ -4,6 +4,14 @@
 $loggedInUser = $_SESSION['user']['user_id'];
 $photoId = $_GET['photo_id'];
 
+// If user not logged in
+if(!isset($_SESSION['user'])) {
+    $errors[] = "You need to login";
+    $_SESSION['errors'] = $errors;
+    redirect("/");
+    exit;
+}
+
 // Get photo from photo id
 $statement = $pdo->prepare('SELECT * FROM photos WHERE photo_id = :photo_id');
 $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);

@@ -3,6 +3,15 @@
 <?php 
 
 // Get all photos from all users
+
+// If user not logged in
+if(!isset($_SESSION['user'])) {
+    $errors[] = "You need to login";
+    $_SESSION['errors'] = $errors;
+    redirect("/");
+    exit;
+}
+
 $statement = $pdo->prepare('SELECT * FROM photos ORDER BY date_created DESC');
 $statement->execute();
 $photos = $statement->fetchAll(PDO::FETCH_ASSOC);

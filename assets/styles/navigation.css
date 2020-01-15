@@ -21,6 +21,10 @@ nav .navbar-nav {
     width: 25px;
 }
 
+.icon.plus {
+    width: 30px;
+}
+
 .footer {
     width: 100vw;
     height: 50px;
@@ -50,6 +54,10 @@ nav .navbar-nav {
 
     .icon {
         width: 30px;
+    }
+
+    .icon.plus {
+        width: 35px;
     }
 
     .back {

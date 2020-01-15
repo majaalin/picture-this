@@ -11,7 +11,7 @@ require __DIR__.'/../app/likes.php';
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Document</title>
+<title>Picture this</title>
 
     <link rel="stylesheet" href="/assets/styles/main.css">
     <link rel="stylesheet" href="/assets/styles/index.css"> 
@@ -28,5 +28,7 @@ require __DIR__.'/../app/likes.php';
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600,700,800&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<!-- Adds error and success message to all files -->
 <?php require __DIR__.'/messages.php'; ?>
 

@@ -10,7 +10,7 @@
 }
 
 body {
-    background-color: #fdfdfd;
+    background-color: #fafafa;
 }
 
 h1 {
@@ -26,6 +26,7 @@ article {
     justify-content: center;
     align-items: center;
     width: 100vw;
+    position: ;
 }
 
 article .all {
@@ -168,6 +169,7 @@ a {
     background-color: white;
     margin: 10px 0;
     padding: 10px 0;
+    border-radius: 5px;
     /* border: 1px solid rgba(0, 0, 0, 0.05); */
 }
 

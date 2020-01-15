@@ -1,5 +1,13 @@
 <?php require __DIR__.'/views/header.php'; 
 
+// If user not logged in
+if(!isset($_SESSION['user'])) {
+    $errors[] = "You need to login";
+    $_SESSION['errors'] = $errors;
+    redirect("/");
+    exit;
+}
+
 if(isset($_GET['photo_id'])){
     $photoId = $_GET['photo_id'];
 
@@ -28,7 +36,7 @@ if ($_SESSION['user']['user_id'] != $userId) {
 
 <article class="edit-post">
 
-<img src="/icons/back.png" alt="back" class="back" onclick="goBack()">
+<a href="/post.php?photo_id=<?php echo $photoId ?>"><img src="/icons/back.png" alt="back" class="back"></a>
     <h1>Edit post</h1>
 
     <form class="edit-profil-input" action="/app/posts/edit-post.php?photo_id=<?php echo $photoId ?>" method="post" enctype="multipart/form-data">

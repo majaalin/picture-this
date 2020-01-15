@@ -70,3 +70,22 @@
     margin: 0 0 0px 10px;
     color: rgba(0, 0, 0, 0.5);
 }
+
+.feed-is-empty-container {
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feed-is-empty {
+    max-width: 70vw;
+    font-weight: 500;
+    background-color: #2800f5;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border: 5px solid #fafafa;
+    border-radius: 20px;
+}

@@ -42,7 +42,7 @@ if (isset($_POST['update'])) {
             $statement->bindParam(":user_id", $userId);
             $statement->execute();
         
-            $successes[] = "Your avatar was successfully updated";
+            $successes[] = "Your profile picture was successfully updated";
 
     }}
 
