@@ -22,7 +22,7 @@
     border: tomato 2px solid;
 }
 
-@-webkit-keyframes messages-animation {
+@keyframes messages-animation {
     0% {
         top: 0;
     }
