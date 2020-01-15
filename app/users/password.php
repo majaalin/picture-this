@@ -27,12 +27,12 @@ if (isset($_POST['old_password'], $_POST['new_password'], $_POST['confirm_new_pa
 
      // If the password does not match the old password
     if (!password_verify($oldPassword, $user['password'])){
-        $errors[] = "Old password dosen't match";
+        $errors[] = "Old password doesn't match";
     } 
     
      // If the password does not match the confirm password
     if ($_POST['new_password'] !== $_POST['confirm_new_password']) {
-        $errors[] = "Your new password dosen't match";
+        $errors[] = "Your new password doesn't match";
     
     // Update password
     } else {
@@ -51,7 +51,7 @@ if (isset($_POST['old_password'], $_POST['new_password'], $_POST['confirm_new_pa
         ':new_password' => $newPassword,
         ]);
         
-        $successes[] = "Your password were successfully updated";
+        $successes[] = "Your password was successfully updated";
 
 }
 if (count($errors) > 0){

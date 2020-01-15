@@ -51,7 +51,7 @@ if (isset($_FILES['image'], $_POST['caption'])) {
     
     $statement->execute();
 
-    $successes[] = "Photo uploaded!";
+    $successes[] = "Your post was successfully uploaded!";
 
     if (count($successes) > 0){
         $_SESSION['successes'] = $successes;

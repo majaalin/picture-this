@@ -30,7 +30,7 @@ if(isset($_GET['photo_id'])){
         $imagePath = date('ymd')."-".$_FILES['image']['name'];
 
         if ($imagePath === date('ymd')."-") {
-            $errors[] = "You have not choosen a picture";
+            $errors[] = "You have not choosen a photo";
         }
 
         if (count($errors) > 0){
@@ -50,7 +50,7 @@ if(isset($_GET['photo_id'])){
         
         $statement->execute();
     
-        $successes[] = "Image is uppdated!";
+        $successes[] = "Your photo was successfully updated!";
 
     }
 
@@ -68,7 +68,7 @@ if(isset($_GET['photo_id'])){
         
         $statement->execute();
 
-        $successes[] = "Caption is uppdated!";
+        $successes[] = "Your caption was successfully updated!";
     }
 
     if (count($successes) > 0){

@@ -26,7 +26,7 @@ if(isset($_GET['photo_id'])){
 }
 
 if ($_SESSION['user']['user_id'] != $userId) {
-    $errors[] = "You can't delete that picture";
+    $errors[] = "You can't delete this post";
 }
 
 if (count($errors) > 0){
@@ -45,7 +45,7 @@ if(isset($_POST)){
     
     $statement->execute();
 
-    $successes[] = "Your post is deleted";
+    $successes[] = "Your post was deleted";
 }
 
     if (count($successes) > 0){

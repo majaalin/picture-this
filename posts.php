@@ -12,7 +12,7 @@ $statement->execute();
 $follows = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 if (!$follows ) {
-    echo "<br>You don't follow anyone yet";
+    echo "<br>Your feed is empty! To view posts, start following other users.";
 }
 
 foreach ($follows as $follow) :
@@ -81,13 +81,13 @@ foreach ($photos as $photo) :
     <?php if ($userIdLikes != $loggedInUser): ?>
         <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/not-liked.png" alt="heart"></button>
         <?php if ($amoutOfLikes >= 1): ?>
-            <p>Liked by <?php echo $amoutOfLikes?> people</p>
+            <p>Liked by <?php echo $amoutOfLikes?></p>
         <?php endif; ?>
         </form>
         <?php elseif ($userIdLikes === $loggedInUser) : ?>
                 <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/liked.png" alt="heart"></button>
                 <?php if ($amoutOfLikes > 1): ?>
-                <p>Liked by you and <?php echo $amoutOfLikesWithoutUser ?> people</p>    
+                <p>Liked by you and <?php echo $amoutOfLikesWithoutUser ?> more</p>    
                 <?php else : ?>
                 <p>Liked by you</p>
                 <?php endif; ?>    

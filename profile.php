@@ -12,7 +12,7 @@ $user = $statement->fetch(PDO::FETCH_ASSOC);
 
 // If user do not exist
 if (!$user) {
-            $errors[] = "Can't find this user";
+            $errors[] = "Can't find user";
             $_SESSION['errors'] = $errors;
             redirect("/posts.php");
             exit;
@@ -26,7 +26,7 @@ $avatar = $user['avatar'];
 
 // Get photos from profile owner
 $statement = $pdo->prepare('SELECT * FROM photos WHERE user_id = :user_id ORDER BY  date_created DESC');
-$statement->bindParam(':user_id', $userId, PDO::PARAM_STR);
+$statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
 $statement->execute();
 $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -82,7 +82,7 @@ if (isset($_GET['user_id'])){
         <?php endif; ?>
         <li><p class="bold"><?php echo $amountOfPosts ?></p><span>Posts</span></li>
         <li><p class="bold"><?php echo $amountOfFollowers ?></p><span>Followers</span></li>
-        <li><p class="bold"><?php echo $amountOfFollows ?></p><span>Follows</span></li>
+        <li><p class="bold"><?php echo $amountOfFollows ?></p><span>Following</span></li>
     </ul>
 
     <ul class="profile-about">
@@ -92,7 +92,7 @@ if (isset($_GET['user_id'])){
 
     <!-- If logged in user is the profile owner   -->
     <?php if ($loggedInUser == $userId) : ?>
-            <button class="edit-profil"><a href="/edit-profile.php">Edit profil</a></button>
+            <button class="edit-profil"><a href="/edit-profile.php">Edit profile</a></button>
             <button class="logout"><a href="/app/users/logout.php" onclick="return confirm('Are you sure you want to logout?')">Logout</a></button>
     <!-- If logged in user is a visitor  -->
         <?php elseif ($loggedInUser != $userId) : ?>

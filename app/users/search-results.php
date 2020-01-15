@@ -25,7 +25,7 @@ if (isset($_GET['search'])){
         exit;
     } 
 
-    $errors[] = "Can't find";
+    $errors[] = "Can't find user";
 
     if (count($errors) > 0){
         $_SESSION['errors'] = $errors;

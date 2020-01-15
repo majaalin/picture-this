@@ -42,7 +42,7 @@ if (isset($_POST['update'])) {
             $statement->bindParam(":user_id", $userId);
             $statement->execute();
         
-            $successes[] = "Your avatar were successfully updated";
+            $successes[] = "Your avatar was successfully updated";
 
     }}
 
@@ -57,7 +57,7 @@ if (isset($_POST['update'])) {
             if ($oldEmail != $email) {
 
             if ($emailExist) {
-                $errors[] = "Email already exists!";
+                $errors[] = "Email is already used by an other account!";
             } else {
 
             $statement = $pdo->prepare('UPDATE users SET email = :email WHERE user_id = :user_id');
@@ -71,7 +71,7 @@ if (isset($_POST['update'])) {
                 ':email' => $email,
                 ]);
 
-            $successes[] = "Your email were successfully updated";
+            $successes[] = "Your email was successfully updated";
                 
   }}}
         // Update username
@@ -99,7 +99,7 @@ if (isset($_POST['update'])) {
                     ':username' => $username,
                     ]);
 
-                    $successes[] = "Your username were successfully updated";
+                    $successes[] = "Your username was successfully updated";
 
                 }}
         
@@ -121,7 +121,7 @@ if (isset($_POST['update'])) {
                 ':full_name' => $fullName,
                 ]);
             
-                $successes[] = "Your full name were successfully updated";
+                $successes[] = "Your full name was successfully updated";
         }
     }
 
@@ -142,7 +142,7 @@ if (isset($_POST['update'])) {
             ':biography' => $biography,
             ]);
 
-            $successes[] = "Your biography were successfully updated";
+            $successes[] = "Your biography was successfully updated";
             
         }}
 

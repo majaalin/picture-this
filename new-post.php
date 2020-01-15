@@ -2,11 +2,11 @@
 
 <article>
     <img src="/icons/back.png" alt="back" class="back" onclick="goBack()">
-    <h1>New posts</h1>
+    <h1>New post</h1>
     <form class="new-form" action="/app/posts/new-post.php" method="post" enctype="multipart/form-data">
     <img src="/images/no-picture.png" id="previewImage" class="image"/>
         <div class="new-post">
-            <label class="make-a-image" for="image">Add a image</label>
+            <label class="make-a-image" for="image">Add a photo</label>
             <input class="html_btn" type="file" id="image" name="image" accept=".png, .jpg, .jpeg"  onchange="document.getElementById('previewImage').src = window.URL.createObjectURL(this.files[0])">
         </div>
         <div class="form-group">

@@ -16,7 +16,7 @@ if (isset($_POST['email'], $_POST['username'], $_POST['full_name'], $_POST['pass
     $emailExist = $checkForEmail->fetch();
 
     if ($emailExist) {
-        $errors[] = "Email already exists!";
+        $errors[] = "Email is already used by an other account!";
     } 
 
     $checkForUsername = $pdo->prepare("SELECT * FROM users WHERE username=?");
@@ -57,7 +57,7 @@ if (isset($_POST['email'], $_POST['username'], $_POST['full_name'], $_POST['pass
     
     $statement->execute();
 
-    $successes[] = "You have now created an account, log in to your account!";
+    $successes[] = "You have now created an account, please login!";
 
     if (count($successes) > 0){
         $_SESSION['successes'] = $successes;
