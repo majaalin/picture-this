@@ -42,4 +42,4 @@ if (isset($_POST['comment'])) {
 
 }
 
-redirect('/posts.php');
+// redirect('/posts.php');
