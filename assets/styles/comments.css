@@ -1,4 +1,15 @@
-.send {
-    background-color: grey;
+.send,
+.delete-comment,
+.edit-comment {
+    background-color: #2800f5;
     color: white;
+}
+
+.modal {
+    display: none;
+    background-color: pink;
+    position: fixed;
+    z-index: 1;
+    height: 200px;
+    width: 200px;
 }

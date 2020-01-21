@@ -28,7 +28,7 @@ if (!function_exists('redirect')) {
  */
 function getComments(int $postId, PDO $pdo): array
 {
-    $statement = $pdo->prepare('SELECT comment, username FROM comments INNER JOIN users on author_id = users.user_id WHERE post_id = :post_id');
+    $statement = $pdo->prepare('SELECT comment, id, username, author_id FROM comments INNER JOIN users on author_id = users.user_id WHERE post_id = :post_id');
 
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));

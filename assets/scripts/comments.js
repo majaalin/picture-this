@@ -28,3 +28,14 @@ commentForms.forEach(form => {
             });
     });
 });
+
+// const editBtns = document.querySelectorAll(".edit-comment");
+// const modals = document.querySelectorAll(".modal");
+
+// editBtns.forEach(btn => {
+//     btn.addEventListener("click", e => {
+//         modals.forEach(modal => {
+//             modal.style.display = "block";
+//         });
+//     });
+// });

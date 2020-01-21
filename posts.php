@@ -1,6 +1,7 @@
 <?php require __DIR__.'/views/header.php'; ?>
 <?php require __DIR__.'/views/navigation-top.php'; ?>
 
+
 <article class="all-posts">
 
 <?php 
@@ -119,6 +120,20 @@ foreach ($photos as $photo) :
                 <li class="comments">
                     <p class="author"> <?php echo $comment['username']; ?> </p>
                     <p class="comment"> <?php echo $comment['comment']; ?> </p>
+                    
+                    <form action="/app/posts/delete-comment.php" method="post">
+                        <input type="hidden" name="comment-id" id="comment-id" value="<?= $comment['id']?>">
+                        <input type="hidden" name="author-id" id="author-id" value="<?= $comment['author_id']?>">
+                        <button class="delete-comment" type="submit">Delete</button>
+                    </form>
+
+                    <!-- <form action="/app/posts/edit-comment.php" method="post">
+                        <input type="hidden" name="edit-comment" id="edit-comment" value="<?= $comment['id']?>">
+                        <input type="hidden" name="username" id="username" value="<?= $comment['username']?>">
+                        <input type="hidden" name="username" id="username" value="<?= $comment['comment']?>">
+                        <button class="edit-comment" type="submit">Edit</button>
+                    </form> -->
+
                 </li>
             <?php endforeach; ?>
         </ul>
