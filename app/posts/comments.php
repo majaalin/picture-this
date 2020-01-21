@@ -11,6 +11,7 @@ if (isset($_POST['comment'])) {
     $userId = (int)$_SESSION['user']['user_id'];
     $postId = (int)$_POST['post-id'];
     $comment = filter_var($_POST['comment'], FILTER_SANITIZE_STRING);
+    $author = $_POST['logged-in-user'];
 
     date_default_timezone_set('Europe/Stockholm');
     $date = date('Y/m/d H:i');
@@ -34,7 +35,7 @@ if (isset($_POST['comment'])) {
 
     $comments = ([
         'comment' => $comment,
-        // 'name' => $names['name']
+        'name' => $author
     ]);
 
     echo json_encode($comments);

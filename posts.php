@@ -128,6 +128,7 @@ foreach ($photos as $photo) :
             <div class="comment-container">
                 <input class="comment-input" type="text" name="comment" id="comment" value="">
                 <input type="hidden" name="post-id" id="post-id" value=" <?= $photoId ?>">
+                <input type="hidden" name="logged-in-user" id="logged-in-user" value="<?= $_SESSION['user']['username'] ?>">
                 <button class="send" type="submit">Send</button>
             </div>
         </form>
