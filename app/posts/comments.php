@@ -16,7 +16,7 @@ if (isset($_POST['comment'])) {
     date_default_timezone_set('Europe/Stockholm');
     $date = date('Y/m/d H:i');
 
-    $query = 'INSERT INTO comments (post_id, user_id, comment, date) VALUES (:post_id, :user_id, :comment, :date)';
+    $query = 'INSERT INTO comments (post_id, author_id, comment, date) VALUES (:post_id, :author_id, :comment, :date)';
 
     $statement = $pdo->prepare($query);
 
@@ -26,7 +26,7 @@ if (isset($_POST['comment'])) {
 
     $statement->execute([
         ':post_id' => $postId,
-        ':user_id' => $userId,
+        ':author_id' => $userId,
         ':comment' => $comment,
         ':date' => $date
     ]);
@@ -41,3 +41,5 @@ if (isset($_POST['comment'])) {
     echo json_encode($comments);
 
 }
+
+redirect('/posts.php');

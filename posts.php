@@ -77,6 +77,7 @@ foreach ($photos as $photo) :
     }
 
     ?>
+
     <div class="all-posts-container">
     <form action="/profile.php" method="GET">
     <button type="submit" name="user_id" value="<?php echo $user['user_id'] ?>">
@@ -111,15 +112,16 @@ foreach ($photos as $photo) :
             </form>
     <?php endif; ?>
 
+    <?php $comments = getComments($photo['photo_id'], $pdo) ?>
     <div class="comment-wrapper">
-        <!-- <ul class="comment-list">
-          
+        <ul class="comment-list">
+            <?php foreach ($comments as $comment): ?>
                 <li class="comments">
-                    <p class="author"> Namn </p>
-                    <p class="comment"> Content </p>
+                    <p class="author"> <?php echo $comment['username']; ?> </p>
+                    <p class="comment"> <?php echo $comment['comment']; ?> </p>
                 </li>
-          
-        </ul> -->
+            <?php endforeach; ?>
+        </ul>
         <form class="comment-form" action="/app/posts/comments.php" method="post">
             <li class="comments">
                 <p class="author"></p>
@@ -133,6 +135,7 @@ foreach ($photos as $photo) :
             </div>
         </form>
     </div>
+
 
     <p class="caption-container">
     <span><?php echo $user['username']?></span> 
