@@ -127,7 +127,7 @@ foreach ($photos as $photo) :
             </li>
             <div class="comment-container">
                 <input class="comment-input" type="text" name="comment" id="comment" value="">
-                <input type="hidden" name="post-id" id="post-id" value=" <?= $post['id'] ?>">
+                <input type="hidden" name="post-id" id="post-id" value=" <?= $photoId ?>">
                 <button class="send" type="submit">Send</button>
             </div>
         </form>
