@@ -110,6 +110,29 @@ foreach ($photos as $photo) :
                 <?php endif; ?>    
             </form>
     <?php endif; ?>
+
+    <div class="comment-wrapper">
+        <!-- <ul class="comment-list">
+          
+                <li class="comments">
+                    <p class="author"> Namn </p>
+                    <p class="comment"> Content </p>
+                </li>
+          
+        </ul> -->
+        <form class="comment-form" action="/app/posts/comments.php" method="post">
+            <li class="comments">
+                <p class="author"></p>
+                <p class="comment"></p>
+            </li>
+            <div class="comment-container">
+                <input class="comment-input" type="text" name="comment" id="comment" value="">
+                <input type="hidden" name="post-id" id="post-id" value=" <?= $post['id'] ?>">
+                <button class="send" type="submit">Send</button>
+            </div>
+        </form>
+    </div>
+
     <p class="caption-container">
     <span><?php echo $user['username']?></span> 
     <?php echo $photo['caption'];?>
