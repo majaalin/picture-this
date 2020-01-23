@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-// die(var_dump($_POST));
+header('Content-Type: application/json');
 
 if(isset($_POST['edit-comment'])) {
     $commentId = (int)$_POST['edit-comment'];
@@ -18,7 +18,15 @@ if(isset($_POST['edit-comment'])) {
     }
 
     $statement->execute([
-        ':comment' => $content,
+        // ':comment' => $content,
+        ':comment' => "TEST",
         ':id' => $commentId
-        ]);
+    ]);
+
+    $edit = ([
+        'comment' => "ny kommentar"
+    ]);
+
+    echo json_encode($edit);
+
 }

@@ -113,51 +113,53 @@ foreach ($photos as $photo) :
             </form>
     <?php endif; ?>
 
-    <?php $comments = getComments($photo['photo_id'], $pdo) ?>
-    <div class="comment-wrapper">
-        <ul class="comment-list">
-            <?php foreach ($comments as $comment): ?>
-                <li class="comments">
-                    <p class="author"> <?php echo $comment['username']; ?> </p>
-                    <p class="comment"> <?php echo $comment['comment']; ?> </p>
-                    
-                    <form action="/app/posts/delete-comment.php" method="post">
-                        <input type="hidden" name="comment-id" id="comment-id" value="<?= $comment['id']?>">
-                        <input type="hidden" name="author-id" id="author-id" value="<?= $comment['author_id']?>">
-                        <button class="delete-comment" type="submit">Delete</button>
-                    </form>
-
-                    <!-- <form action="/app/posts/edit-comment.php" method="post">
-                        <input type="hidden" name="edit-comment" id="edit-comment" value="<?= $comment['id']?>">
-                        <input type="hidden" name="username" id="username" value="<?= $comment['username']?>">
-                        <input type="hidden" name="username" id="username" value="<?= $comment['comment']?>">
-                        <button class="edit-comment" type="submit">Edit</button>
-                    </form> -->
-
-                </li>
-            <?php endforeach; ?>
-        </ul>
-        <form class="comment-form" action="/app/posts/comments.php" method="post">
-            <li class="comments">
-                <p class="author"></p>
-                <p class="comment"></p>
-            </li>
-            <div class="comment-container">
-                <input class="comment-input" type="text" name="comment" id="comment" value="">
-                <input type="hidden" name="post-id" id="post-id" value=" <?= $photoId ?>">
-                <input type="hidden" name="logged-in-user" id="logged-in-user" value="<?= $_SESSION['user']['username'] ?>">
-                <button class="send" type="submit">Send</button>
-            </div>
-        </form>
-    </div>
-
 
     <p class="caption-container">
     <span><?php echo $user['username']?></span> 
     <?php echo $photo['caption'];?>
     </p>
     <p class="date"><?php echo $photo['date_created'];?></p>
-</div>
+
+
+    <div class="comment-wrapper">
+        <?php $comments = getComments($photo['photo_id'], $pdo) ?>
+        <ul class="comment-list">
+            <?php foreach ($comments as $comment): ?>
+
+                <li class="comments">
+                    <p class="comment">
+                        <span><?php echo $comment['username']; ?></span> 
+                        <?php echo $comment['comment']; ?>
+                    </p>
+                    <?php if ($comment['author_id'] === $loggedInUser): ?>
+                        <form action="/app/posts/delete-comment.php" method="post">
+                            <input type="hidden" name="comment-id" id="comment-id" value="<?= $comment['id']?>">
+                            <input type="hidden" name="author-id" id="author-id" value="<?= $comment['author_id']?>">
+                            <button class="delete-comment" type="submit">Delete</button>
+                        </form>
+                        <form class="edit-form" action="/app/posts/edit-comment.php" method="post">
+                            <input type="hidden" name="edit-comment" id="edit-comment" value="<?= $comment['id']?>">
+                            <input type="hidden" name="username" id="username" value="<?= $comment['username']?>">
+                            <input type="hidden" name="content" id="content" value="<?= $comment['comment']?>">
+                            <button class="edit-comment" type="submit">Edit</button>
+                        </form>
+                    <?php endif; ?>
+                </li>
+                
+            <?php endforeach; ?>
+        </ul>
+
+        <form class="comment-form" action="/app/posts/comments.php" method="post">
+            <div class="comment-container">
+                <input class="comment-input" type="text" name="comment" id="comment" value="" placeholder="Comment this post...">
+                <input type="hidden" name="post-id" id="post-id" value=" <?= $photoId ?>">
+                <input type="hidden" name="logged-in-user" id="logged-in-user" value="<?= $_SESSION['user']['username'] ?>">
+                <button class="send" type="submit">Send</button>
+            </div>
+        </form>
+
+    </div>
+
 </div>
 <?php endforeach; ?>
 <?php endforeach; ?>

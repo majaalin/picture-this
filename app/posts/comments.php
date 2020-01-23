@@ -31,8 +31,6 @@ if (isset($_POST['comment'])) {
         ':date' => $date
     ]);
 
-    // $names = getUsernameFromComment($userId, $pdo);
-
     $comments = ([
         'comment' => $comment,
         'name' => $author

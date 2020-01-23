@@ -9,8 +9,6 @@ if(isset($_POST['comment-id'], $_POST['author-id'])) {
     $authorId = (int)$_POST['author-id'];
     $userId = (int)$_SESSION['user']['user_id'];
 
-    // die(var_dump($authorId));
-
     if ($userId !== $authorId) {
         
         redirect('/posts.php');
