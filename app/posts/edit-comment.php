@@ -6,10 +6,11 @@ require __DIR__.'/../autoload.php';
 
 header('Content-Type: application/json');
 
-if(isset($_POST['edit-comment'])) {
-    $commentId = (int)$_POST['edit-comment'];
+if(isset($_POST['comment-id'], $_POST['edit-comment'])) {
+    $commentId = (int)$_POST['comment-id'];
+    $editedComment = filter_var($_POST['edit-comment'], FILTER_SANITIZE_STRING);
 
-    // die(var_dump($commentId));
+//    die(var_dump($editedComment));
 
     $statement = $pdo->prepare('UPDATE comments SET comment = :comment WHERE id = :id');
 
@@ -18,15 +19,16 @@ if(isset($_POST['edit-comment'])) {
     }
 
     $statement->execute([
-        // ':comment' => $content,
-        ':comment' => "TEST",
+        ':comment' => $editedComment,
         ':id' => $commentId
     ]);
 
-    $edit = ([
-        'comment' => "ny kommentar"
+    $edited = ([
+        'comment' => $editedComment
     ]);
 
-    echo json_encode($edit);
+    echo json_encode($edited);
 
 }
+
+redirect('/posts.php');

@@ -126,23 +126,33 @@ foreach ($photos as $photo) :
         <ul class="comment-list">
             <?php foreach ($comments as $comment): ?>
 
-                <li class="comments">
-                    <p class="comment">
+                <li class="comment" data-id="<?= $comment['id']?>">
+                    <p class="comment-text">
                         <span><?php echo $comment['username']; ?></span> 
                         <?php echo $comment['comment']; ?>
                     </p>
                     <?php if ($comment['author_id'] === $loggedInUser): ?>
+                    <button class="edit-btn" type="submit">Edit</button>
+
+                    <div class="hide">
+                        <form class="edit-form" action="/app/posts/edit-comment.php" method="post">
+                            <input class="comment-input" type="text" name="edit-comment" id="edit-comment" value="<?= $comment['comment']?>">
+                            <input type="hidden" name="comment-id" id="comment-id" value="<?= $comment['id']?>">
+                            <button class="edit-comment" type="submit">Save</button>
+                        </form>
                         <form action="/app/posts/delete-comment.php" method="post">
                             <input type="hidden" name="comment-id" id="comment-id" value="<?= $comment['id']?>">
                             <input type="hidden" name="author-id" id="author-id" value="<?= $comment['author_id']?>">
                             <button class="delete-comment" type="submit">Delete</button>
                         </form>
-                        <form class="edit-form" action="/app/posts/edit-comment.php" method="post">
+                    </div>
+
+                        <!-- <form class="edit-form" action="/app/posts/edit-comment.php" method="post">
                             <input type="hidden" name="edit-comment" id="edit-comment" value="<?= $comment['id']?>">
                             <input type="hidden" name="username" id="username" value="<?= $comment['username']?>">
                             <input type="hidden" name="content" id="content" value="<?= $comment['comment']?>">
                             <button class="edit-comment" type="submit">Edit</button>
-                        </form>
+                        </form> -->
                     <?php endif; ?>
                 </li>
                 

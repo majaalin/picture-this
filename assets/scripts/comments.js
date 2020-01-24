@@ -1,11 +1,36 @@
 "use strict";
+//<li class="comment" data-id="${id}">
 
 function createComment(author, comment) {
-    return `<p class="comment">
+    return `<li class="comment">
+                <p class="comment-text">
                 <span>${author}</span> 
-                ${comment}
-            </p>`;
+                ${comment}</p>
+                <button class="delete-comment">Delete</button>
+                <button class="edit-comment">Edit</button>
+            </li>`;
 }
+// tror inte jag behöver ha med id här? behövs ju endast i edit/delete eller?
+
+const stringToHTML = str => {
+    const div = document.createElement("div");
+    div.innerHTML = str;
+    return div.firstChild;
+};
+// funkar nu med template literal
+
+const comment = document.querySelector(".comment");
+const id = comment.dataset.id;
+console.log(id);
+
+const editBtn = document.querySelector(".edit-btn");
+const editForm = document.querySelector(".edit-form");
+const editInput = document.querySelector(".edit-input");
+const hide = document.querySelector(".hide");
+
+editBtn.addEventListener("click", e => {
+    hide.classList.add("visible");
+});
 
 const allPosts = document.querySelectorAll(".all-posts-container");
 
@@ -26,19 +51,22 @@ allPosts.forEach(post => {
             })
             .then(json => {
                 // console.log(json);
-                // const comment = createComment(newAuthor, newComment);
-                // console.log(comment);
 
-                const newComment = json.comment;
+                // const id = json.id;
                 const newAuthor = json.name;
+                const newComment = json.comment;
 
-                const item = document.createElement("li");
+                const comment = createComment(newAuthor, newComment);
+                const x = stringToHTML(comment);
+                console.log(x);
 
-                item.textContent = newAuthor + " " + newComment;
-                item.classList.add("comments");
+                // const item = document.createElement("li");
+
+                // item.textContent = newAuthor + " " + newComment;
+                // item.classList.add("comment");
 
                 // item.appendChild(comment);
-                list.appendChild(item);
+                list.appendChild(x);
 
                 form.reset();
             });
