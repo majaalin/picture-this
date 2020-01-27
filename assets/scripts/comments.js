@@ -60,6 +60,9 @@ comments.forEach(comment => {
 
     editBtn.addEventListener("click", e => {
         hiddenForm.classList.add("visible");
+        hiddenForm.classList.add("flex-row");
+        comment.classList.add("flex-column");
+        editBtn.classList.add("hide");
     });
 
     editForm.addEventListener("submit", e => {
@@ -80,6 +83,7 @@ comments.forEach(comment => {
                 <button class="edit-comment">Edit</button>`;
 
                 hiddenForm.classList.remove("visible");
+                comment.classList.remove("flex-column");
 
                 console.log(id);
             });

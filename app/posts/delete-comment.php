@@ -34,7 +34,6 @@ if(isset($_POST['comment-id'], $_POST['author-id'])) {
         ]);
 
         echo json_encode($json);
-
     }
-
+    
 }

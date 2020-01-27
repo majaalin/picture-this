@@ -11,8 +11,6 @@ if(isset($_POST['comment-id'], $_POST['username'], $_POST['edit-comment'])) {
     $editedComment = filter_var($_POST['edit-comment'], FILTER_SANITIZE_STRING);
     $username = $_POST['username'];
 
-//    die(var_dump($editedComment));
-
     $statement = $pdo->prepare('UPDATE comments SET comment = :comment WHERE id = :id');
 
     if (!$statement) {
@@ -32,5 +30,3 @@ if(isset($_POST['comment-id'], $_POST['username'], $_POST['edit-comment'])) {
     echo json_encode($edited);
 
 }
-
-// redirect('/posts.php');
