@@ -6,9 +6,10 @@ require __DIR__.'/../autoload.php';
 
 header('Content-Type: application/json');
 
-if(isset($_POST['comment-id'], $_POST['edit-comment'])) {
+if(isset($_POST['comment-id'], $_POST['username'], $_POST['edit-comment'])) {
     $commentId = (int)$_POST['comment-id'];
     $editedComment = filter_var($_POST['edit-comment'], FILTER_SANITIZE_STRING);
+    $username = $_POST['username'];
 
 //    die(var_dump($editedComment));
 
@@ -24,11 +25,12 @@ if(isset($_POST['comment-id'], $_POST['edit-comment'])) {
     ]);
 
     $edited = ([
-        'comment' => $editedComment
+        'comment' => $editedComment,
+        'name' => $username
     ]);
 
     echo json_encode($edited);
 
 }
 
-redirect('/posts.php');
+// redirect('/posts.php');

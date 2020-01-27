@@ -39,5 +39,3 @@ if (isset($_POST['comment'])) {
     echo json_encode($comments);
 
 }
-
-// redirect('/posts.php');

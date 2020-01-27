@@ -6,32 +6,17 @@ function createComment(author, comment) {
                 <p class="comment-text">
                 <span>${author}</span> 
                 ${comment}</p>
-                <button class="delete-comment">Delete</button>
                 <button class="edit-comment">Edit</button>
             </li>`;
 }
-// tror inte jag behöver ha med id här? behövs ju endast i edit/delete eller?
 
 const stringToHTML = str => {
     const div = document.createElement("div");
     div.innerHTML = str;
     return div.firstChild;
 };
-// funkar nu med template literal
 
-const comment = document.querySelector(".comment");
-const id = comment.dataset.id;
-console.log(id);
-
-const editBtn = document.querySelector(".edit-btn");
-const editForm = document.querySelector(".edit-form");
-const editInput = document.querySelector(".edit-input");
-const hide = document.querySelector(".hide");
-
-editBtn.addEventListener("click", e => {
-    hide.classList.add("visible");
-});
-
+// ADD COMMMENTS
 const allPosts = document.querySelectorAll(".all-posts-container");
 
 allPosts.forEach(post => {
@@ -50,77 +35,74 @@ allPosts.forEach(post => {
                 return response.json();
             })
             .then(json => {
-                // console.log(json);
-
                 // const id = json.id;
                 const newAuthor = json.name;
                 const newComment = json.comment;
 
-                const comment = createComment(newAuthor, newComment);
-                const x = stringToHTML(comment);
-                console.log(x);
+                const addComment = createComment(newAuthor, newComment);
+                const comment = stringToHTML(addComment);
 
-                // const item = document.createElement("li");
-
-                // item.textContent = newAuthor + " " + newComment;
-                // item.classList.add("comment");
-
-                // item.appendChild(comment);
-                list.appendChild(x);
-
+                list.appendChild(comment);
                 form.reset();
             });
     });
 });
 
-// commentForms.forEach(form => {
-//     form.addEventListener("submit", e => {
-//         e.preventDefault();
-//         const formData = new FormData(form);
+// EDIT & DELETE COMMENTS
+const comments = document.querySelectorAll(".comment");
 
-//         fetch("http://localhost:8000/app/posts/comments.php", {
-//             method: "POST",
-//             body: formData
-//         })
-//             .then(response => {
-//                 // Take the response Promise and return it as JSON.
-//                 return response.json();
-//             })
-//             .then(json => {
-//                 // Now it is possible to use the JSON as a normal object.
-//
-//                 // // const newComment = json.comment;
-//                 // // const newAuthor = json.name;
-//                 // // const comment = e.target.querySelector(".comment");
-//                 // // const author = e.target.querySelector(".author");
+comments.forEach(comment => {
+    const editBtn = comment.querySelector(".edit-btn");
+    const hiddenForm = comment.querySelector(".hide");
+    const editForm = comment.querySelector(".edit-form");
+    const deleteForm = comment.querySelector(".delete-form");
+    const id = comment.dataset.id;
 
-//                 // // comment.innerHTML = newComment;
-//                 // // author.innerHTML = newAuthor;
-//                 // form.reset();
-//             });
-//     });
-// });
+    editBtn.addEventListener("click", e => {
+        hiddenForm.classList.add("visible");
+    });
 
-// EDIT COMMENTS
-// const editForms = document.querySelectorAll(".edit-form");
+    editForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const formData = new FormData(editForm);
 
-// editForms.forEach(form => {
-//     form.addEventListener("submit", e => {
-//         e.preventDefault();
-//         const formData = new FormData(form);
+        fetch("http://localhost:8000/app/posts/edit-comment.php", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => {
+                return response.json();
+            })
+            .then(json => {
+                comment.innerHTML = `<p class="comment-text">
+                <span>${json.name}</span> 
+                ${json.comment}</p>
+                <button class="edit-comment">Edit</button>`;
 
-//         fetch("http://localhost:8000/app/posts/edit-comment.php", {
-//             method: "POST",
-//             body: formData
-//         })
-//             .then(response => {
-//                 // Take the response Promise and return it as JSON.
-//                 return response.json();
-//             })
-//             .then(json => {
-//                 // Now it is possible to use the JSON as a normal object.
+                hiddenForm.classList.remove("visible");
 
-//                 console.log(json);
-//             });
-//     });
-// });
+                console.log(id);
+            });
+    });
+
+    deleteForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const formData = new FormData(deleteForm);
+
+        fetch("http://localhost:8000/app/posts/delete-comment.php", {
+            method: "POST",
+            body: formData
+        })
+            .then(response => {
+                return response.json();
+            })
+            .then(json => {
+                console.log(json);
+
+                const parent = comment;
+                parent.parentNode.removeChild(parent);
+
+                hiddenForm.classList.remove("visible");
+            });
+    });
+});

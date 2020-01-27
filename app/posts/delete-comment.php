@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
+header('Content-Type: application/json');
+
 if(isset($_POST['comment-id'], $_POST['author-id'])) {
     $commentId = (int)$_POST['comment-id'];
     $authorId = (int)$_POST['author-id'];
@@ -26,14 +28,12 @@ if(isset($_POST['comment-id'], $_POST['author-id'])) {
         $statement->execute([
             ':id' => $commentId
         ]);
-    
-        $successes[] = "Your comment was deleted";
-    
-        if (count($successes) > 0){
-            $_SESSION['successes'] = $successes;
-            redirect("/posts.php");
-            exit;
-        }
+
+        $json = ([
+            'id' => $commentId,
+        ]);
+
+        echo json_encode($json);
 
     }
 
