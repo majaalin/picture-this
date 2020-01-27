@@ -58,55 +58,57 @@ comments.forEach(comment => {
     const deleteForm = comment.querySelector(".delete-form");
     const id = comment.dataset.id;
 
-    editBtn.addEventListener("click", e => {
-        hiddenForm.classList.add("visible");
-        hiddenForm.classList.add("flex-row");
-        comment.classList.add("flex-column");
-        editBtn.classList.add("hide");
-    });
+    if (editBtn) {
+        editBtn.addEventListener("click", e => {
+            hiddenForm.classList.add("visible");
+            hiddenForm.classList.add("flex-row");
+            comment.classList.add("flex-column");
+            editBtn.classList.add("hide");
+        });
 
-    editForm.addEventListener("submit", e => {
-        e.preventDefault();
-        const formData = new FormData(editForm);
+        editForm.addEventListener("submit", e => {
+            e.preventDefault();
+            const formData = new FormData(editForm);
 
-        fetch("http://localhost:8000/app/posts/edit-comment.php", {
-            method: "POST",
-            body: formData
-        })
-            .then(response => {
-                return response.json();
+            fetch("http://localhost:8000/app/posts/edit-comment.php", {
+                method: "POST",
+                body: formData
             })
-            .then(json => {
-                comment.innerHTML = `<p class="comment-text">
+                .then(response => {
+                    return response.json();
+                })
+                .then(json => {
+                    comment.innerHTML = `<p class="comment-text">
                 <span>${json.name}</span> 
                 ${json.comment}</p>
                 <button class="edit-comment">Edit</button>`;
 
-                hiddenForm.classList.remove("visible");
-                comment.classList.remove("flex-column");
+                    hiddenForm.classList.remove("visible");
+                    comment.classList.remove("flex-column");
 
-                console.log(id);
-            });
-    });
+                    console.log(id);
+                });
+        });
 
-    deleteForm.addEventListener("submit", e => {
-        e.preventDefault();
-        const formData = new FormData(deleteForm);
+        deleteForm.addEventListener("submit", e => {
+            e.preventDefault();
+            const formData = new FormData(deleteForm);
 
-        fetch("http://localhost:8000/app/posts/delete-comment.php", {
-            method: "POST",
-            body: formData
-        })
-            .then(response => {
-                return response.json();
+            fetch("http://localhost:8000/app/posts/delete-comment.php", {
+                method: "POST",
+                body: formData
             })
-            .then(json => {
-                console.log(json);
+                .then(response => {
+                    return response.json();
+                })
+                .then(json => {
+                    console.log(json);
 
-                const parent = comment;
-                parent.parentNode.removeChild(parent);
+                    const parent = comment;
+                    parent.parentNode.removeChild(parent);
 
-                hiddenForm.classList.remove("visible");
-            });
-    });
+                    hiddenForm.classList.remove("visible");
+                });
+        });
+    }
 });

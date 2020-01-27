@@ -56,6 +56,10 @@
     height: 100%;
 }
 
+.delete-comment {
+    color: #f50000;
+}
+
 .comment form {
     display: flex;
     align-items: center;
