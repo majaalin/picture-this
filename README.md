@@ -17,6 +17,10 @@ The assignment is to create an Instagram clone with CSS, HTML, Javascript and PH
 - As a user you should be able to follow and unfollow other users
 - As a user you should be able to view a list of posts by users you follow
 
+Extra features added by [Michaela Lundborg](https://github.com/lundborgm)
+- As a user you should be able to add, edit, delete comments on posts
+- As a user you should be able to delete my account along with all posts and comments
+
 ## Installation
 1. Clone down the project to your computer
 
