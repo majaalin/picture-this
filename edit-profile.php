@@ -61,12 +61,13 @@ $biography = $user['biography'];
                 </div>
         <button class="update-profile" type="submit" name="update">Update profile</button>
         <button class="change-password"><a href="/change-password.php">Change password</a></button>
-
+    </form>
+    
+    <form action="app/users/delete-profile.php" method="post">
+        <button class="btn btn-danger" type="submit" name="delete-profile" onclick="return confirm('Are you really sure you want to delete your account?')">Delete account</button>
     </form>
 </article>
-<form action="app/users/delete.php" method="post">
-<button type="submit" name="delete" class="btn btn-danger"  onclick="return confirm('Are you really sure you want to delete your profile?'), confirm('Are you really sure?')" >Delete profile</button>
-</form>
+
 
 <form action="app/user/update.php"></form>
 

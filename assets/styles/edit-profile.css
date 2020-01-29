@@ -91,3 +91,16 @@
 textarea {
     color: rgba(0, 0, 0, 0.5);
 }
+
+.btn.btn-danger {
+    width: 90vw;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 5px 0 30px 0;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(255, 0, 0, 0.8);
+    max-width: 414px;
+}
