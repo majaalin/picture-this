@@ -64,7 +64,7 @@ $biography = $user['biography'];
     </form>
     
     <form action="app/users/delete-profile.php" method="post">
-        <button class="btn btn-danger" type="submit" name="delete-profile" onclick="return confirm('Are you really sure you want to delete your account?')">Delete profile</button>
+        <button class="btn btn-danger" type="submit" name="delete-profile" onclick="return confirm('Are you really sure you want to delete your account?')">Delete account</button>
     </form>
 </article>
 

@@ -7,7 +7,6 @@ require __DIR__.'/../autoload.php';
 header('Content-Type: application/json');
 
 if (isset($_POST['comment'])) {
-
     $userId = (int)$_SESSION['user']['user_id'];
     $postId = (int)$_POST['post-id'];
     $comment = filter_var($_POST['comment'], FILTER_SANITIZE_STRING);

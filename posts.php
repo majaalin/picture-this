@@ -120,21 +120,19 @@ foreach ($photos as $photo) :
     </p>
     <p class="date"><?php echo $photo['date_created'];?></p>
 
-
+<!-- Comment section -->
     <div class="comment-wrapper">
         <?php $comments = getComments($photo['photo_id'], $pdo) ?>
         <ul class="comment-list">
             <?php foreach ($comments as $comment): ?>
-
-                <li class="comment" data-id="<?= $comment['id']?>">
+                <li class="comment">
                     <p class="comment-text">
                         <span><?php echo $comment['username']; ?></span> 
                         <?php echo $comment['comment']; ?>
                     </p>
                     <?php if ($comment['author_id'] === $loggedInUser): ?>
-                    <button class="edit-btn" type="submit">Edit</button>
-
-                    <div class="hide">
+                    <button class="edit-btn">Edit</button>
+                    <div class="hidden">
                         <form class="edit-form" action="/app/posts/edit-comment.php" method="post">
                             <input class="comment-input" type="text" name="edit-comment" id="edit-comment" value="<?= $comment['comment']?>">
                             <input type="hidden" name="comment-id" id="comment-id" value="<?= $comment['id']?>">
@@ -149,7 +147,6 @@ foreach ($photos as $photo) :
                     </div>
                     <?php endif; ?>
                 </li>
-                
             <?php endforeach; ?>
         </ul>
 
@@ -161,8 +158,8 @@ foreach ($photos as $photo) :
                 <button class="send" type="submit">Send</button>
             </div>
         </form>
-
     </div>
+<!-- Comment section -->
 
 </div>
 <?php endforeach; ?>

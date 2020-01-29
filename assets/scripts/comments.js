@@ -1,12 +1,24 @@
 "use strict";
-//<li class="comment" data-id="${id}">
 
 function createComment(author, comment) {
     return `<li class="comment">
                 <p class="comment-text">
                 <span>${author}</span> 
                 ${comment}</p>
-                <button class="edit-comment">Edit</button>
+                <button class="edit-btn">Edit</button>
+                <div class="hidden">
+                        <form class="edit-form" action="/app/posts/edit-comment.php" method="post">
+                            <input class="comment-input" type="text" name="edit-comment" id="edit-comment" value="">
+                            <input type="hidden" name="comment-id" id="comment-id" value="">
+                            <input type="hidden" name="username" id="username" value="">
+                            <button class="edit-comment" type="submit">Save</button>
+                        </form>
+                        <form class="delete-form" action="/app/posts/delete-comment.php" method="post">
+                            <input type="hidden" name="comment-id" id="comment-id" value="">
+                            <input type="hidden" name="author-id" id="author-id" value="">
+                            <button class="delete-comment" type="submit">Delete</button>
+                        </form>
+                    </div>
             </li>`;
 }
 
@@ -35,7 +47,6 @@ allPosts.forEach(post => {
                 return response.json();
             })
             .then(json => {
-                // const id = json.id;
                 const newAuthor = json.name;
                 const newComment = json.comment;
 
@@ -53,7 +64,7 @@ const comments = document.querySelectorAll(".comment");
 
 comments.forEach(comment => {
     const editBtn = comment.querySelector(".edit-btn");
-    const hiddenForm = comment.querySelector(".hide");
+    const hiddenForm = comment.querySelector(".hidden");
     const editForm = comment.querySelector(".edit-form");
     const deleteForm = comment.querySelector(".delete-form");
     const id = comment.dataset.id;
@@ -63,7 +74,7 @@ comments.forEach(comment => {
             hiddenForm.classList.add("visible");
             hiddenForm.classList.add("flex-row");
             comment.classList.add("flex-column");
-            editBtn.classList.add("hide");
+            editBtn.classList.add("hidden");
         });
 
         editForm.addEventListener("submit", e => {
@@ -79,14 +90,12 @@ comments.forEach(comment => {
                 })
                 .then(json => {
                     comment.innerHTML = `<p class="comment-text">
-                <span>${json.name}</span> 
-                ${json.comment}</p>
-                <button class="edit-comment">Edit</button>`;
+                    <span>${json.name}</span> 
+                    ${json.comment}</p>
+                    <button class="edit-btn">Edit</button>`;
 
                     hiddenForm.classList.remove("visible");
                     comment.classList.remove("flex-column");
-
-                    console.log(id);
                 });
         });
 
@@ -102,8 +111,6 @@ comments.forEach(comment => {
                     return response.json();
                 })
                 .then(json => {
-                    console.log(json);
-
                     const parent = comment;
                     parent.parentNode.removeChild(parent);
 
