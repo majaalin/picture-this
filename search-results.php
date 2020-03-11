@@ -4,9 +4,9 @@
 
 // If user not logged in
 if (!isset($_SESSION['user'])) {
-    $errors[] = "You need to login";
+    $errors[] = 'You need to login';
     $_SESSION['errors'] = $errors;
-    redirect("/");
+    redirect('/');
     exit;
 }
 
@@ -26,38 +26,38 @@ $otherUsers = $statement->fetchAll(PDO::FETCH_ASSOC);
 </form>
 
 <!-- View results from search -->
-<?php foreach ($users as $user) : ?>
+<?php foreach ($users as $user) { ?>
     <form class="search-user" action="/profile.php" method="GET">
     <button type="submit" name="user_id" value="<?php echo $user['user_id'] ?>">
-    <?php if (!$user['avatar']): ?>
+    <?php if (!$user['avatar']) { ?>
         <img class="avatar" src="/images/no-avatar.png" alt="avatar">
-        <?php else : ?>
+        <?php } else { ?>
             <img class="avatar" src="/uploads/<?php echo $user['avatar'] ?>" alt="avatar">
-    <?php endif; ?>
+    <?php } ?>
         <div class="name">
         <p class="username"><?php echo $user['username'] ?></p>
         <p><?php echo $user['full_name'] ?></p>
     </div>
     </button>
     </form>
-<?php endforeach ?>
+<?php } ?>
 
 <!-- View all other users -->
-<?php foreach ($otherUsers as $otherUser) : ?>
+<?php foreach ($otherUsers as $otherUser) { ?>
     <form class="search-user" action="/profile.php" method="GET">
     <button type="submit" name="user_id" value="<?php echo $otherUser['user_id'] ?>">
-    <?php if (!$otherUser['avatar']): ?>
+    <?php if (!$otherUser['avatar']) { ?>
         <img class="avatar" src="/images/no-avatar.png" alt="avatar">
-        <?php else : ?>
+        <?php } else { ?>
             <img class="avatar" src="/uploads/<?php echo $otherUser['avatar'] ?>" alt="avatar">
-    <?php endif; ?>
+    <?php } ?>
         <div class="name">
         <p class="username"><?php echo $otherUser['username'] ?></p>
         <p><?php echo $otherUser['full_name'] ?></p>
         </div>
         </button>
         </form>
-<?php endforeach ?>
+<?php } ?>
 
 </article>
 

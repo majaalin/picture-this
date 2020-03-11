@@ -41,15 +41,15 @@ if (isset($_POST)) {
         $statement = $pdo->prepare('DELETE FROM photos WHERE photo_id = :photo_id');
 
         $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
-    
+
         $statement->execute();
 
-        $successes[] = "Your post was deleted";
+        $successes[] = 'Your post was deleted';
     }
 
     if (count($successes) > 0) {
         $_SESSION['successes'] = $successes;
-        redirect("/profile.php?user_id=" . $userId . "?");
+        redirect('/profile.php?user_id='.$userId.'?');
         exit;
     }
 }

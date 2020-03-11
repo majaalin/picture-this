@@ -30,14 +30,14 @@ if (isset($_GET['photo_id'])) {
         $query = 'DELETE FROM likes WHERE user_id = :user_id AND photo_id = :photo_id';
 
         $statement = $pdo->prepare($query);
-   
+
         if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 
         $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
         $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
-    
+
         $statement->execute();
 
         redirect($_SERVER['HTTP_REFERER']);
@@ -49,7 +49,7 @@ if (isset($_GET['photo_id'])) {
         $query = 'INSERT INTO likes (user_id, photo_id) VALUES (:user_id, :photo_id)';
 
         $statement = $pdo->prepare($query);
-   
+
         if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
@@ -58,7 +58,7 @@ if (isset($_GET['photo_id'])) {
         $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
 
         $statement->execute();
-    
+
         redirect($_SERVER['HTTP_REFERER']);
         exit;
     }

@@ -7,8 +7,8 @@ require __DIR__.'/../autoload.php';
 header('Content-Type: application/json');
 
 if (isset($_POST['comment'])) {
-    $userId = (int)$_SESSION['user']['user_id'];
-    $postId = (int)$_POST['post-id'];
+    $userId = (int) $_SESSION['user']['user_id'];
+    $postId = (int) $_POST['post-id'];
     $comment = filter_var($_POST['comment'], FILTER_SANITIZE_STRING);
     $author = $_POST['logged-in-user'];
 
@@ -24,15 +24,15 @@ if (isset($_POST['comment'])) {
     }
 
     $statement->execute([
-        ':post_id' => $postId,
+        ':post_id'   => $postId,
         ':author_id' => $userId,
-        ':comment' => $comment,
-        ':date' => $date
+        ':comment'   => $comment,
+        ':date'      => $date,
     ]);
 
     $comments = ([
         'comment' => $comment,
-        'name' => $author
+        'name'    => $author,
     ]);
 
     echo json_encode($comments);
