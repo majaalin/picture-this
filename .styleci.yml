@@ -1,4 +1,4 @@
 preset: PSR2
-risky: true
+risky: false
 finder:
   name: "*.php"
