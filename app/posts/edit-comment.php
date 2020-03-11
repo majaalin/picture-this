@@ -1,12 +1,19 @@
 <?php
 
+/*
+ * This file is part of Yrgo.
+ * (c) Yrgo, högre yrkesutbildning.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
 header('Content-Type: application/json');
 
-if(isset($_POST['comment-id'], $_POST['username'], $_POST['edit-comment'])) {
+if (isset($_POST['comment-id'], $_POST['username'], $_POST['edit-comment'])) {
     $commentId = (int)$_POST['comment-id'];
     $editedComment = filter_var($_POST['edit-comment'], FILTER_SANITIZE_STRING);
     $username = $_POST['username'];
@@ -28,5 +35,4 @@ if(isset($_POST['comment-id'], $_POST['username'], $_POST['edit-comment'])) {
     ]);
 
     echo json_encode($edited);
-
 }

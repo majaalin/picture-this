@@ -1,10 +1,17 @@
 <?php
 
+/*
+ * This file is part of Yrgo.
+ * (c) Yrgo, högre yrkesutbildning.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-if(!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user'])) {
     redirect('/');
 }
 
@@ -20,20 +27,20 @@ $statement->execute();
 $photos = $statement->fetch(PDO::FETCH_ASSOC);
 
 
-if(isset($_GET['photo_id'])){
+if (isset($_GET['photo_id'])) {
     $photoId = $_GET['photo_id'];
 
     if (isset($_FILES['image'])) {
         $image = $_FILES['image'];
         $destination = __DIR__.'/../../uploads/'.date('ymd')."-".$_FILES['image']['name'];
-        move_uploaded_file($image['tmp_name'], $destination); 
+        move_uploaded_file($image['tmp_name'], $destination);
         $imagePath = date('ymd')."-".$_FILES['image']['name'];
 
         if ($imagePath === date('ymd')."-") {
             $errors[] = "You have not choosen a photo";
         }
 
-        if (count($errors) > 0){
+        if (count($errors) > 0) {
             $_SESSION['errors'] = $errors;
             redirect("/edit-post.php?photo_id=" . $photoId);
             exit;
@@ -51,7 +58,6 @@ if(isset($_GET['photo_id'])){
         $statement->execute();
     
         $successes[] = "Your photo was successfully updated!";
-
     }
 
     if (isset($_POST['caption'])) {
@@ -71,10 +77,9 @@ if(isset($_GET['photo_id'])){
         $successes[] = "Your caption was successfully updated!";
     }
 
-    if (count($successes) > 0){
+    if (count($successes) > 0) {
         $_SESSION['successes'] = $successes;
         redirect("/edit-post.php?photo_id=" . $photoId);
         exit;
     }
 }
-    

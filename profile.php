@@ -1,11 +1,11 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
-<?php 
+<?php
 $loggedInUser = $_SESSION['user']['user_id'];
 $userId = $_GET['user_id'];
 
 // If user not logged in
-if(!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user'])) {
     $errors[] = "You need to login";
     $_SESSION['errors'] = $errors;
     redirect("/");
@@ -20,10 +20,10 @@ $user = $statement->fetch(PDO::FETCH_ASSOC);
 
 // If user do not exist
 if (!$user) {
-            $errors[] = "Can't find user";
-            $_SESSION['errors'] = $errors;
-            redirect("/posts.php");
-            exit;
+    $errors[] = "Can't find user";
+    $_SESSION['errors'] = $errors;
+    redirect("/posts.php");
+    exit;
 }
 
 // User information
@@ -60,13 +60,13 @@ $followers = $statement->fetchAll(PDO::FETCH_ASSOC);
 $amountOfFollowers = count($followers);
 
 // Check if the logged in user is following the profile owner
-if (isset($_GET['user_id'])){
+if (isset($_GET['user_id'])) {
     $theFollower = $_SESSION['user']['user_id'];
     $theFollows = $user['user_id'];
     $statement = $pdo->prepare('SELECT * FROM follower WHERE user_id_1 = :user_id_1 AND user_id_2 = :user_id_2');
 
     if (!$statement) {
-    die(var_dump($pdo->errorInfo()));
+        die(var_dump($pdo->errorInfo()));
     }
 
     $statement->bindParam(':user_id_1', $theFollower, PDO::PARAM_INT);

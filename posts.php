@@ -4,10 +4,10 @@
 
 <article class="all-posts">
 
-<?php 
+<?php
 
 // If user not logged in
-if(!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user'])) {
     $errors[] = "You need to login";
     $_SESSION['errors'] = $errors;
     redirect("/");
@@ -28,18 +28,18 @@ $follows = $statement->fetchAll(PDO::FETCH_ASSOC);
         </div>
     <?php endif; ?>
 
-<?php 
+<?php
 
 foreach ($follows as $follow) :
     $usersfollow = $follow['user_id_2'];
 
-    // Get all photo information from people the user follows   
+    // Get all photo information from people the user follows
     $statement = $pdo->prepare("SELECT * FROM photos where user_id = :follow_user_id ORDER BY  date_created DESC");
     $statement->bindParam(':follow_user_id', $usersfollow, PDO::PARAM_INT);
     $statement->execute();
     $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    // Get user information from people the user follows   
+    // Get user information from people the user follows
     $statement = $pdo->prepare('SELECT * FROM users WHERE user_id = :user_id');
     $statement->bindParam(':user_id', $usersfollow, PDO::PARAM_INT);
     $statement->execute();
@@ -53,11 +53,11 @@ foreach ($follows as $follow) :
         $avatar = $user['avatar'];
     }
 
-// Get all photos from people the user follows 
-foreach ($photos as $photo) : 
+// Get all photos from people the user follows
+foreach ($photos as $photo) :
     $photoId = $photo['photo_id'];
 
-    // Get number of likes from each photos 
+    // Get number of likes from each photos
     $statement = $pdo->prepare('SELECT * FROM likes WHERE photo_id = :photo_id');
     $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
     $statement->execute();
@@ -71,7 +71,7 @@ foreach ($photos as $photo) :
     }
     ?>
 
-    <?php 
+    <?php
 
     foreach ($likes as $like) {
         $userIdLikes =  $like['user_id'];

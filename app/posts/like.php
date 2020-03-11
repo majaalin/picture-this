@@ -1,14 +1,21 @@
-<?php 
+<?php
+
+/*
+ * This file is part of Yrgo.
+ * (c) Yrgo, högre yrkesutbildning.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-if(!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user'])) {
     redirect('/');
 }
 
-if(isset($_GET['photo_id'])){
+if (isset($_GET['photo_id'])) {
     $photoId = $_GET['photo_id'];
     $userId = $_SESSION['user']['user_id'];
 
@@ -27,7 +34,6 @@ if(isset($_GET['photo_id'])){
 
     // If the user liked the image, unlike
     if ($likes) {
-
         $query = 'DELETE FROM likes WHERE user_id = :user_id AND photo_id = :photo_id';
 
         $statement = $pdo->prepare($query);
@@ -42,12 +48,11 @@ if(isset($_GET['photo_id'])){
         $statement->execute();
 
         redirect($_SERVER['HTTP_REFERER']);
-	    exit;
-    } 
+        exit;
+    }
 
     // If the user not liked the image, like
     else {
-        
         $query = 'INSERT INTO likes (user_id, photo_id) VALUES (:user_id, :photo_id)';
 
         $statement = $pdo->prepare($query);
@@ -62,6 +67,6 @@ if(isset($_GET['photo_id'])){
         $statement->execute();
     
         redirect($_SERVER['HTTP_REFERER']);
-	    exit;
-}
+        exit;
+    }
 }

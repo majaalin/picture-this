@@ -1,11 +1,11 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
-<?php 
+<?php
 $loggedInUser = $_SESSION['user']['user_id'];
 $photoId = $_GET['photo_id'];
 
 // If user not logged in
-if(!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user'])) {
     $errors[] = "You need to login";
     $_SESSION['errors'] = $errors;
     redirect("/");
@@ -34,7 +34,7 @@ $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
 $statement->execute();
 $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-// Get likes number of likes 
+// Get likes number of likes
 $statement = $pdo->prepare('SELECT * FROM likes WHERE photo_id = :photo_id');
 $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
 $statement->execute();

@@ -1,10 +1,17 @@
-<?php 
+<?php
+
+/*
+ * This file is part of Yrgo.
+ * (c) Yrgo, högre yrkesutbildning.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-if(!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user'])) {
     redirect('/');
 }
 
@@ -14,7 +21,7 @@ $errors = [];
 
 // Find user that is logged in
 $findUser = $pdo->prepare("SELECT * FROM users WHERE user_id=?");
-$findUser->execute([$userId]); 
+$findUser->execute([$userId]);
 $user = $findUser->fetch();
 
 // Information about the user
@@ -27,68 +34,64 @@ $oldAvatar = $user['avatar'];
 
 if (isset($_POST['update'])) {
 
-    // Update avatar 
+    // Update avatar
     if (isset($_FILES['avatar'])) {
         $avatar = $_FILES['avatar'];
         $destination = __DIR__.'/../../uploads/'.date('ymd')."-".$_FILES['avatar']['name'];
-        move_uploaded_file($avatar['tmp_name'], $destination); 
+        move_uploaded_file($avatar['tmp_name'], $destination);
 
         $avatarName = date('ymd')."-".$_FILES['avatar']['name'];
 
         if ($avatar['tmp_name'] != "") {
-
             $statement = $pdo->prepare("UPDATE users SET avatar = :avatar  WHERE user_id = :user_id");
             $statement->bindParam(":avatar", $avatarName);
             $statement->bindParam(":user_id", $userId);
             $statement->execute();
         
             $successes[] = "Your profile was successfully updated";
-
-    }}
+        }
+    }
 
     // Update email
     if (isset($_POST['email'])) {
-            $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+        $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 
-            $checkForEmail = $pdo->prepare("SELECT * FROM users WHERE email=?");
-            $checkForEmail->execute([$email]); 
-            $emailExist = $checkForEmail->fetch();
+        $checkForEmail = $pdo->prepare("SELECT * FROM users WHERE email=?");
+        $checkForEmail->execute([$email]);
+        $emailExist = $checkForEmail->fetch();
 
-            if ($oldEmail != $email) {
-
+        if ($oldEmail != $email) {
             if ($emailExist) {
                 $errors[] = "Email is already used by an other account!";
             } else {
-
-            $statement = $pdo->prepare('UPDATE users SET email = :email WHERE user_id = :user_id');
+                $statement = $pdo->prepare('UPDATE users SET email = :email WHERE user_id = :user_id');
             
-            if (!$statement) {
-                die(var_dump($pdo->errorInfo()));
-            }
+                if (!$statement) {
+                    die(var_dump($pdo->errorInfo()));
+                }
     
-            $statement->execute([
+                $statement->execute([
                 ':user_id' => $userId,
                 ':email' => $email,
                 ]);
 
-            $successes[] = "Your email was successfully updated";
-                
-  }}}
-        // Update username
-        if (isset($_POST['username'])) {
-                $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+                $successes[] = "Your email was successfully updated";
+            }
+        }
+    }
+    // Update username
+    if (isset($_POST['username'])) {
+        $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
 
-                $checkForUsername = $pdo->prepare("SELECT * FROM users WHERE username=?");
-                $checkForUsername->execute([$username]); 
-                $usernameExist = $checkForUsername->fetch();
+        $checkForUsername = $pdo->prepare("SELECT * FROM users WHERE username=?");
+        $checkForUsername->execute([$username]);
+        $usernameExist = $checkForUsername->fetch();
 
-                if ($oldUsername != $username) {
-
-                if ($usernameExist) {
-                    $errors[] = "Username already exists!";
-                } else {
-
-                    $statement = $pdo->prepare('UPDATE users SET username = :username WHERE user_id = :user_id');
+        if ($oldUsername != $username) {
+            if ($usernameExist) {
+                $errors[] = "Username already exists!";
+            } else {
+                $statement = $pdo->prepare('UPDATE users SET username = :username WHERE user_id = :user_id');
                 
                 if (!$statement) {
                     die(var_dump($pdo->errorInfo()));
@@ -99,17 +102,15 @@ if (isset($_POST['update'])) {
                     ':username' => $username,
                     ]);
 
-                    $successes[] = "Your username was successfully updated";
+                $successes[] = "Your username was successfully updated";
+            }
+        }
+    }
+    // Update full name
+    if (isset($_POST['full_name'])) {
+        $fullName = filter_var($_POST['full_name'], FILTER_SANITIZE_STRING);
 
-                }}
-        
- }
-        // Update full name
-        if (isset($_POST['full_name'])) {
-            $fullName = filter_var($_POST['full_name'], FILTER_SANITIZE_STRING);
-
-            if ($oldFullName != $fullName) {
-    
+        if ($oldFullName != $fullName) {
             $statement = $pdo->prepare('UPDATE users SET full_name = :full_name WHERE user_id = :user_id');
             
             if (!$statement) {
@@ -121,7 +122,7 @@ if (isset($_POST['update'])) {
                 ':full_name' => $fullName,
                 ]);
             
-                $successes[] = "Your full name was successfully updated";
+            $successes[] = "Your full name was successfully updated";
         }
     }
 
@@ -129,38 +130,36 @@ if (isset($_POST['update'])) {
     if (isset($_POST['biography'])) {
         $biography = filter_var($_POST['biography'], FILTER_SANITIZE_STRING);
 
-        if ($oldBiography != $biography ){
-
-        $statement = $pdo->prepare('UPDATE users SET biography = :biography WHERE user_id = :user_id');
+        if ($oldBiography != $biography) {
+            $statement = $pdo->prepare('UPDATE users SET biography = :biography WHERE user_id = :user_id');
         
-        if (!$statement) {
-            die(var_dump($pdo->errorInfo()));
-        }
+            if (!$statement) {
+                die(var_dump($pdo->errorInfo()));
+            }
 
-        $statement->execute([
+            $statement->execute([
             ':user_id' => $userId,
             ':biography' => $biography,
             ]);
 
             $successes[] = "Your profile was successfully updated";
-            
-        }}
-
-        if (count($errors) > 0){
-            $_SESSION['errors'] = $errors;
-            redirect("/../../edit-profile.php?user_id=" . $userId);
-            exit;
         }
+    }
 
-        if (count($successes) > 0){
-            $_SESSION['successes'] = $successes;
-            redirect("/../../profile.php?user_id=" . $userId);
-            exit;
-        } else {
+    if (count($errors) > 0) {
+        $_SESSION['errors'] = $errors;
+        redirect("/../../edit-profile.php?user_id=" . $userId);
+        exit;
+    }
 
-            $errors[] = "You did not update anything";
-            $_SESSION['errors'] = $errors;
-            redirect("/../../profile.php?user_id=" . $userId);
-            exit;
-        }
+    if (count($successes) > 0) {
+        $_SESSION['successes'] = $successes;
+        redirect("/../../profile.php?user_id=" . $userId);
+        exit;
+    } else {
+        $errors[] = "You did not update anything";
+        $_SESSION['errors'] = $errors;
+        redirect("/../../profile.php?user_id=" . $userId);
+        exit;
+    }
 }

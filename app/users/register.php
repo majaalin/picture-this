@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of Yrgo.
+ * (c) Yrgo, högre yrkesutbildning.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
@@ -12,29 +19,29 @@ if (isset($_POST['email'], $_POST['username'], $_POST['full_name'], $_POST['pass
     $fullName = filter_var($_POST['full_name'], FILTER_SANITIZE_STRING);
 
     $checkForEmail = $pdo->prepare("SELECT * FROM users WHERE email=?");
-    $checkForEmail->execute([$email]); 
+    $checkForEmail->execute([$email]);
     $emailExist = $checkForEmail->fetch();
 
     if ($emailExist) {
         $errors[] = "Email is already used by an other account!";
-    } 
+    }
 
     $checkForUsername = $pdo->prepare("SELECT * FROM users WHERE username=?");
-    $checkForUsername->execute([$username]); 
+    $checkForUsername->execute([$username]);
     $usernameExist = $checkForUsername->fetch();
 
     if ($usernameExist) {
-    $errors[] = "Username already exists!";
-    } 
+        $errors[] = "Username already exists!";
+    }
 
     if ($_POST['password'] != $_POST['confirm_password']) {
         $errors[] = "Your password doesn't match";
-    } 
+    }
 
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     $confirmPassword = password_hash($_POST['confirm_password'], PASSWORD_BCRYPT);
 
-    if (count($errors) > 0){
+    if (count($errors) > 0) {
         $_SESSION['errors'] = $errors;
         redirect('/../../register.php');
         exit;
@@ -59,8 +66,9 @@ if (isset($_POST['email'], $_POST['username'], $_POST['full_name'], $_POST['pass
 
     $successes[] = "You have now created an account, please login!";
 
-    if (count($successes) > 0){
+    if (count($successes) > 0) {
         $_SESSION['successes'] = $successes;
         redirect('/../../index.php');
         exit;
-    }}
+    }
+}

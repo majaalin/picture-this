@@ -1,12 +1,19 @@
 <?php
 
+/*
+ * This file is part of Yrgo.
+ * (c) Yrgo, högre yrkesutbildning.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
 // Login user
 
-if(isset($_POST['email'], $_POST['password'])){
+if (isset($_POST['email'], $_POST['password'])) {
     $email = strtolower(trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL)));
     $password = htmlentities($_POST['password']);
     
@@ -20,7 +27,7 @@ if(isset($_POST['email'], $_POST['password'])){
 
     // If user do not exist and/or password do not match, exit
 
-    if (!$user || !password_verify($password, $user['password'])){
+    if (!$user || !password_verify($password, $user['password'])) {
         $errors[] = "Wrong email or password";
     
         $_SESSION['errors'] = $errors;
@@ -28,9 +35,9 @@ if(isset($_POST['email'], $_POST['password'])){
         exit;
     }
 
-    // If user exist and password match, sign in 
+    // If user exist and password match, sign in
     
-    if (password_verify($password, $user['password'])){
+    if (password_verify($password, $user['password'])) {
         unset($user['password']);
         $_SESSION['user'] = $user;
         redirect('/posts.php');

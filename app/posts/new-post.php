@@ -1,13 +1,21 @@
-<?php declare(strict_types=1);
+<?php
+
+/*
+ * This file is part of Yrgo.
+ * (c) Yrgo, högre yrkesutbildning.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-if(!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user'])) {
     redirect('/');
 }
 
 if (isset($_FILES['image'], $_POST['caption'])) {
-
     $imagePath = date('ymd')."-".$_FILES['image']['name'];
 
     if ($imagePath === date('ymd') . "-") {
@@ -18,7 +26,7 @@ if (isset($_FILES['image'], $_POST['caption'])) {
         $errors[] = "You need to write a caption";
     }
 
-    if (count($errors) > 0){
+    if (count($errors) > 0) {
         $_SESSION['errors'] = $errors;
         redirect('/../../new-post.php');
         exit;
@@ -27,7 +35,7 @@ if (isset($_FILES['image'], $_POST['caption'])) {
     // Save photo
     $image = $_FILES['image'];
     $destination = __DIR__.'/../../uploads/'.date('ymd')."-".$_FILES['image']['name'];
-    move_uploaded_file($image['tmp_name'], $destination); 
+    move_uploaded_file($image['tmp_name'], $destination);
 
     $imagePath = date('ymd')."-".$_FILES['image']['name'];
     $caption = $_POST['caption'];
@@ -35,7 +43,7 @@ if (isset($_FILES['image'], $_POST['caption'])) {
     date_default_timezone_set('Europe/Stockholm');
     $dateCreated = date("Y-m-d H:i:s");
 
-    // Upload photo 
+    // Upload photo
     $query = 'INSERT INTO photos (image, caption, user_id, date_created) VALUES (:image, :caption, :user_id, :date_created)';
 
     $statement = $pdo->prepare($query);
@@ -53,7 +61,7 @@ if (isset($_FILES['image'], $_POST['caption'])) {
 
     $successes[] = "Your post was successfully uploaded!";
 
-    if (count($successes) > 0){
+    if (count($successes) > 0) {
         $_SESSION['successes'] = $successes;
         redirect("/profile.php?user_id=" . $userId . "?");
         exit;
