@@ -1,0 +1,4 @@
+preset: PSR2
+risky: true
+finder:
+  name: "*.php"
