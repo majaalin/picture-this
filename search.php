@@ -6,9 +6,9 @@
 
 // If user not logged in
 if (!isset($_SESSION['user'])) {
-    $errors[] = "You need to login";
+    $errors[] = 'You need to login';
     $_SESSION['errors'] = $errors;
-    redirect("/");
+    redirect('/');
     exit;
 }
 
@@ -29,15 +29,15 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 <main>
 <div class="container">
-<?php if (isset($_SESSION['user'])) :?>
-<?php foreach ($photos as $photo) : ?>
+<?php if (isset($_SESSION['user'])) { ?>
+<?php foreach ($photos as $photo) { ?>
     <form action="/post.php" method="GET">
     <button type="submit" name="photo_id" value="<?php echo $photo['photo_id'] ?>">
     <img class="small-image" src="/uploads/<?php echo $photo['image']; ?>" alt="small-image">
     </button>
     </form>
-    <?php endforeach ?>
-    <?php endif; ?>
+    <?php } ?>
+    <?php } ?>
     </div>
 </main>
 

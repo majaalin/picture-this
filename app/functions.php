@@ -18,10 +18,9 @@ if (!function_exists('redirect')) {
 }
 
 /**
- * Get comments from database
+ * Get comments from database.
  *
- * @param integer $postId
- *
+ * @param int $postId
  * @param PDO $pdo
  *
  * @return array
@@ -35,7 +34,7 @@ function getComments(int $postId, PDO $pdo): array
     }
 
     $statement->execute([
-        ':post_id' => $postId
+        ':post_id' => $postId,
     ]);
 
     $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
