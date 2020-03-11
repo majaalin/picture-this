@@ -3,7 +3,7 @@
 <article>
 
     <!-- If user is logged in -->
-    <?php if (isset($_SESSION['user'])) :?>
+    <?php if (isset($_SESSION['user'])) { ?>
         <div class="login">
         <img src="/images/logo.png" alt="logo" class="logo">
         <img class="avatar" src="/uploads/<?php echo $_SESSION['user']['avatar']; ?>" alt="avatar">
@@ -12,11 +12,11 @@
         <p class="diffrent-account"><a href="/app/users/logout.php">Login with a different account</a></p>
         <p class="new-account">Are you new on Picture this? <a href="/register.php" class="bold">Create an account</a></p>
         </div>
-    <?php endif; ?>
+    <?php } ?>
 
 
     <!-- If the user is not logged in -->
-    <?php if (!isset($_SESSION['user'])) :?>
+    <?php if (!isset($_SESSION['user'])) { ?>
         <form action="app/users/login.php" method="post" class="login">
             <img src="/images/logo.png" alt="logo" class="logo">
             <div class="form-group">
@@ -28,6 +28,6 @@
             <button type="submit">Login</button>
             <p class="new-account">Are you new on Picture this? <a href="/register.php" class="bold">Create an account</a></p>
         </form>
-    <?php endif; ?>
+    <?php } ?>
 </article>
 

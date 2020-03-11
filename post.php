@@ -6,9 +6,9 @@ $photoId = $_GET['photo_id'];
 
 // If user not logged in
 if (!isset($_SESSION['user'])) {
-    $errors[] = "You need to login";
+    $errors[] = 'You need to login';
     $_SESSION['errors'] = $errors;
-    redirect("/");
+    redirect('/');
     exit;
 }
 
@@ -48,7 +48,7 @@ $amoutOfLikes = count($likes);
 $amoutOfLikesWithoutUser = $amoutOfLikes - 1;
 
 foreach ($likes as $like) {
-    $userIdLikes =  $like['user_id'];
+    $userIdLikes = $like['user_id'];
 }
 
 ?>
@@ -61,15 +61,15 @@ foreach ($likes as $like) {
     <button type="submit" name="user_id" value="<?php echo $user['user_id'] ?>">
     <ul>
         <li class="avatar-user">
-            <?php if (!$user['avatar']): ?>
+            <?php if (!$user['avatar']) { ?>
                 <img class="avatar" src="/images/no-avatar.png" alt="avatar">
-                <?php else: ?>
+                <?php } else { ?>
                     <img class="avatar" src="/uploads/<?php echo $user['avatar'] ?>" alt="avatar">
-            <?php endif; ?>
+            <?php } ?>
             <p class="username"><?php echo $user['username'] ?></p></li>
         </button>
     </form>
-        <?php if ($loggedInUser === $user['user_id']): ?>
+        <?php if ($loggedInUser === $user['user_id']) { ?>
         <form action="/edit-post.php" method="GET">
         <li class="more">
         <button type="submit" name="photo_id" value="<?php echo $photoId ?>"><img class="icon" src="/icons/more.png" alt="more">
@@ -77,44 +77,44 @@ foreach ($likes as $like) {
         </li>
         </form>
         </ul>
-    <?php endif; ?>
+    <?php } ?>
     </div>
     <div class="image-container">
     <img class="image" id="<?php echo $photoId?>" src="/uploads/<?php echo $photo['image']; ?>" alt="<?php echo $photoId?>" loading="lazy">
     </div>
     <form class="like-container" action="/app/posts/like.php" method="GET">
-    <?php if ($userIdLikes != $loggedInUser): ?>
+    <?php if ($userIdLikes != $loggedInUser) { ?>
         <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/not-liked.png" alt="heart"></button>
-        <?php if ($amoutOfLikes >= 1): ?>
+        <?php if ($amoutOfLikes >= 1) { ?>
             <p>Liked by <?php echo $amoutOfLikes?></p>
-        <?php endif; ?>
+        <?php } ?>
         </form>
-        <?php elseif ($userIdLikes === $loggedInUser) : ?>
+        <?php } elseif ($userIdLikes === $loggedInUser) { ?>
                 <button id="heart" type="submit" name="photo_id" value="<?php echo $photo['photo_id']?>"><img class="heart" src="/icons/liked.png" alt="heart"></button>
-                <?php if ($amoutOfLikes > 1): ?>
+                <?php if ($amoutOfLikes > 1) { ?>
                 <p>Liked by you and <?php echo $amoutOfLikesWithoutUser ?> more</p>    
-                <?php else : ?>
+                <?php } else { ?>
                 <p>Liked by you</p>
-                <?php endif; ?>    
+                <?php } ?>    
             </form>
-    <?php endif; ?>
+    <?php } ?>
     <p class="caption-container">
     <span><?php echo $user['username']?></span> 
-    <?php echo $photo['caption'];?>
+    <?php echo $photo['caption']; ?>
     </p>
-    <p class="date"><?php echo $photo['date_created'];?></p>
+    <p class="date"><?php echo $photo['date_created']; ?></p>
 
 <!-- Comment section -->
     <div class="comment-wrapper">
         <?php $comments = getComments($photo['photo_id'], $pdo) ?>
         <ul class="comment-list">
-            <?php foreach ($comments as $comment): ?>
+            <?php foreach ($comments as $comment) { ?>
                 <li class="comment">
                     <p class="comment-text">
                         <span><?php echo $comment['username']; ?></span> 
                         <?php echo $comment['comment']; ?>
                     </p>
-                    <?php if ($comment['author_id'] === $loggedInUser): ?>
+                    <?php if ($comment['author_id'] === $loggedInUser) { ?>
                     <button class="edit-btn">Edit</button>
                     <div class="hidden">
                         <form class="edit-form" action="/app/posts/edit-comment.php" method="post">
@@ -129,9 +129,9 @@ foreach ($likes as $like) {
                             <button class="delete-comment" type="submit">Delete</button>
                         </form>
                     </div>
-                    <?php endif; ?>
+                    <?php } ?>
                 </li>
-            <?php endforeach; ?>
+            <?php } ?>
         </ul>
 
         <form class="comment-form" action="/app/posts/comments.php" method="post">

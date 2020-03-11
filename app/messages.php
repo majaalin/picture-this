@@ -9,7 +9,6 @@ if (isset($_SESSION['errors'])) {
     unset($_SESSION['errors']);
 }
 
-
 $successes = [];
 
 if (isset($_SESSION['successes'])) {

@@ -4,9 +4,9 @@ $userId = $_SESSION['user']['user_id'];
 
 // If user not logged in
 if (!isset($_SESSION['user'])) {
-    $errors[] = "You need to login";
+    $errors[] = 'You need to login';
     $_SESSION['errors'] = $errors;
-    redirect("/");
+    redirect('/');
     exit;
 }
 
@@ -33,13 +33,13 @@ $biography = $user['biography'];
 
         <form class="edit-profil-container" action="/app/users/edit-profile.php" method="post" enctype="multipart/form-data">
             <div class="avatar">
-                <?php if (!$avatar) : ?>
+                <?php if (!$avatar) { ?>
                 <img id="previewAvatar" src="/images/no-avatar.png" alt="avatar">
                 <label for="avatar">Add a profile picture</label>
-                <?php else : ?>
+                <?php } else { ?>
                     <img id="previewAvatar" src="/uploads/<?php echo $avatar; ?>" alt="avatar">
                 <label for="avatar">Change profile picture</label>
-                <?php endif ?>
+                <?php } ?>
                 <input type="file" name="avatar" id="avatar" accept=".png, .jpg, .jpeg" onchange="document.getElementById('previewAvatar').src = window.URL.createObjectURL(this.files[0])">
             </div>
 

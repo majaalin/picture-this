@@ -31,34 +31,34 @@ if (isset($_GET['user_id'])) {
         $query = 'INSERT INTO follower (user_id_1, user_id_2) VALUES (:user_id_1, :user_id_2)';
 
         $statement = $pdo->prepare($query);
-       
+
         if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
-    
+
         $statement->bindParam(':user_id_1', $userId, PDO::PARAM_INT);
         $statement->bindParam(':user_id_2', $followingId, PDO::PARAM_INT);
-        
+
         $statement->execute();
 
-        redirect("/profile.php?user_id=" . $followingId . "?");
-    
+        redirect('/profile.php?user_id='.$followingId.'?');
+
         // If the user does follow the profile, unfollow
     }
     if ($following) {
         $query = 'DELETE FROM follower WHERE user_id_1 = :user_id_1 AND user_id_2 = :user_id_2';
 
         $statement = $pdo->prepare($query);
-       
+
         if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
-    
+
         $statement->bindParam(':user_id_1', $userId, PDO::PARAM_INT);
         $statement->bindParam(':user_id_2', $followingId, PDO::PARAM_INT);
-        
+
         $statement->execute();
-    
-        redirect("/profile.php?user_id=" . $followingId . "?");
+
+        redirect('/profile.php?user_id='.$followingId.'?');
     }
 }

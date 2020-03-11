@@ -19,60 +19,59 @@ $statement->execute();
 
 $photos = $statement->fetch(PDO::FETCH_ASSOC);
 
-
 if (isset($_GET['photo_id'])) {
     $photoId = $_GET['photo_id'];
 
     if (isset($_FILES['image'])) {
         $image = $_FILES['image'];
-        $destination = __DIR__.'/../../uploads/'.date('ymd')."-".$_FILES['image']['name'];
+        $destination = __DIR__.'/../../uploads/'.date('ymd').'-'.$_FILES['image']['name'];
         move_uploaded_file($image['tmp_name'], $destination);
-        $imagePath = date('ymd')."-".$_FILES['image']['name'];
+        $imagePath = date('ymd').'-'.$_FILES['image']['name'];
 
-        if ($imagePath === date('ymd')."-") {
-            $errors[] = "You have not choosen a photo";
+        if ($imagePath === date('ymd').'-') {
+            $errors[] = 'You have not choosen a photo';
         }
 
         if (count($errors) > 0) {
             $_SESSION['errors'] = $errors;
-            redirect("/edit-post.php?photo_id=" . $photoId);
+            redirect('/edit-post.php?photo_id='.$photoId);
             exit;
         }
-        
+
         $statement = $pdo->prepare('UPDATE photos SET image = :image WHERE photo_id = :photo_id');
-            
+
         if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
-       
+
         $statement->bindParam(':image', $imagePath, PDO::PARAM_STR);
         $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
-        
+
         $statement->execute();
-    
-        $successes[] = "Your photo was successfully updated!";
+
+        $successes[] = 'Your photo was successfully updated!';
     }
 
     if (isset($_POST['caption'])) {
         $caption = $_POST['caption'];
 
         $statement = $pdo->prepare('UPDATE photos SET caption = :caption WHERE photo_id = :photo_id');
-            
+
         if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
-       
+
         $statement->bindParam(':caption', $caption, PDO::PARAM_STR);
         $statement->bindParam(':photo_id', $photoId, PDO::PARAM_INT);
-        
+
         $statement->execute();
 
-        $successes[] = "Your caption was successfully updated!";
+        $successes[] = 'Your caption was successfully updated!';
     }
 
     if (count($successes) > 0) {
         $_SESSION['successes'] = $successes;
-        redirect("/edit-post.php?photo_id=" . $photoId);
+        redirect('/edit-post.php?photo_id='.$photoId);
         exit;
     }
 }

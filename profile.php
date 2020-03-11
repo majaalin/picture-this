@@ -6,9 +6,9 @@ $userId = $_GET['user_id'];
 
 // If user not logged in
 if (!isset($_SESSION['user'])) {
-    $errors[] = "You need to login";
+    $errors[] = 'You need to login';
     $_SESSION['errors'] = $errors;
-    redirect("/");
+    redirect('/');
     exit;
 }
 
@@ -22,7 +22,7 @@ $user = $statement->fetch(PDO::FETCH_ASSOC);
 if (!$user) {
     $errors[] = "Can't find user";
     $_SESSION['errors'] = $errors;
-    redirect("/posts.php");
+    redirect('/posts.php');
     exit;
 }
 
@@ -42,7 +42,7 @@ $photos = $statement->fetchAll(PDO::FETCH_ASSOC);
 $amountOfPosts = count($photos);
 
 if (!$photos) {
-    $errors[] = "No photos";
+    $errors[] = 'No photos';
 }
 
 // Get number of follows
@@ -83,11 +83,11 @@ if (isset($_GET['user_id'])) {
         <h1><?php echo $username ?></h1>
 
     <ul class="profile-information">
-        <?php if (!$avatar): ?>
+        <?php if (!$avatar) { ?>
             <li><img class="avatar bigger" src="/images/no-avatar.png" alt="avatar"></li>
-            <?php else: ?>
+            <?php } else { ?>
                 <li><img class="avatar bigger" src="/uploads/<?php echo $avatar; ?>"alt="avatar"></li>
-        <?php endif; ?>
+        <?php } ?>
         <li><p class="bold"><?php echo $amountOfPosts ?></p><span>Posts</span></li>
         <li><p class="bold"><?php echo $amountOfFollowers ?></p><span>Followers</span></li>
         <li><p class="bold"><?php echo $amountOfFollows ?></p><span>Following</span></li>
@@ -99,34 +99,34 @@ if (isset($_GET['user_id'])) {
     </ul>
 
     <!-- If logged in user is the profile owner   -->
-    <?php if ($loggedInUser == $userId) : ?>
+    <?php if ($loggedInUser == $userId) { ?>
             <button class="edit-profil"><a href="/edit-profile.php">Edit profile</a></button>
             <button class="logout"><a href="/app/users/logout.php" onclick="return confirm('Are you sure you want to logout?')">Logout</a></button>
     <!-- If logged in user is a visitor  -->
-        <?php elseif ($loggedInUser != $userId) : ?>
+        <?php } elseif ($loggedInUser != $userId) { ?>
         <form action="/app/users/follow.php" method="GET">
          <!-- If logged in user follows the profile owner -->
-        <?php if ($following): ?>
+        <?php if ($following) { ?>
             <button class="edit-profil" type="submit" name="user_id" value="<?php echo $userId ?>">Unfollow</button></form>
             <!-- If logged in user does not follows the profile owner -->
-            <?php elseif (!$following): ?>
+            <?php } elseif (!$following) { ?>
                 <button class="edit-profil" type="submit" name="user_id" value="<?php echo $userId ?>">Follow</button></form>
-        <?php endif; ?>
-    <?php endif; ?>
+        <?php } ?>
+    <?php } ?>
 
     <!-- Show all photos from profile owner   -->
     <main>
     <div class="container">
-<?php if (isset($_SESSION['user'])) :?>
-<?php foreach ($photos as $photo) : ?>
+<?php if (isset($_SESSION['user'])) { ?>
+<?php foreach ($photos as $photo) { ?>
     <form action="/post.php" method="GET">
     <button type="submit" name="photo_id" value="<?php echo $photo['photo_id'] ?>">
     <img class="small-image" src="/uploads/<?php echo $photo['image']; ?>" alt="small-image">
     </button>
     </form>
     
-    <?php endforeach ?>
-    <?php endif; ?>
+    <?php } ?>
+    <?php } ?>
     </div>
     </main>
 </article>
