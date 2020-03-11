@@ -1,4 +1,4 @@
-<?ph
+<?php
 
 $rules = [
     '@PSR2' => true,
