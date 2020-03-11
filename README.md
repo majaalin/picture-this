@@ -1,5 +1,7 @@
 # Picture-This
 
+<img src="https://github.styleci.io/repos/7548986/shield" alt="badges">
+
 ## Assignments
 
 The assignment is to create an Instagram clone with CSS, HTML, Javascript and PHP.
