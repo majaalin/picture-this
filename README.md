@@ -1,10 +1,10 @@
 # Picture-This
 
-<p float="center">
-  <img src="pt1.png" width="230" />
-  <img src="pt2.png" width="230" /> 
-  <img src="pt3.png" width="230" />
-  <img src="pt4.png" width="230" />
+<p align="center">
+  <img src="pt1.png" width="200" />
+  <img src="pt2.png" width="200" /> 
+  <img src="pt3.png" width="200" />
+  <img src="pt4.png" width="200" />
 </p>
 
 <img src="https://github.styleci.io/repos/7548986/shield" alt="badges">
